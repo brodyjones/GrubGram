@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, React } from 'react';
 import './App.css';
 import {db} from './firebase-config'
 import {collection, getDocs, addDoc, deleteDoc, doc} from "firebase/firestore"
@@ -12,8 +12,10 @@ function App() {
   const userPostsRef = collection(db, "user posts");
 
   const createUserPost = async () => {
-    await addDoc(userPostsRef, {username: "keithhoffy", imagelink: newImage, 
-      caption: newCaption, datecreated: "11/28/22", recipe: newRecipe})
+    var today = new Date()
+    await addDoc(userPostsRef, {username: "keithhoffy", imagelink: newImage, caption: newCaption, 
+      datecreated: (today.getMonth()+1)+'/'+today.getDate()+'/'+today.getFullYear(),
+      recipe: newRecipe})
   }
 
   const deleteUserPost = async (id) => {
