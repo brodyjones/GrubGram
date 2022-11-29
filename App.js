@@ -35,7 +35,7 @@ function App() {
   }, [])
 
   return (
-    <div className="App"> 
+    <div style = {styles.background} className="App"> 
     <div style={styles.header}>GrubGram</div>
     <br></br>
     <input 
@@ -79,15 +79,20 @@ function App() {
 
 const styles = {
   header: {
-    color: 'red', 
-    fontSize: 75, 
+    color: 'firebrick', 
+    fontSize: 75,
+    fontFamily: 'Verdana, sans-serif'
   },
   main: {
     fontSize: 10,
-    color: 'green'
+    color: 'black',
+    fontFamily: 'Gill Sans, sans-serif'
   },
   footer: {
     fontSize: 15
+  }, 
+  background: {
+    backgroundColor: 'blanchedalmond'
   }
 };
 
