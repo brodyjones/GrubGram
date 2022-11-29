@@ -1,7 +1,7 @@
 import { useState, useEffect, React } from 'react';
-import './App.css';
 import {db} from './firebase-config'
 import {collection, getDocs, addDoc, deleteDoc, doc} from "firebase/firestore"
+import './App.css'
 
 function App() {
   const [newImage, setNewImage] = useState("");
@@ -35,7 +35,9 @@ function App() {
   }, [])
 
   return (
-    <div className="App"> 
+    <div style = {styles.background} className="App"> 
+    <div style={styles.header}>GrubGram</div>
+    <br></br>
     <input 
       placeholder='Image...' 
       onChange={(event) => {
@@ -57,7 +59,7 @@ function App() {
     <button onClick={createUserPost}>Post</button>
       {userPosts.map((userPost) => {
         return (
-          <div>
+          <div style={styles.main}>
             <h1>User: {userPost.username} </h1>
             <h1>Image Link: {userPost.imagelink} </h1>
             <h1>Caption: {userPost.caption} </h1>
@@ -67,8 +69,31 @@ function App() {
           </div>
         );
       })}
+      <br></br>
+      <div style={styles.footer}>GrubGram Crew: Kriteen Jain, Keith Hoffmeister, 
+        Sean Hoffmeister, Kavin Balakrishnan, Brody Jones</div>
     </div>
   );
+
 }
+
+const styles = {
+  header: {
+    color: 'firebrick', 
+    fontSize: 75,
+    fontFamily: 'Verdana, sans-serif'
+  },
+  main: {
+    fontSize: 10,
+    color: 'black',
+    fontFamily: 'Gill Sans, sans-serif'
+  },
+  footer: {
+    fontSize: 15
+  }, 
+  background: {
+    backgroundColor: 'blanchedalmond'
+  }
+};
 
 export default App;

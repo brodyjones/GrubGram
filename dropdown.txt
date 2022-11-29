@@ -1,0 +1,525 @@
+<Dropdown.Item onClick={add_pantry_ingredient("ground pepper")} eventKey="1">ground pepper</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("lemon juice")} eventKey="2">lemon juice</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("ground cinnamon")} eventKey="3">ground cinnamon</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("ground nutmeg")} eventKey="4">ground nutmeg</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("cheese")} eventKey="5">cheese</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("margarine")} eventKey="6">margarine</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("miracle whip")} eventKey="7">miracle whip</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("butter")} eventKey="8">butter</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("parmesan cheese")} eventKey="9">parmesan cheese</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("pasta")} eventKey="10">pasta</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("canned chopped green chilies")} eventKey="11">canned chopped green chilies</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("tortilla chips")} eventKey="12">tortilla chips</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("green onions")} eventKey="13">green onions</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("dumplings")} eventKey="14">dumplings</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("sweetener")} eventKey="15">sweetener</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("parsley sprigs")} eventKey="16">parsley sprigs</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("tomato wedges")} eventKey="17">tomato wedges</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("lemons")} eventKey="18">lemons</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("greek seasoning")} eventKey="19">greek seasoning</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("sweet corn")} eventKey="20">sweet corn</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("bittersweet chocolate")} eventKey="21">bittersweet chocolate</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("raisins")} eventKey="22">raisins</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("olive oil")} eventKey="23">olive oil</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("crushed tomatoes")} eventKey="24">crushed tomatoes</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("mint")} eventKey="25">mint</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("water")} eventKey="26">water</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("hot sauce")} eventKey="27">hot sauce</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("cocktail rye bread")} eventKey="28">cocktail rye bread</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("white pepper")} eventKey="29">white pepper</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("garlic powder")} eventKey="30">garlic powder</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("jalapeo pepper")} eventKey="31">jalapeo pepper</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("fresh fruit")} eventKey="32">fresh fruit</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("whipped topping")} eventKey="33">whipped topping</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("nutmeg")} eventKey="34">nutmeg</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("cream of shrimp soup")} eventKey="35">cream of shrimp soup</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("shrimp")} eventKey="36">shrimp</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("mozzarella cheese")} eventKey="37">mozzarella cheese</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("salsa")} eventKey="38">salsa</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("picante sauce")} eventKey="39">picante sauce</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("lettuce")} eventKey="40">lettuce</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("tomatoes")} eventKey="41">tomatoes</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("monterey jack cheese")} eventKey="42">monterey jack cheese</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("cheddar cheese")} eventKey="43">cheddar cheese</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("broccoli")} eventKey="44">broccoli</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("cauliflower")} eventKey="45">cauliflower</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("carrots")} eventKey="46">carrots</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("radishes")} eventKey="47">radishes</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("mayonnaise")} eventKey="48">mayonnaise</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("worcestershire")} eventKey="49">worcestershire</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("oregano")} eventKey="50">oregano</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("croutons")} eventKey="51">croutons</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("vermicelli noodles")} eventKey="52">vermicelli noodles</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("velveeta")} eventKey="53">velveeta</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("lemon pepper")} eventKey="54">lemon pepper</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("mushrooms")} eventKey="55">mushrooms</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("green olives")} eventKey="56">green olives</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("black olives")} eventKey="57">black olives</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("sage")} eventKey="58">sage</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("rosemary")} eventKey="59">rosemary</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("thyme")} eventKey="60">thyme</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("oil")} eventKey="61">oil</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("chicken wings")} eventKey="62">chicken wings</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("cracker crumbs")} eventKey="63">cracker crumbs</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("broth")} eventKey="64">broth</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("flour")} eventKey="65">flour</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("chipped steak")} eventKey="66">chipped steak</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("provolone cheese")} eventKey="67">provolone cheese</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("paprika")} eventKey="68">paprika</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("cornstarch")} eventKey="69">cornstarch</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("lasagna noodles")} eventKey="70">lasagna noodles</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("cottage cheese")} eventKey="71">cottage cheese</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("ricotta cheese")} eventKey="72">ricotta cheese</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("sugar")} eventKey="73">sugar</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("sweetened whipped cream")} eventKey="74">sweetened whipped cream</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("pizza sauce")} eventKey="75">pizza sauce</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("onion")} eventKey="76">onion</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("vegetable oil")} eventKey="77">vegetable oil</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("eggplant")} eventKey="78">eggplant</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("garlic")} eventKey="79">garlic</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("buttermilk")} eventKey="80">buttermilk</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("chicken breast meat")} eventKey="81">chicken breast meat</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("walnuts")} eventKey="82">walnuts</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("seedless raisins")} eventKey="83">seedless raisins</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("miniature marshmallows")} eventKey="84">miniature marshmallows</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("egg")} eventKey="85">egg</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("cream cheese")} eventKey="86">cream cheese</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("chocolate chips")} eventKey="87">chocolate chips</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("baking soda")} eventKey="88">baking soda</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("vinegar")} eventKey="89">vinegar</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("vanilla")} eventKey="90">vanilla</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("pecans")} eventKey="91">pecans</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("powdered sugar")} eventKey="92">powdered sugar</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("milk")} eventKey="93">milk</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("strawberries")} eventKey="94">strawberries</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("semi-sweet chocolate chips")} eventKey="95">semi-sweet chocolate chips</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("semi-sweet chocolate pieces")} eventKey="96">semi-sweet chocolate pieces</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("butterscotch chips")} eventKey="97">butterscotch chips</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("peanut butter")} eventKey="98">peanut butter</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("spanish peanuts")} eventKey="99">spanish peanuts</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("bananas")} eventKey="100">bananas</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("vanilla wafers")} eventKey="101">vanilla wafers</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("cool whip")} eventKey="102">cool whip</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("dried green peppercorns")} eventKey="103">dried green peppercorns</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("skim milk")} eventKey="104">skim milk</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("fresh spinach")} eventKey="105">fresh spinach</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("red leaf lettuce")} eventKey="106">red leaf lettuce</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("green pepper")} eventKey="107">green pepper</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("sweet yellow pepper")} eventKey="108">sweet yellow pepper</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("red onion")} eventKey="109">red onion</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("red wine vinegar")} eventKey="110">red wine vinegar</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("salad oil")} eventKey="111">salad oil</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("chicken")} eventKey="112">chicken</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("chicken bouillon")} eventKey="113">chicken bouillon</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("marjoram")} eventKey="114">marjoram</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("noodles")} eventKey="115">noodles</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("celery")} eventKey="116">celery</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("white wine vinegar")} eventKey="117">white wine vinegar</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("cooking oil")} eventKey="118">cooking oil</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("soy sauce")} eventKey="119">soy sauce</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("mustard")} eventKey="120">mustard</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("ketchup")} eventKey="121">ketchup</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("worcestershire sauce")} eventKey="122">worcestershire sauce</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("bacon")} eventKey="123">bacon</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("brown sugar")} eventKey="124">brown sugar</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("cooking apples")} eventKey="125">cooking apples</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("reduced-calorie pancake")} eventKey="126">reduced-calorie pancake</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("waffle syrup")} eventKey="127">waffle syrup</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("sweet potatoes")} eventKey="128">sweet potatoes</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("molasses")} eventKey="129">molasses</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("baking powder")} eventKey="130">baking powder</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("apples")} eventKey="131">apples</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("gelatin")} eventKey="132">gelatin</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("oleo")} eventKey="133">oleo</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("bread")} eventKey="134">bread</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("cinnamon")} eventKey="135">cinnamon</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("hot milk")} eventKey="136">hot milk</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("honey")} eventKey="137">honey</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("orange juice concentrate")} eventKey="138">orange juice concentrate</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("kool-aid")} eventKey="139">kool-aid</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("biscuit mix")} eventKey="140">biscuit mix</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("ham")} eventKey="141">ham</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("relish")} eventKey="142">relish</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("lean hamburger")} eventKey="143">lean hamburger</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("turkey italian sausages")} eventKey="144">turkey italian sausages</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("onion flakes")} eventKey="145">onion flakes</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("tomato paste")} eventKey="146">tomato paste</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("loaf day old bread")} eventKey="147">loaf day old bread</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("whole wheat bread")} eventKey="148">whole wheat bread</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("pita bread")} eventKey="149">pita bread</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("pepperoni")} eventKey="150">pepperoni</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("lean flank steak")} eventKey="151">lean flank steak</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("lime juice")} eventKey="152">lime juice</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("hoisin sauce")} eventKey="153">hoisin sauce</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("fresh ginger")} eventKey="154">fresh ginger</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("veal chops")} eventKey="155">veal chops</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("herbes de provence")} eventKey="156">herbes de provence</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("sweet n low")} eventKey="157">sweet n low</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("pumpkin pie spice")} eventKey="158">pumpkin pie spice</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("italian seasoning")} eventKey="159">italian seasoning</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("zucchini")} eventKey="160">zucchini</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("jar marinated artichoke hearts")} eventKey="161">jar marinated artichoke hearts</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("fresh tomatoes")} eventKey="162">fresh tomatoes</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("bay leaf")} eventKey="163">bay leaf</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("fresh basil")} eventKey="164">fresh basil</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("parsley")} eventKey="165">parsley</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("noodles")} eventKey="166">noodles</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("spinach pasta")} eventKey="167">spinach pasta</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("chives")} eventKey="168">chives</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("finely chopped")} eventKey="169">finely chopped</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("plum tomatoes")} eventKey="170">plum tomatoes</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("goat cheese")} eventKey="171">goat cheese</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("ground beef")} eventKey="172">ground beef</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("angel hair pasta")} eventKey="173">angel hair pasta</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("duck sauce")} eventKey="174">duck sauce</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("wingettes")} eventKey="175">wingettes</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("sour cream")} eventKey="176">sour cream</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("tabasco sauce")} eventKey="177">tabasco sauce</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("all-purpose flour")} eventKey="178">all-purpose flour</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("dry mustard")} eventKey="179">dry mustard</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("potatoes")} eventKey="180">potatoes</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("cans chicken broth")} eventKey="181">cans chicken broth</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("margarine or butter")} eventKey="182">margarine or butter</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("dry nondairy creamer")} eventKey="183">dry nondairy creamer</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("chicken broth")} eventKey="184">chicken broth</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("onions")} eventKey="185">onions</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("plain lo-cal yogurt")} eventKey="186">plain lo-cal yogurt</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("lo-cal preserves")} eventKey="187">lo-cal preserves</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("slice bread")} eventKey="188">slice bread</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("english muffin")} eventKey="189">english muffin</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("caraway seed")} eventKey="190">caraway seed</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("scallions")} eventKey="191">scallions</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("capers")} eventKey="192">capers</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("broken pretzels")} eventKey="193">broken pretzels</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("elbow macaroni")} eventKey="194">elbow macaroni</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("prepared mustard")} eventKey="195">prepared mustard</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("sweet pickle relish")} eventKey="196">sweet pickle relish</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("pimento")} eventKey="197">pimento</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("sugar-free orange gelatin")} eventKey="198">sugar-free orange gelatin</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("loin chops")} eventKey="199">loin chops</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("ripe bananas")} eventKey="200">ripe bananas</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("drops vanilla extract")} eventKey="201">drops vanilla extract</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("liquid sweetener")} eventKey="202">liquid sweetener</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("cocoa")} eventKey="203">cocoa</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("lemon rind")} eventKey="204">lemon rind</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("pineapple juice")} eventKey="205">pineapple juice</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("grapefruit juice")} eventKey="206">grapefruit juice</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("frozen lemonade")} eventKey="207">frozen lemonade</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("frozen orange juice")} eventKey="208">frozen orange juice</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("can frozen limeade")} eventKey="209">can frozen limeade</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("peppermint extract")} eventKey="210">peppermint extract</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("can crushed pineapple")} eventKey="211">can crushed pineapple</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("grenadine syrup")} eventKey="212">grenadine syrup</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("ginger ale")} eventKey="213">ginger ale</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("sprite")} eventKey="214">sprite</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("vanilla")} eventKey="215">vanilla</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("coarsely ground pepper")} eventKey="216">coarsely ground pepper</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("fish fillets")} eventKey="217">fish fillets</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("bell pepper")} eventKey="218">bell pepper</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("tomato")} eventKey="219">tomato</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("rosemary leaves")} eventKey="220">rosemary leaves</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("oregano leaves")} eventKey="221">oregano leaves</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("creamed corn")} eventKey="222">creamed corn</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("slices bacon")} eventKey="223">slices bacon</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("unflavored gelatin")} eventKey="224">unflavored gelatin</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("light cream")} eventKey="225">light cream</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("heavy cream")} eventKey="226">heavy cream</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("haddock")} eventKey="227">haddock</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("head lettuce")} eventKey="228">head lettuce</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("french dressing")} eventKey="229">french dressing</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("tri-tip or bottom sirloin beef")} eventKey="230">tri-tip or bottom sirloin beef</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("green peppers")} eventKey="231">green peppers</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("seasoning")} eventKey="232">seasoning</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("dflour tortillas")} eventKey="233">dflour tortillas</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("yellow cheese")} eventKey="234">yellow cheese</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("jack cheese")} eventKey="235">jack cheese</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("green chilies")} eventKey="236">green chilies</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("refried beans")} eventKey="237">refried beans</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("nuts")} eventKey="238">nuts</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("sausage")} eventKey="239">sausage</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("yellow cake mix")} eventKey="240">yellow cake mix</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("vanilla instant pudding")} eventKey="241">vanilla instant pudding</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("coconut")} eventKey="242">coconut</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("butter")} eventKey="243">butter</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("cake flour")} eventKey="244">cake flour</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("pure vanilla")} eventKey="245">pure vanilla</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("gouda cheese")} eventKey="246">gouda cheese</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("drops tabasco sauce")} eventKey="247">drops tabasco sauce</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("garlic flakes")} eventKey="248">garlic flakes</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("red onions")} eventKey="249">red onions</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("beef bouillon cubes")} eventKey="250">beef bouillon cubes</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("swiss cheese")} eventKey="251">swiss cheese</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("gruyere cheese")} eventKey="252">gruyere cheese</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("frozen chopped broccoli")} eventKey="253">frozen chopped broccoli</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("cream of mushroom soup")} eventKey="254">cream of mushroom soup</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("apple cider")} eventKey="255">apple cider</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("pumpkin")} eventKey="256">pumpkin</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("mustard with horseradish")} eventKey="257">mustard with horseradish</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("crabmeat")} eventKey="258">crabmeat</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("avocados")} eventKey="259">avocados</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("hot pepper sauce")} eventKey="260">hot pepper sauce</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("jalapeno")} eventKey="261">jalapeno</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("heaping salad dressing")} eventKey="262">heaping salad dressing</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("tiny shrimp")} eventKey="263">tiny shrimp</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("mayo")} eventKey="264">mayo</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("seafood")} eventKey="265">seafood</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("tabasco")} eventKey="266">tabasco</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("season-all")} eventKey="267">season-all</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("italian bread crumbs")} eventKey="268">italian bread crumbs</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("horseradish")} eventKey="269">horseradish</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("liquid smoke")} eventKey="270">liquid smoke</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("fresh parsley")} eventKey="271">fresh parsley</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("stick butter")} eventKey="272">stick butter</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("processed cheese")} eventKey="273">processed cheese</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("box frozen broccoli")} eventKey="274">box frozen broccoli</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("round rye bread")} eventKey="275">round rye bread</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("sprigs parsley")} eventKey="276">sprigs parsley</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("mccormick hollandaise sauce blend")} eventKey="277">mccormick hollandaise sauce blend</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("spinach")} eventKey="278">spinach</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("dill weed")} eventKey="279">dill weed</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("taco seasoning")} eventKey="280">taco seasoning</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("guacamole")} eventKey="281">guacamole</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("four cheese blend")} eventKey="282">four cheese blend</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("pesto")} eventKey="283">pesto</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("sticks butter")} eventKey="284">sticks butter</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("dream whip")} eventKey="285">dream whip</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("cocoa")} eventKey="286">cocoa</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("soda")} eventKey="287">soda</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("cold water")} eventKey="288">cold water</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("shortening")} eventKey="289">shortening</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("plain flour")} eventKey="290">plain flour</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("box confectioners sugar")} eventKey="291">box confectioners sugar</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("bakers german chocolate")} eventKey="292">bakers german chocolate</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("white sugar")} eventKey="293">white sugar</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("unsweetened cocoa powder")} eventKey="294">unsweetened cocoa powder</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("quick cooking oats")} eventKey="295">quick cooking oats</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("vanilla extract")} eventKey="296">vanilla extract</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("walnuts")} eventKey="297">walnuts</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("candied chopped pineapple")} eventKey="298">candied chopped pineapple</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("whole candied cherries")} eventKey="299">whole candied cherries</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("seedless white raisins")} eventKey="300">seedless white raisins</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("pie shell")} eventKey="301">pie shell</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("ripe banana")} eventKey="302">ripe banana</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("ice cubes")} eventKey="303">ice cubes</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("half and half")} eventKey="304">half and half</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("chicken breasts")} eventKey="305">chicken breasts</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("envelope dry onion soup mix")} eventKey="306">envelope dry onion soup mix</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("crescent rolls")} eventKey="307">crescent rolls</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("jar red roasted peppers")} eventKey="308">jar red roasted peppers</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("hungry jack layered biscuits")} eventKey="309">hungry jack layered biscuits</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("jar pizza quick")} eventKey="310">jar pizza quick</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("container cool whip")} eventKey="311">container cool whip</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("shelled peanuts")} eventKey="312">shelled peanuts</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("pillsbury crescent rolls")} eventKey="313">pillsbury crescent rolls</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("hidden valley ranch dressing mix")} eventKey="314">hidden valley ranch dressing mix</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("mild cheddar cheese")} eventKey="315">mild cheddar cheese</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("monterey jack")} eventKey="316">monterey jack</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("colby cheese")} eventKey="317">colby cheese</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("strips cooked")} eventKey="318">strips cooked</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("nut halves")} eventKey="319">nut halves</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("anchovies")} eventKey="320">anchovies</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("romaine lettuce")} eventKey="321">romaine lettuce</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("pineapple")} eventKey="322">pineapple</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("frozen strawberries and juice")} eventKey="323">frozen strawberries and juice</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("carton sour cream")} eventKey="324">carton sour cream</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("seedless green grapes")} eventKey="325">seedless green grapes</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("lemon fat-free yogurt")} eventKey="326">lemon fat-free yogurt</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("orange fat-free yogurt")} eventKey="327">orange fat-free yogurt</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("fat-free cool whip")} eventKey="328">fat-free cool whip</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("lentils")} eventKey="329">lentils</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("tomatos")} eventKey="330">tomatos</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("pineapple tidbits")} eventKey="331">pineapple tidbits</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("banana")} eventKey="332">banana</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("cabbage")} eventKey="333">cabbage</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("sweet italian sausage")} eventKey="334">sweet italian sausage</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("strawberry jello")} eventKey="335">strawberry jello</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("whole-berry cranberry sauce")} eventKey="336">whole-berry cranberry sauce</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("macaroni")} eventKey="337">macaroni</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("onion")} eventKey="338">onion</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("bell pepper")} eventKey="339">bell pepper</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("pepper")} eventKey="340">pepper</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("hamburger patties")} eventKey="341">hamburger patties</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("chicken breast")} eventKey="342">chicken breast</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("chicken strips")} eventKey="343">chicken strips</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("chunky salsa")} eventKey="344">chunky salsa</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("flour tortillas")} eventKey="345">flour tortillas</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("whole chicken")} eventKey="346">whole chicken</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("chicken breasts")} eventKey="347">chicken breasts</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("stalks celery")} eventKey="348">stalks celery</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("cream of celery soup")} eventKey="349">cream of celery soup</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("can diced ro-tel tomatoes")} eventKey="350">can diced ro-tel tomatoes</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("curry powder")} eventKey="351">curry powder</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("spinach noodles")} eventKey="352">spinach noodles</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("egg noodles")} eventKey="353">egg noodles</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("jars chopped pimentos")} eventKey="354">jars chopped pimentos</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("cans mushroom soup")} eventKey="355">cans mushroom soup</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("velveeta cheese")} eventKey="356">velveeta cheese</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("can mushrooms")} eventKey="357">can mushrooms</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("white wine")} eventKey="358">white wine</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("boneless ham")} eventKey="359">boneless ham</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("regular coca-cola")} eventKey="360">regular coca-cola</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("dark brown sugar")} eventKey="361">dark brown sugar</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("box long grain and wild rice")} eventKey="362">box long grain and wild rice</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("hamburger")} eventKey="363">hamburger</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("water chestnuts")} eventKey="364">water chestnuts</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("cans cream of mushroom soup")} eventKey="365">cans cream of mushroom soup</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("tomato sauce")} eventKey="366">tomato sauce</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("cheddar cheese soup")} eventKey="367">cheddar cheese soup</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("dry yeast")} eventKey="368">dry yeast</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("italian sausage")} eventKey="369">italian sausage</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("crescent roll dough")} eventKey="370">crescent roll dough</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("frozen shredded hash browns")} eventKey="371">frozen shredded hash browns</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("rib roast")} eventKey="372">rib roast</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("hoagie rolls")} eventKey="373">hoagie rolls</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("pimentos")} eventKey="374">pimentos</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("mushroom soup")} eventKey="375">mushroom soup</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("extra-virgin olive oil")} eventKey="376">extra-virgin olive oil</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("frozen green peas")} eventKey="377">frozen green peas</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("hen")} eventKey="378">hen</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("solid shortening")} eventKey="379">solid shortening</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("cream of chicken soup")} eventKey="380">cream of chicken soup</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("sour cream")} eventKey="381">sour cream</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("ground chuck")} eventKey="382">ground chuck</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("mccormick spaghetti sauce mix")} eventKey="383">mccormick spaghetti sauce mix</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("spaghetti sauce")} eventKey="384">spaghetti sauce</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("sharp cheddar")} eventKey="385">sharp cheddar</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("mozzarella")} eventKey="386">mozzarella</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("bulk sausage or ground beef")} eventKey="387">bulk sausage or ground beef</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("dried basil leaves")} eventKey="388">dried basil leaves</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("parsley flakes")} eventKey="389">parsley flakes</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("skinless salmon fillet chunks")} eventKey="390">skinless salmon fillet chunks</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("allspice")} eventKey="391">allspice</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("dried red kidney beans")} eventKey="392">dried red kidney beans</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("ham bone with ham")} eventKey="393">ham bone with ham</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("rice")} eventKey="394">rice</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("kelloggs all-bran")} eventKey="395">kelloggs all-bran</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("white flour")} eventKey="396">white flour</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("nabisco 100% bran")} eventKey="397">nabisco 100% bran</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("blueberries")} eventKey="398">blueberries</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("peaches")} eventKey="399">peaches</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("cold butter")} eventKey="400">cold butter</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("confectioners sugar")} eventKey="401">confectioners sugar</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("nuts")} eventKey="402">nuts</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("soft bread crumbs")} eventKey="403">soft bread crumbs</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("whole wheat flour")} eventKey="404">whole wheat flour</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("oat flour")} eventKey="405">oat flour</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("bacon")} eventKey="406">bacon</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("flour")} eventKey="407">flour</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("hot mustard")} eventKey="408">hot mustard</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("pimiento")} eventKey="409">pimiento</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("can green asparagus")} eventKey="410">can green asparagus</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("self rising flour")} eventKey="411">self rising flour</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("peach slices")} eventKey="412">peach slices</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("red kidney beans")} eventKey="413">red kidney beans</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("pork tenderloin")} eventKey="414">pork tenderloin</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("apple")} eventKey="415">apple</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("biscuits")} eventKey="416">biscuits</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("milk chocolate chips")} eventKey="417">milk chocolate chips</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("almond extract")} eventKey="418">almond extract</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("dried whole oregano")} eventKey="419">dried whole oregano</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("low-fat sour cream")} eventKey="420">low-fat sour cream</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("dry vegetable soup mix")} eventKey="421">dry vegetable soup mix</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("sweet red pepper")} eventKey="422">sweet red pepper</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("five-spice powder")} eventKey="423">five-spice powder</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("orange peel")} eventKey="424">orange peel</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("orange juice")} eventKey="425">orange juice</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("ground allspice")} eventKey="426">ground allspice</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("sour milk")} eventKey="427">sour milk</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("salad dressing")} eventKey="428">salad dressing</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("basil")} eventKey="429">basil</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("grainy-style dijon mustard")} eventKey="430">grainy-style dijon mustard</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("bisquick")} eventKey="431">bisquick</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("pasta")} eventKey="432">pasta</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("mixed dry italian herbs")} eventKey="433">mixed dry italian herbs</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("soft butter")} eventKey="434">soft butter</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("freshly ground pepper")} eventKey="435">freshly ground pepper</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("italian style bread crumbs")} eventKey="436">italian style bread crumbs</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("cooked crab")} eventKey="437">cooked crab</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("beer")} eventKey="438">beer</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("seasoned pepper")} eventKey="439">seasoned pepper</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("dried thyme")} eventKey="440">dried thyme</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("tomato puree")} eventKey="441">tomato puree</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("onion powder")} eventKey="442">onion powder</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("polyunsaturated margarine")} eventKey="443">polyunsaturated margarine</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("green onion")} eventKey="444">green onion</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("low-fat mayonnaise")} eventKey="445">low-fat mayonnaise</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("orange rind")} eventKey="446">orange rind</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("ground ginger")} eventKey="447">ground ginger</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("fructose")} eventKey="448">fructose</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("ground cloves")} eventKey="449">ground cloves</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("dates")} eventKey="450">dates</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("soy margarine")} eventKey="451">soy margarine</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("italian dressing")} eventKey="452">italian dressing</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("dried whole marjoram")} eventKey="453">dried whole marjoram</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("dried whole rosemary")} eventKey="454">dried whole rosemary</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("lemon")} eventKey="455">lemon</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("dark rum")} eventKey="456">dark rum</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("light corn syrup")} eventKey="457">light corn syrup</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("strawberry preserves")} eventKey="458">strawberry preserves</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("karo light corn syrup")} eventKey="459">karo light corn syrup</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("french bread")} eventKey="460">french bread</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("pepperidge farm herb stuffing mix")} eventKey="461">pepperidge farm herb stuffing mix</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("evaporated milk")} eventKey="462">evaporated milk</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("lemon jell-o")} eventKey="463">lemon jell-o</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("dairy sour cream")} eventKey="464">dairy sour cream</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("red pepper")} eventKey="465">red pepper</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("black pepper")} eventKey="466">black pepper</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("bleu cheese")} eventKey="467">bleu cheese</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("jar diced pimientos")} eventKey="468">jar diced pimientos</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("parmesan")} eventKey="469">parmesan</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("green chillies")} eventKey="470">green chillies</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("sun-dried tomatoes")} eventKey="471">sun-dried tomatoes</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("raspberry jam")} eventKey="472">raspberry jam</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("lemon peel")} eventKey="473">lemon peel</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("strawberry yogurt")} eventKey="474">strawberry yogurt</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("genoa salami")} eventKey="475">genoa salami</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("strawberry puree")} eventKey="476">strawberry puree</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("wine vinegar")} eventKey="477">wine vinegar</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("tomatoes in puree")} eventKey="478">tomatoes in puree</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("sherry")} eventKey="479">sherry</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("salmon filet")} eventKey="480">salmon filet</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("lemon")} eventKey="481">lemon</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("fennel seeds")} eventKey="482">fennel seeds</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("plain yogurt")} eventKey="483">plain yogurt</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("dried oregano leaves")} eventKey="484">dried oregano leaves</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("whole milk")} eventKey="485">whole milk</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("celery and leaves")} eventKey="486">celery and leaves</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("almond")} eventKey="487">almond</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("seedless raspberry jam")} eventKey="488">seedless raspberry jam</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("strawberry jam")} eventKey="489">strawberry jam</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("liquid shortening")} eventKey="490">liquid shortening</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("nutmeats")} eventKey="491">nutmeats</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("whipping cream")} eventKey="492">whipping cream</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("marshmallows")} eventKey="493">marshmallows</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("corn meal")} eventKey="494">corn meal</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("ground beef")} eventKey="495">ground beef</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("bread crumbs")} eventKey="496">bread crumbs</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("canned evaporated milk")} eventKey="497">canned evaporated milk</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("whole milk")} eventKey="498">whole milk</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("white vinegar")} eventKey="499">white vinegar</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("wesson oil")} eventKey="500">wesson oil</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("apple juice")} eventKey="501">apple juice</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("apple cider vinegar")} eventKey="502">apple cider vinegar</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("chicken bouillon granules")} eventKey="503">chicken bouillon granules</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("acorn squash")} eventKey="504">acorn squash</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("reduced-sodium soy sauce")} eventKey="505">reduced-sodium soy sauce</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("boneless pork shoulder")} eventKey="506">boneless pork shoulder</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("fresh fish fillets")} eventKey="507">fresh fish fillets</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("smoked sausage")} eventKey="508">smoked sausage</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("donut shaped cereal")} eventKey="509">donut shaped cereal</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("biscuit shaped cereal")} eventKey="510">biscuit shaped cereal</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("unsweetened applesauce")} eventKey="511">unsweetened applesauce</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("baking powder")} eventKey="512">baking powder</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("dry sweetener")} eventKey="513">dry sweetener</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("unbleached flour")} eventKey="514">unbleached flour</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("fresh lemon juice")} eventKey="515">fresh lemon juice</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("seedless grapes")} eventKey="516">seedless grapes</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("american cheese")} eventKey="517">american cheese</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("cumin")} eventKey="518">cumin</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("provolone cheese")} eventKey="519">provolone cheese</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("crushed oregano")} eventKey="520">crushed oregano</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("sifted flour")} eventKey="521">sifted flour</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("salt")} eventKey="522">salt</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("sea salt")} eventKey="523">sea salt</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("canadian bacon")} eventKey="524">canadian bacon</Dropdown.Item>
+<Dropdown.Item onClick={add_pantry_ingredient("rhubarb")} eventKey="525">rhubarb</Dropdown.Item>
