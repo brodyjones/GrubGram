@@ -1,3 +1,5 @@
-export default function Navbar() {
+function Navbar() {
 
 }
+
+export default Navbar;

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth, signInWithEmailAndPassword} from "../firebase";
@@ -48,3 +49,14 @@ function Login() {
 }
 
 export default Login;
+=======
+function Login() {
+    return (
+        <p>
+            login
+        </p>
+    );
+}
+
+export default Login;
+>>>>>>> acb5fe77793dc374e2318e8973b4c3bc863981fc
