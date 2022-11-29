@@ -14,13 +14,15 @@ function App() {
   const createUserPost = async () => {
     var today = new Date()
     await addDoc(userPostsRef, {username: "keithhoffy", imagelink: newImage, caption: newCaption, 
-      datecreated: (today.getMonth()+1)+'/'+today.getDate()+'/'+today.getFullYear(),
-      recipe: newRecipe})
+      datecreated: (today.getMonth()+1)+'/'+today.getDate()+'/'+today.getFullYear()+' '+
+      today.getHours()+':'+today.getMinutes(), recipe: newRecipe})
+      window.location.reload(false);
   }
 
   const deleteUserPost = async (id) => {
     const userPostDoc = doc(db, "user posts", id);
     await deleteDoc(userPostDoc);
+    window.location.reload(false);
   }
 
   useEffect(() => {
