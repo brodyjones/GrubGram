@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
@@ -59,14 +58,3 @@ function Register() {
 }
 
 export default Register;
-=======
-function Register() {
-    return (
-        <p>
-            register
-        </p>
-    );
-}
-
-export default Register;
->>>>>>> acb5fe77793dc374e2318e8973b4c3bc863981fc

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
@@ -45,14 +44,3 @@ function Home() {
 }
 
 export default Home;
-=======
-function Home() {
-    return (
-        <p>
-            home
-        </p>
-    );
-}
-
-export default Home;
->>>>>>> acb5fe77793dc374e2318e8973b4c3bc863981fc
