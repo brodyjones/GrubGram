@@ -1,7 +1,38 @@
 import { Autocomplete, Card, CardContent, CardHeader, CardActions, TextField, Button } from '@mui/material';
+import { query, where, collection, doc, getDocs, updateDoc } from 'firebase/firestore';
+import { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
+import { auth, db } from '../firebase';
 
 export default function PantryManager() {
+    const [user, loading] = useAuthState(auth);
+    const [id, setid] = useState("");
+    const navigate = useNavigate();
 
+    const addIngredient = async (curid, pantry, ingredient) => {
+        const userDoc = doc(db, "users", curid);
+        const newFields = { pantry: pantry.push(ingredient) };
+        await updateDoc(userDoc, newFields);
+    };
+
+    useEffect(() => {
+        if (loading) return;
+        if (!user) return navigate("/");
+
+        getUser();
+    });
+
+    const getUser = async () => {
+        try {
+            const queryUser = query(collection(db, "users"), where("uid", "==", user?.uid));
+            const doc = await getDocs(queryUser);
+            setid(doc.id);
+        } catch (err) {
+            console.error(err);
+            alert("An error occured while fetching user data");
+        }
+    };
 
     return (
         <Card sx={{ maxWidth: 400, ml: 25, mt: 3 }}>
@@ -20,6 +51,7 @@ export default function PantryManager() {
             <CardActions>
                 <Button
                     variant="contained"
+                    onClick={addIngredient(id, user?.pantry, 'squash')}
                 >
                     Add
                 </Button>
