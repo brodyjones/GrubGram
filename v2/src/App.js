@@ -1,6 +1,9 @@
 import Login from "./routes/Login"
 import Register from "./routes/Register"
 import Home from "./routes/Home"
+import Pantry from "./routes/Pantry"
+import Recipe from "./routes/Recipe"
+
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 function App() {
