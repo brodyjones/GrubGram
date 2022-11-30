@@ -8,8 +8,12 @@ function Home() {
   return (
     <div>
       <Navbar/>
-      <CreatePost/>
-      <Post/>
+      <div className="column2">
+        <CreatePost/>
+      </div>
+      <div classname="column1">
+        <Post/>
+      </div>
     </div>
   );
 }

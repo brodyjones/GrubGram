@@ -44,7 +44,7 @@ function Post() {
             </Typography> 
           </CardContent>
           <CardActions>
-            <Button>{userPost.recipe}</Button>
+            <Button variant="contained">{userPost.recipe}</Button>
           </CardActions>
         </Card>
         );
