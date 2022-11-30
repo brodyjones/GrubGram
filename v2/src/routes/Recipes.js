@@ -1,10 +1,10 @@
 import Navbar from "../components/Navbar";
-import "./Pantry.css";
+import "./Recipes.css";
 
-function Pantry() {
+function Recipes() {
     return (
         <Navbar />
     );
 }
 
-export default Pantry;
+export default Recipes;

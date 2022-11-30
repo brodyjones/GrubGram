@@ -2,7 +2,7 @@ import Login from "./routes/Login"
 import Register from "./routes/Register"
 import Home from "./routes/Home"
 import Pantry from "./routes/Pantry"
-import Recipe from "./routes/Recipe"
+import Recipes from "./routes/Recipes"
 
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
@@ -15,7 +15,7 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/home' element={<Home />} />
           <Route path='/pantry' element={<Pantry />} />
-          <Route path='/recipe' element={<Recipe />} />
+          <Route path='/recipes' element={<Recipes />} />
         </Routes>
       </div>
     </BrowserRouter>
