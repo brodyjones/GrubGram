@@ -11,8 +11,6 @@ import { collection, getDocs } from 'firebase/firestore'
 import {db} from '../firebase'
 
 function Post() {
-    var index = 0; // need to find a way to loop through all post indexes
-
     const [userPosts, setUserPosts] = useState([]);
     const userPostsRef = collection(db, "user posts");
 
