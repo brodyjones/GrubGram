@@ -51,10 +51,9 @@ function CreatePost() {
       <Card sx={{ width: 300, mt: 3}}>
         <CardHeader title="Create a Post"></CardHeader>
         <CardContent>
-            <TextField
+            <TextField type='file'
                 sx={{ mt: 1, mb: 1}}
-                id="filled-basic" 
-                label='Image...' 
+                id="filled-basic"  
                 onChange={(event) => {
                     setNewImage(event.target.value);
                 }}
