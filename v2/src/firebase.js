@@ -3,15 +3,14 @@ import {getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sig
 import {getFirestore, collection, addDoc} from "firebase/firestore";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDgw2Pva8wCPCHHSDa6CUqmCjUsZ3JkzOk",
-    authDomain: "grubgram-2bccc.firebaseapp.com",
-    databaseURL: "https://grubgram-2bccc-default-rtdb.firebaseio.com",
-    projectId: "grubgram-2bccc",
-    storageBucket: "grubgram-2bccc.appspot.com",
-    messagingSenderId: "12941980945",
-    appId: "1:12941980945:web:6be4c61e23fe9dd57948b0",
-    measurementId: "G-TJY8Z1B1VJ"
-  };
+  apiKey: "AIzaSyAbZpCcocyojX7HFQHW5sbsF3fI6ir-19w",
+  authDomain: "grubgram2.firebaseapp.com",
+  projectId: "grubgram2",
+  storageBucket: "grubgram2.appspot.com",
+  messagingSenderId: "453099754364",
+  appId: "1:453099754364:web:a4be31ab8586c5afdbcaf9",
+  measurementId: "G-B5SRDCHKMF"
+};
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
