@@ -1,7 +1,43 @@
 import { Autocomplete, Card, CardContent, CardHeader, CardActions, TextField, Button } from '@mui/material';
+import { useState, useEffect } from 'react'
+import { auth, db } from '../firebase'
+import { getDocs, updateDoc, doc, query, collection, where } from 'firebase/firestore'
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate } from "react-router-dom";
 
 export default function PantryManager() {
+    const [newIngredient, setNewIngredient] = useState("");
+    const [user, loading] = useAuthState(auth);
+    const [docID, setDocID] = useState("");
+    const [docPantry, setDocPantry] = useState([]);
+    const navigate = useNavigate();
 
+    useEffect(() => {
+        if (loading) return;
+        if (!user) return navigate("/");
+
+        getUser();
+    });
+
+    const getUser = async () => {
+        try {
+        const queryUser = query(collection(db, "users"), where("uid", "==", user?.uid));
+        const data = await getDocs(queryUser);
+        setDocID(data.docs[0].id);
+        const fullData = data.docs[0].data();
+        setDocPantry(fullData.pantry);
+        } catch (err) {
+        console.error(err);
+        alert("An error occured while fetching user data");
+        }
+    };
+
+    const addIngredient = async (id, newPantry, ingredient) => {
+        newPantry.push(ingredient);
+        const userDoc = doc(db, "users", id);
+        const newFields = { pantry: newPantry };
+        await updateDoc(userDoc, newFields);
+    }
 
     return (
         <Card sx={{ maxWidth: 400, ml: 25, mt: 3 }}>
@@ -15,11 +51,13 @@ export default function PantryManager() {
                     options={ingredients}
                     sx={{ width: 300 }}
                     renderInput={(params) => <TextField {...params} label="Ingredient..." />}
+                    onChange={(event, value) => setNewIngredient(value)}
                 />
             </CardContent>
             <CardActions>
                 <Button
                     variant="contained"
+                    onClick={() => {addIngredient(docID, docPantry, newIngredient)}}
                 >
                     Add
                 </Button>
