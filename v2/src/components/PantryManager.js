@@ -48,7 +48,7 @@ export default function PantryManager() {
         if(newPantry.includes(ingredient)){
             for(var i = 0; i < newPantry.length; i++){
                 if(newPantry[i] == ingredient){
-                    newPantry.splice(i,i);
+                    newPantry.splice(i,1);
                     const userDoc = doc(db, "users", id);
                     const newFields = { pantry: newPantry };
                     await updateDoc(userDoc, newFields);
