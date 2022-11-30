@@ -52,16 +52,19 @@ function CreatePost() {
         <CardHeader title="Create a Post"></CardHeader>
         <CardContent>
             <TextField type='file'
-                sx={{ mt: 1, mb: 1}}
-                id="filled-basic"  
+                sx={{width: 270, mt: 1, mb: 1}}
+                id="filled-helperText" 
+                variant="filled" 
+                helperText="Upload Image Here"
                 onChange={(event) => {
                     setNewImage(event.target.value);
                 }}
             />
             <br></br>
             <TextField
-                sx={{ mt: 1, mb: 1}}
+                sx={{width: 270, mt: 1, mb: 1}}
                 id="filled-basic" 
+                variant="filled"
                 label='Caption...' 
                 onChange={(event) => {
                     setNewCaption(event.target.value);
@@ -69,8 +72,9 @@ function CreatePost() {
             />
             <br></br>
             <TextField
-                sx={{ mt: 1, mb: 1}}
+                sx={{width: 270, mt: 1, mb: 1}}
                 id="filled-basic" 
+                variant="filled"
                 label='Recipe...' 
                 onChange={(event) => {
                     setNewRecipe(event.target.value);
