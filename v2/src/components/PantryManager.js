@@ -6,7 +6,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 
 export default function PantryManager() {
-    const [newIngredient, setNewIngredient] = useState("");
+    const [ingredient, setIngredient] = useState("");
     const [user, loading] = useAuthState(auth);
     const [docID, setDocID] = useState("");
     const [docPantry, setDocPantry] = useState([]);
@@ -33,10 +33,32 @@ export default function PantryManager() {
     };
 
     const addIngredient = async (id, newPantry, ingredient) => {
-        newPantry.push(ingredient);
-        const userDoc = doc(db, "users", id);
-        const newFields = { pantry: newPantry };
-        await updateDoc(userDoc, newFields);
+        if (newPantry.includes(ingredient)){
+            alert("pantry already contains ingredient")
+        }
+        else{
+            newPantry.push(ingredient);
+            const userDoc = doc(db, "users", id);
+            const newFields = { pantry: newPantry };
+            await updateDoc(userDoc, newFields);
+        }
+    }
+
+    const deleteIngredient = async (id, newPantry, ingredient) => {
+        if(newPantry.includes(ingredient)){
+            for(var i = 0; i < newPantry.length; i++){
+                if(newPantry[i] == ingredient){
+                    newPantry.splice(i,i);
+                    const userDoc = doc(db, "users", id);
+                    const newFields = { pantry: newPantry };
+                    await updateDoc(userDoc, newFields);
+                    break;
+                }
+            }
+        }
+        else{
+            alert("pantry does not contain ingredient")
+        }
     }
 
     return (
@@ -51,18 +73,19 @@ export default function PantryManager() {
                     options={ingredients}
                     sx={{ width: 300 }}
                     renderInput={(params) => <TextField {...params} label="Ingredient..." />}
-                    onChange={(event, value) => setNewIngredient(value)}
+                    onChange={(event, value) => setIngredient(value)}
                 />
             </CardContent>
             <CardActions>
                 <Button
                     variant="contained"
-                    onClick={() => {addIngredient(docID, docPantry, newIngredient)}}
+                    onClick={() => {addIngredient(docID, docPantry, ingredient)}}
                 >
                     Add
                 </Button>
                 <Button
                     variant="contained"
+                    onClick={() => {deleteIngredient(docID, docPantry, ingredient)}}
                 >
                     Remove
                 </Button>
