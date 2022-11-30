@@ -17,7 +17,8 @@ function Register() {
     try {
       const newUser = await createUserWithEmailAndPassword(auth, email, password);
       const user = newUser.user;
-      await addDoc(collection(db, "users"), {uid: user.uid,name,authProvider: "local",email});
+      const pantry = []
+      await addDoc(collection(db, "users"), {uid: user.uid,name,authProvider: "local",email,pantry:pantry});
     } catch (err) {
       console.error(err);
       alert(err.message);
