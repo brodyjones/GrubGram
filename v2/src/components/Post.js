@@ -27,7 +27,7 @@ function Post() {
       <div>
       {userPosts.map((userPost) => {
         return (
-          <Card sx={{ maxWidth: 500, ml: 25, mt: 3 }}>
+          <Card sx={{ maxWidth: 500, ml: 20, mt: 3 }}>
           <CardHeader
             title={userPost.username}
             subheader={userPost.datecreated}
