@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./Home.css";
 import { auth, db, signOut } from "../firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
+import Navbar from "../components/Navbar";
 
 function Home() {
   const [user, loading] = useAuthState(auth);
@@ -34,12 +35,7 @@ function Home() {
   };
 
   return (
-    <div className="home">
-      <div className="home_container">Logged in as<div>{name}</div>
-        <div>{user?.email}</div>
-        <button className="home_btn" onClick={logout}>Logout</button>
-      </div>
-    </div>
+    <Navbar />
   );
 }
 
