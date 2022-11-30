@@ -1,8 +1,4 @@
 import { Autocomplete, Card, CardContent, CardHeader, CardActions, TextField, Button } from '@mui/material';
-import { useState, useEffect } from 'react';
-import { collection, getDocs } from 'firebase/firestore'
-import { db } from '../firebase'
-
 
 export default function PantryManager() {
 
