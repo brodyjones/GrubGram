@@ -7,9 +7,6 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import FastfoodRoundedIcon from '@mui/icons-material/FastfoodRounded';
 import { auth, signOut } from "../firebase";
-import { Navigate } from 'react-router-dom';
-
-
 
 
 function Navbar() {

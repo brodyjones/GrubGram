@@ -5,6 +5,7 @@ import "./Home.css";
 import { auth, db, signOut } from "../firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
 import Navbar from "../components/Navbar";
+import Post from "../components/Post";
 
 function Home() {
   const [user, loading] = useAuthState(auth);
@@ -35,7 +36,10 @@ function Home() {
   };
 
   return (
-    <Navbar />
+    <div>
+      <Navbar/>
+      <Post/>
+    </div>
   );
 }
 
