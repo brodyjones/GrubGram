@@ -48,8 +48,8 @@ function CreatePost() {
     };
 
     return (
-      <Card sx={{ width: 300, mt: 3}}>
-        <CardHeader title="Create a Post"></CardHeader>
+      <Card sx={{ width: 300, mt: 3, mr: 25}}>
+        <CardHeader title="Create a Post" />
         <CardContent>
             <TextField type='file'
                 sx={{width: 270, mt: 1, mb: 1}}
