@@ -42,6 +42,7 @@ export default function PantryManager() {
             const newFields = { pantry: newPantry };
             await updateDoc(userDoc, newFields);
         }
+        window.location.reload(false);
     }
 
     const deleteIngredient = async (id, newPantry, ingredient) => {
@@ -59,10 +60,11 @@ export default function PantryManager() {
         else{
             alert("pantry does not contain ingredient")
         }
+        window.location.reload(false);
     }
 
     return (
-        <Card sx={{ maxWidth: 400, ml: 25, mt: 3 }}>
+        <Card sx={{ maxWidth: 350, ml: 25, mt: 3 }}>
             <CardHeader
                 title="Update Pantry"
             />
