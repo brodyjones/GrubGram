@@ -6,10 +6,18 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import FastfoodRoundedIcon from '@mui/icons-material/FastfoodRounded';
+import { auth, signOut } from "../firebase";
+import { Navigate } from 'react-router-dom';
+
 
 
 
 function Navbar() {
+    const logout = () => {
+        signOut(auth);
+
+    };
+
     return (
         <AppBar position="static">
             <Container maxWidth="xl">
@@ -52,9 +60,19 @@ function Navbar() {
                             Recipes
                         </Button>
                     </Box>
+
+                    <Box sx={{ flexGrow: 0 }}>
+                        <Button
+                            sx={{ my: 2, color: 'white' }}
+                            onClick={logout}
+                            href="/"
+                        >
+                            Logout
+                        </Button>
+                    </Box>
                 </Toolbar>
             </Container>
-        </AppBar>
+        </AppBar >
     );
 }
 export default Navbar;
