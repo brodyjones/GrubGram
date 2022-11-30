@@ -26,26 +26,32 @@ function Post() {
     }, [])
 
     return (
-        <Card sx={{ maxWidth: 500, ml: 25, mt: 3 }}>
-        <CardHeader
-          title={userPosts[index].username}
-          subheader={userPosts[index].datecreated}
-        />
-        <CardMedia
-          component="img"
-          height="250"
-          image={userPosts[index].imagelink}
-          alt="Paella dish"
-        />
-        <CardContent>
-          <Typography variant="body2" color="text.secondary">
-            {userPosts[index].caption}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button>{userPosts[index].recipe}</Button>
-        </CardActions>
-      </Card>
+      <div>
+      {userPosts.map((userPost) => {
+        return (
+          <Card sx={{ maxWidth: 500, ml: 25, mt: 3 }}>
+          <CardHeader
+            title={userPost.username}
+            subheader={userPost.datecreated}
+          />
+          <CardMedia
+            component="img"
+            height="250"
+            image={userPost.imagelink}
+            alt="Paella dish"
+          />
+          <CardContent>
+            <Typography variant="body2" color="text.secondary"> 
+            {userPost.caption}
+            </Typography> 
+          </CardContent>
+          <CardActions>
+            <Button>{userPost.recipe}</Button>
+          </CardActions>
+        </Card>
+        );
+      })}
+      </div>
     );
 }
 
