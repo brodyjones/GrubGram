@@ -26,7 +26,7 @@ function Post() {
     }, [])
 
     return (
-        <Card sx={{ maxWidth: 500, ml: 25, mt: 5 }}>
+        <Card sx={{ maxWidth: 500, ml: 25, mt: 3 }}>
         <CardHeader
           title={userPosts[index].username}
           subheader={userPosts[index].datecreated}
