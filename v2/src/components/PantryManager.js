@@ -42,13 +42,14 @@ export default function PantryManager() {
             const newFields = { pantry: newPantry };
             await updateDoc(userDoc, newFields);
         }
+        window.location.reload(false);
     }
 
     const deleteIngredient = async (id, newPantry, ingredient) => {
         if(newPantry.includes(ingredient)){
             for(var i = 0; i < newPantry.length; i++){
                 if(newPantry[i] == ingredient){
-                    newPantry.splice(i,i);
+                    newPantry.splice(i,1);
                     const userDoc = doc(db, "users", id);
                     const newFields = { pantry: newPantry };
                     await updateDoc(userDoc, newFields);
@@ -59,10 +60,11 @@ export default function PantryManager() {
         else{
             alert("pantry does not contain ingredient")
         }
+        window.location.reload(false);
     }
 
     return (
-        <Card sx={{ maxWidth: 400, ml: 25, mt: 3 }}>
+        <Card sx={{ maxWidth: 350, ml: 25, mt: 3 }}>
             <CardHeader
                 title="Update Pantry"
             />
