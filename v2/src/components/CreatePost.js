@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db, storage } from "../firebase";
-import { arrayUnion, doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { addDoc, collection, doc, getDoc } from "firebase/firestore";
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 import { Autocomplete, Button, Card, CardActions, CardContent, CardHeader, TextField } from "@mui/material";
 
@@ -27,11 +27,16 @@ export default function CreatePost() {
         const docRef = doc(db, "users", user?.uid);
         const docSnap = await getDoc(docRef);
         const today = new Date();
-        const dateCreated = (today.getMonth() + 1) + '-' + today.getDate() + '-' + today.getFullYear() + ' ' +
-            today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
+
+        var dateCreated = (today.getMonth() + 1) + '/' + today.getDate() + '/' + today.getFullYear() + ' ' +
+            today.getHours() + ':';
+        if (today.getMinutes() < 10) dateCreated += '0';
+        dateCreated += today.getMinutes() + ':';
+        if (today.getSeconds() < 10) dateCreated += '0';
+        dateCreated += today.getSeconds();
+
         const name = docSnap.data().name;
-        await setDoc(doc(db, "posts", dateCreated), { name: name, image: url, caption: caption, recipe: recipe });
-        await updateDoc(docRef, { posts: arrayUnion(dateCreated) });
+        await addDoc(collection(db, "posts"), { name: name, uid: user?.uid, timestamp: dateCreated, image: url, caption: caption, recipe: recipe });
         window.location.reload(false);
     }
 

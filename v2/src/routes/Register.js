@@ -18,7 +18,7 @@ function Register() {
     try {
       const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredentials.user;
-      await setDoc(doc(db, "users", user.uid), { name: name, pantry: [], posts: [] });
+      await setDoc(doc(db, "users", user.uid), { name: name, pantry: [] });
     } catch (error) {
       alert("Invalid registration");
     }
