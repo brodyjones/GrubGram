@@ -37,8 +37,8 @@ function Login() {
       </div>
       <div className='login'>
         <div className="login_container">
-          <input type="text" className="login_textBox" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="E-mail Address" />
-          <input type="password" className="login_textBox" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+          <input type="text" className="login_textBox" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="E-mail Address" />
+          <input type="password" className="login_textBox" value={password} onChange={(event) => setPassword(event.target.value)} placeholder="Password" />
           <button className="login_btn" onClick={() => logInWithEmailAndPassword(email, password)}>Login</button>
           <div>Don't have an account? <Link to="/register">Register</Link> now.</div>
         </div>

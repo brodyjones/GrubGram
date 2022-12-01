@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
-import { auth, createUserWithEmailAndPassword, db, collection } from "../firebase";
+import { auth, createUserWithEmailAndPassword, db } from "../firebase";
 import "./Register.css";
 import GrubGram from '../assests/GrubGram.png';
 import { doc, setDoc } from "firebase/firestore";
@@ -15,6 +15,7 @@ function Register() {
   const navigate = useNavigate();
 
   const registerWithEmailAndPassword = async (name, email, password) => {
+    if (!name) alert("Please enter name");
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       await setDoc(doc(db, "users", email), { name: name, pantry: [], posts: [] });
@@ -24,15 +25,10 @@ function Register() {
     }
   };
 
-  const register = () => {
-    if (!name) alert("Please enter name");
-    registerWithEmailAndPassword(name, email, password);
-  };
-
   useEffect(() => {
     if (loading) return;
     if (user) navigate("/home");
-  });
+  }, [loading, user, navigate]);
 
   return (
     <div className='registerpage'>
@@ -44,10 +40,10 @@ function Register() {
       </div>
       <div className="register">
         <div className="register_container">
-          <input type="text" className="register_textBox" value={name} onChange={(e) => setName(e.target.value)} placeholder="Full Name" />
-          <input type="text" className="register_textBox" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="E-mail Address" />
-          <input type="password" className="register_textBox" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
-          <button className="register_btn" onClick={register}>Register</button>
+          <input type="text" className="register_textBox" value={name} onChange={(event) => setName(event.target.value)} placeholder="Full Name" />
+          <input type="text" className="register_textBox" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="E-mail Address" />
+          <input type="password" className="register_textBox" value={password} onChange={(event) => setPassword(event.target.value)} placeholder="Password" />
+          <button className="register_btn" onClick={() => registerWithEmailAndPassword(name, email, password)}>Register</button>
           <div>
             Already have an account? <Link to="/">Login</Link> now.
           </div>
