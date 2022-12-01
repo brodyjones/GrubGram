@@ -6,22 +6,18 @@ import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 import { Autocomplete, Button, Card, CardActions, CardContent, CardHeader, TextField } from "@mui/material";
 
 export default function CreatePost() {
-    const [image, setImage] = useState("");
     const [caption, setCaption] = useState("");
     const [recipe, setRecipe] = useState("");
     const [user] = useAuthState(auth);
-    const [imageUplaod, setImageUpload] = useState(null);
+    const [image, setImage] = useState(null);
 
 
-    const uploadImage = async () => {
-        if (imageUplaod == null) {
-            return;
-        }
-        const imageRef = ref(storage, `images/${imageUplaod.name}`);
-        uploadBytes(imageRef, imageUplaod);
-        getDownloadURL(ref(storage, `images/${imageUplaod.name}`))
+    const initializeUserPost = async () => {
+        if (!image || !caption || !recipe) return;
+        const imageRef = ref(storage, `images/${image.name}`);
+        uploadBytes(imageRef, image);
+        getDownloadURL(ref(storage, `images/${image.name}`))
             .then((url) => {
-                console.log(url);
                 createUserPost(url);
             })
     }
@@ -47,7 +43,7 @@ export default function CreatePost() {
                     sx={{ mt: 1, mb: 1, width: 267 }}
                     id="filled-basic"
                     onChange={(event) => {
-                        setImageUpload(event.target.files[0]);
+                        setImage(event.target.files[0]);
                     }}
                 />
                 <br></br>
@@ -74,7 +70,7 @@ export default function CreatePost() {
                 <br></br>
             </CardContent>
             <CardActions>
-                <Button variant="contained" onClick={uploadImage}>Post</Button>
+                <Button variant="contained" onClick={initializeUserPost}>Post</Button>
             </CardActions>
         </Card>
     );
