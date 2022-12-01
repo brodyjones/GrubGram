@@ -5,9 +5,9 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import FastfoodRoundedIcon from '@mui/icons-material/FastfoodRounded';
 import { auth, signOut } from "../firebase";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
 import { yellow } from '@mui/material/colors';
 
