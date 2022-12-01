@@ -1164,19 +1164,7 @@ recipe_list = [
 ////                                                                                ////
 ////                                                                                ////
 ////////////////////////////////////////////////////////////////////////////////////////
-/*
-const {readFileSync, promises: fsPromises} = require('fs');
 
-function syncReadFile(filename) {
-    const contents = readFileSync(filename, 'utf-8');
-  
-    const arr = contents.split(/\r?\n/);
-  
-    return arr;
-  }
-
-
-*/
 
 class Recipe {
     constructor(name, ingredients, preparation, url) {
@@ -1192,7 +1180,7 @@ class Recipe {
 
 var recipes = [];
 
-//var a = syncReadFile('./current_recipes.txt');
+
 var i = 0;
 var name_flag = false;
 var ingredient_flag = false;
@@ -1317,22 +1305,8 @@ function parse_recipes(pantry){
     }
     return final;
 }
+
 /*
-var i = 0;
-while(i != recipes.length){
-    console.log('"' + recipes[i].url + '",')
-    console.log('"' + recipes[i].name  + '",');
-    var j = 0;
-    while(j != recipes[i].ingredients.length){
-        console.log('"' + recipes[i].ingredients[j] + '",');
-        j += 1;
-    }
-    console.log('"' + recipes[i].preparation + '",');
-    i += 1;
-}
-*/
-
-
 const pantry = ["egg", "vanilla", "pumpkin"]
 
 final = parse_recipes(pantry);
@@ -1350,3 +1324,4 @@ while(i != final.length){
     console.log(final[i].preparation);
     i += 1;
 }
+*/
