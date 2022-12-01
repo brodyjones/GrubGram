@@ -8,9 +8,13 @@ function Recipes() {
     return (
         <div>
             <Navbar />
-            <Typography variant="h3">
-                <Box sx={{ fontWeight: 'bold', m: 1 }}>Recommended Recipes</Box>
-            </Typography>
+            <Box
+                sx={{ backgroundColor: "white", m: 1, flexGrow: 1, display: { xs: 'none', md: 'flex' } }}
+            >
+                <Typography sx={{ my: 1.5, fontWeight: 'bold' }} variant="h3">
+                    Top 10 Recommended Recipes Based on Your Pantry
+                </Typography>
+            </Box>
             <Recipe />
         </div>
     );

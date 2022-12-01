@@ -1,50 +1,43 @@
-import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import { useState, useEffect } from 'react';
-import { collection, getDocs } from 'firebase/firestore'
-import { db } from '../firebase'
+import { useEffect, useState } from 'react';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../firebase';
+import { Button, Card, CardActions, CardContent, CardHeader, CardMedia, Typography } from '@mui/material';
 
-function Post() {
-  const [userPosts, setUserPosts] = useState([]);
-  const userPostsRef = collection(db, "user posts");
+export default function Post() {
+  const [posts, setPosts] = useState([]);
+  const postsRef = collection(db, "posts");
 
   useEffect(() => {
-    const getUserPosts = async () => {
-      const data = await getDocs(userPostsRef);
-      setUserPosts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    const getPosts = async () => {
+      const data = await getDocs(postsRef);
+      setPosts((data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))).reverse());
     }
 
-    getUserPosts()
-  }, [])
+    getPosts();
+  }, []);
 
   return (
     <div>
-      {userPosts.map((userPost) => {
+      {posts.map((post) => {
         return (
           <Card sx={{ maxWidth: 500, ml: 20, mt: 3 }}>
             <CardHeader
-              title={userPost.username}
-              subheader={userPost.datecreated}
+              title={post.name}
+              subheader={post.id}
             />
             <CardMedia
               component="img"
               height="250"
-              image={userPost.imagelink}
+              image={post.image}
               alt="Paella dish"
             />
             <CardContent>
               <Typography variant="body2" color="text.secondary">
-                {userPost.caption}
+                {post.caption}
               </Typography>
             </CardContent>
             <CardActions>
-              <Button variant="contained">{userPost.recipe}</Button>
+              <Button variant="contained">{post.recipe}</Button>
             </CardActions>
           </Card>
         );
@@ -52,5 +45,3 @@ function Post() {
     </div>
   );
 }
-
-export default Post;

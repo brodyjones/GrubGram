@@ -1,134 +1,67 @@
-import { Typography, Autocomplete, Card, CardContent, CardHeader, CardActions, TextField, Button } from '@mui/material';
-import { useState, useEffect } from 'react'
-import { auth, db } from '../firebase'
-import { getDocs, updateDoc, doc, query, collection, where } from 'firebase/firestore'
-import { useAuthState } from "react-firebase-hooks/auth";
-import { useNavigate } from "react-router-dom";
-import './PantryManager.css';
+import { useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth, db } from '../firebase';
+import { arrayRemove, arrayUnion, doc, updateDoc } from 'firebase/firestore';
+import { Autocomplete, Card, CardContent, CardHeader, CardActions, TextField, Button } from '@mui/material';
 
 export default function PantryManager() {
     const [ingredient, setIngredient] = useState("");
-    const [user, loading] = useAuthState(auth);
-    const [docID, setDocID] = useState("");
-    const [docPantry, setDocPantry] = useState([]);
-    const navigate = useNavigate();
+    const [user] = useAuthState(auth);
 
-    useEffect(() => {
-        if (loading) return;
-        if (!user) return navigate("/");
-
-        getUser();
-    }, []);
-
-    const getUser = async () => {
-        try {
-        const queryUser = query(collection(db, "users"), where("uid", "==", user?.uid));
-        const data = await getDocs(queryUser);
-        setDocID(data.docs[0].id);
-        const fullData = data.docs[0].data();
-        setDocPantry(fullData.pantry);
-        } catch (err) {
-        console.error(err);
-        alert("An error occured while fetching user data");
-        }
-    };
-
-    const addIngredient = async (id, newPantry, ingredient) => {
-        if (newPantry.includes(ingredient)){
-            alert("pantry already contains ingredient")
-        }
-        else if (ingredient == "") {
-            alert("please selct an ingredient to add")
-        }
-        else{
-            newPantry.push(ingredient);
-            const userDoc = doc(db, "users", id);
-            const newFields = { pantry: newPantry };
-            await updateDoc(userDoc, newFields);
-        }
+    const addIngredient = async (ingredient) => {
+        const docRef = doc(db, "users", user?.uid);
+        await updateDoc(docRef, { pantry: arrayUnion(ingredient) });
+        window.location.reload(false);
     }
 
-    const deleteIngredient = async (id, newPantry, ingredient) => {
-        if(newPantry.includes(ingredient)){
-            for(var i = 0; i < newPantry.length; i++){
-                if(newPantry[i] == ingredient){
-                    newPantry.splice(i,1);
-                    const userDoc = doc(db, "users", id);
-                    const newFields = { pantry: newPantry };
-                    await updateDoc(userDoc, newFields);
-                    break;
-                }
-            }
-        }
-        else{
-            alert("pantry does not contain ingredient")
-        }
+    const removeIngredient = async (ingredient) => {
+        const docRef = doc(db, "users", user?.uid);
+        await updateDoc(docRef, { pantry: arrayRemove(ingredient) });
+        window.location.reload(false);
     }
 
-    const clearPantry = async (id, newPantry) => {
-        if(newPantry.length == 0){
-            alert("pantry is already cleared")
-        }
-        else{
-            newPantry = []
-            const userDoc = doc(db, "users", id);
-            const newFields = { pantry: newPantry };
-            await updateDoc(userDoc, newFields);
-        }
+    const clearPantry = async () => {
+        const docRef = doc(db, "users", user?.uid);
+        await updateDoc(docRef, { pantry: [] });
+        window.location.reload(false);
     }
 
     return (
-        <div>
-            <div className="rightcol">
-                <Card sx={{ maxWidth: 350, ml: 17, mt: 3 }}>
-                    <CardHeader title="Your Pantry:"/>
-                    <CardContent>
-                        {docPantry.map((ingredient) => {
-                            return (
-                                <Typography>{ingredient}</Typography>
-                            );
-                        })}
-                    </CardContent>
-                </Card>
-            </div>
-            <div className="leftcol">
-                <Card sx={{ maxWidth: 350, ml: 20, mt: 3 }}>
-                    <CardHeader
-                        title="Update Pantry"
-                    />
-                    <CardContent>
-                        <Autocomplete
-                            disablePortal
-                            id="ingredient-dropdown"
-                            options={ingredients}
-                            sx={{ width: 300 }}
-                            renderInput={(params) => <TextField {...params} label="Ingredient..." />}
-                            onChange={(event, value) => setIngredient(value)}
-                        />
-                    </CardContent>
-                    <CardActions>
-                        <Button
-                            variant="contained"
-                            onClick={() => {addIngredient(docID, docPantry, ingredient)}}
-                        >
-                            Add
-                        </Button>
-                        <Button
-                            variant="contained"
-                            onClick={() => {deleteIngredient(docID, docPantry, ingredient)}}
-                        >
-                            Remove
-                        </Button>
-                        <Button
-                            variant="contained"
-                            onClick={() => {clearPantry(docID, docPantry)}}
-                        >
-                            Clear Pantry
-                        </Button>
-                    </CardActions>
-                </Card>
-            </div>
-        </div>
+        <Card sx={{ maxWidth: 350, ml: 20, mt: 3 }}>
+            <CardHeader
+                title="Update Pantry"
+            />
+            <CardContent>
+                <Autocomplete
+                    disablePortal
+                    id="ingredient-dropdown"
+                    options={ingredients}
+                    sx={{ width: 300 }}
+                    renderInput={(params) => <TextField {...params} label="Ingredient..." />}
+                    onChange={(event, value) => setIngredient(value)}
+                />
+            </CardContent>
+            <CardActions>
+                <Button
+                    variant="contained"
+                    onClick={() => { addIngredient(ingredient) }}
+                >
+                    Add
+                </Button>
+                <Button
+                    variant="contained"
+                    onClick={() => { removeIngredient(ingredient) }}
+                >
+                    Remove
+                </Button>
+                <Button
+                    variant="contained"
+                    onClick={() => { clearPantry() }}
+                >
+                    Clear Pantry
+                </Button>
+            </CardActions>
+        </Card>
     );
 }
 
