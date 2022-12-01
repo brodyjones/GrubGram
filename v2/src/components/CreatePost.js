@@ -28,7 +28,7 @@ function CreatePost() {
     });
 
     const createUserPost = async () => {
-        var today = new Date()
+        var today = new Date();
         await addDoc(userPostsRef, {username: name, imagelink: newImage, caption: newCaption, 
           datecreated: (today.getMonth()+1)+'/'+today.getDate()+'/'+today.getFullYear()+' '+
           today.getHours()+':'+today.getMinutes(), recipe: newRecipe})

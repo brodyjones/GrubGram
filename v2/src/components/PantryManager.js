@@ -1,9 +1,10 @@
-import { Autocomplete, Card, CardContent, CardHeader, CardActions, TextField, Button } from '@mui/material';
+import { Typography, Autocomplete, Card, CardContent, CardHeader, CardActions, TextField, Button } from '@mui/material';
 import { useState, useEffect } from 'react'
 import { auth, db } from '../firebase'
 import { getDocs, updateDoc, doc, query, collection, where } from 'firebase/firestore'
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
+import './PantryManager.css';
 
 export default function PantryManager() {
     const [ingredient, setIngredient] = useState("");
@@ -45,7 +46,6 @@ export default function PantryManager() {
             const newFields = { pantry: newPantry };
             await updateDoc(userDoc, newFields);
         }
-        window.location.reload(false);
     }
 
     const deleteIngredient = async (id, newPantry, ingredient) => {
@@ -63,7 +63,6 @@ export default function PantryManager() {
         else{
             alert("pantry does not contain ingredient")
         }
-        window.location.reload(false);
     }
 
     const clearPantry = async (id, newPantry) => {
@@ -79,41 +78,57 @@ export default function PantryManager() {
     }
 
     return (
-        <Card sx={{ maxWidth: 350, ml: 25, mt: 3 }}>
-            <CardHeader
-                title="Update Pantry"
-            />
-            <CardContent>
-                <Autocomplete
-                    disablePortal
-                    id="ingredient-dropdown"
-                    options={ingredients}
-                    sx={{ width: 300 }}
-                    renderInput={(params) => <TextField {...params} label="Ingredient..." />}
-                    onChange={(event, value) => setIngredient(value)}
-                />
-            </CardContent>
-            <CardActions>
-                <Button
-                    variant="contained"
-                    onClick={() => {addIngredient(docID, docPantry, ingredient)}}
-                >
-                    Add
-                </Button>
-                <Button
-                    variant="contained"
-                    onClick={() => {deleteIngredient(docID, docPantry, ingredient)}}
-                >
-                    Remove
-                </Button>
-                <Button
-                    variant="contained"
-                    onClick={() => {clearPantry(docID, docPantry)}}
-                >
-                    Clear Pantry
-                </Button>
-            </CardActions>
-        </Card>
+        <div>
+            <div className="rightcol">
+                <Card sx={{ maxWidth: 350, ml: 17, mt: 3 }}>
+                    <CardHeader title="Your Pantry:"/>
+                    <CardContent>
+                        {docPantry.map((ingredient) => {
+                            return (
+                                <Typography>{ingredient}</Typography>
+                            );
+                        })}
+                    </CardContent>
+                </Card>
+            </div>
+            <div className="leftcol">
+                <Card sx={{ maxWidth: 350, ml: 20, mt: 3 }}>
+                    <CardHeader
+                        title="Update Pantry"
+                    />
+                    <CardContent>
+                        <Autocomplete
+                            disablePortal
+                            id="ingredient-dropdown"
+                            options={ingredients}
+                            sx={{ width: 300 }}
+                            renderInput={(params) => <TextField {...params} label="Ingredient..." />}
+                            onChange={(event, value) => setIngredient(value)}
+                        />
+                    </CardContent>
+                    <CardActions>
+                        <Button
+                            variant="contained"
+                            onClick={() => {addIngredient(docID, docPantry, ingredient)}}
+                        >
+                            Add
+                        </Button>
+                        <Button
+                            variant="contained"
+                            onClick={() => {deleteIngredient(docID, docPantry, ingredient)}}
+                        >
+                            Remove
+                        </Button>
+                        <Button
+                            variant="contained"
+                            onClick={() => {clearPantry(docID, docPantry)}}
+                        >
+                            Clear Pantry
+                        </Button>
+                    </CardActions>
+                </Card>
+            </div>
+        </div>
     );
 }
 

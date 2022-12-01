@@ -17,7 +17,7 @@ function Post() {
   useEffect(() => {
     const getUserPosts = async () => {
       const data = await getDocs(userPostsRef);
-      setUserPosts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+      setUserPosts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     }
 
     getUserPosts()
