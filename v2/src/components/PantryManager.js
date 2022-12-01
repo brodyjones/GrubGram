@@ -18,7 +18,7 @@ export default function PantryManager() {
         if (!user) return navigate("/");
 
         getUser();
-    }, []);
+    }, [loading, user, navigate]);
 
     const getUser = async () => {
         try {

@@ -33,7 +33,7 @@ function Register() {
   useEffect(() => {
     if (loading) return;
     if (user) navigate("/home");
-  });
+  }, [loading, user, navigate]);
 
   return (
     <div className='registerpage'>
