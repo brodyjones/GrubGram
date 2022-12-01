@@ -36,6 +36,9 @@ export default function PantryManager() {
         if (newPantry.includes(ingredient)){
             alert("pantry already contains ingredient")
         }
+        else if (ingredient == "") {
+            alert("please selct an ingredient to add")
+        }
         else{
             newPantry.push(ingredient);
             const userDoc = doc(db, "users", id);
