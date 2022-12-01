@@ -21,9 +21,7 @@ function Login() {
   };
 
   useEffect(() => {
-    if (loading) {
-      return;
-    }
+    if (loading) return;
     if (user) navigate("/home");
   }, [loading, user, navigate]);
 
