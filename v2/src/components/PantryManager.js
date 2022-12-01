@@ -41,7 +41,7 @@ export default function PantryManager() {
                     onChange={(event, value) => setIngredient(value)}
                 />
             </CardContent>
-            <CardActions>
+            <CardActions sx={{ mb: 2 }}>
                 <Button
                     variant="contained"
                     onClick={() => { addIngredient(ingredient) }}

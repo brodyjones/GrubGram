@@ -7,8 +7,12 @@ function Pantry() {
     return (
         <div>
             <Navbar />
-            <PantryManager />
-            <PantryList />
+            <div className="left">
+                <PantryManager />
+            </div>
+            <div  className="right">
+                <PantryList />
+            </div>
         </div>
     );
 }
