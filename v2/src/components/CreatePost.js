@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db, storage } from "../firebase";
 import { arrayUnion, doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 import { Autocomplete, Button, Card, CardActions, CardContent, CardHeader, TextField } from "@mui/material";
 
 export default function CreatePost() {
@@ -9,15 +10,31 @@ export default function CreatePost() {
     const [caption, setCaption] = useState("");
     const [recipe, setRecipe] = useState("");
     const [user] = useAuthState(auth);
+    const [imageUplaod, setImageUpload] = useState(null);
 
-    const createUserPost = async () => {
+
+    const uploadImage = async () => {
+        if (imageUplaod == null) {
+            return;
+        }
+        const imageRef = ref(storage, `images/${imageUplaod.name}`);
+        uploadBytes(imageRef, imageUplaod);
+        getDownloadURL(ref(storage, `images/${imageUplaod.name}`))
+            .then((url) => {
+                console.log(url);
+                createUserPost(url);
+            })
+    }
+ 
+
+    const createUserPost = async (imageLink) => {
         const docRef = doc(db, "users", user?.uid);
         const docSnap = await getDoc(docRef);
         const today = new Date();
         const dateCreated = (today.getMonth() + 1) + '-' + today.getDate() + '-' + today.getFullYear() + ' ' +
             today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
         const name = docSnap.data().name;
-        await setDoc(doc(db, "posts", dateCreated), { name: name, image: image, caption: caption, recipe: recipe });
+        await setDoc(doc(db, "posts", dateCreated), { name: name, image: imageLink, caption: caption, recipe: recipe });
         await updateDoc(docRef, { posts: arrayUnion(dateCreated) });
         window.location.reload(false);
     }
@@ -30,7 +47,7 @@ export default function CreatePost() {
                     sx={{ mt: 1, mb: 1, width: 267 }}
                     id="filled-basic"
                     onChange={(event) => {
-                        setImage(event.target.value);
+                        setImageUpload(event.target.files[0]);
                     }}
                 />
                 <br></br>
@@ -57,7 +74,7 @@ export default function CreatePost() {
                 <br></br>
             </CardContent>
             <CardActions>
-                <Button variant="contained" onClick={createUserPost}>Post</Button>
+                <Button variant="contained" onClick={uploadImage}>Post</Button>
             </CardActions>
         </Card>
     );
