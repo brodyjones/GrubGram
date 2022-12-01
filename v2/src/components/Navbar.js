@@ -75,6 +75,13 @@ function Navbar() {
                             >
                                 Recipes
                             </Button>
+                            <Button
+                                sx={{ my: 2 }}
+                                color="secondary"
+                                href="/profile"
+                            >
+                                Profile
+                            </Button>
                         </Box>
 
                         <Box sx={{ flexGrow: 0 }}>
