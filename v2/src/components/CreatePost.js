@@ -25,7 +25,7 @@ function CreatePost() {
         if (!user) return navigate("/");
 
         getUser();
-    });
+    }, []);
 
     const createUserPost = async () => {
         var today = new Date();
