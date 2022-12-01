@@ -1,33 +1,24 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
-import FastfoodRoundedIcon from '@mui/icons-material/FastfoodRounded';
-import { auth, signOut } from "../firebase";
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { red } from '@mui/material/colors';
-import { yellow } from '@mui/material/colors';
-
+import { AppBar, Button, createTheme, ThemeProvider, Toolbar, Typography } from "@mui/material";
+import { red, yellow } from "@mui/material/colors";
+import { Box, Container } from "@mui/system";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase";
+import FastfoodRoundedIcon from "@mui/icons-material/FastfoodRounded";
 
 const theme = createTheme({
     palette: {
-      primary: {
-        main: red[600],
-      },
-      secondary: {
-        main: yellow[500],
-      },
+        primary: {
+            main: red[600],
+        },
+        secondary: {
+            main: yellow[500],
+        },
     },
 });
-
 
 function Navbar() {
     const logout = () => {
         signOut(auth);
-
     };
 
     return (

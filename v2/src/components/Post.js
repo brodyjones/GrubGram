@@ -1,16 +1,9 @@
-import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import { useState, useEffect } from 'react';
-import { collection, getDocs } from 'firebase/firestore'
-import { db } from '../firebase'
+import { useEffect, useState } from 'react';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../firebase';
+import { Button, Card, CardActions, CardContent, CardHeader, CardMedia, Typography } from '@mui/material';
 
-function Post() {
+export default function Post() {
   const [posts, setPosts] = useState([]);
   const postsRef = collection(db, "posts");
 
@@ -21,7 +14,7 @@ function Post() {
     }
 
     getPosts();
-  }, [])
+  }, []);
 
   return (
     <div>
@@ -52,5 +45,3 @@ function Post() {
     </div>
   );
 }
-
-export default Post;

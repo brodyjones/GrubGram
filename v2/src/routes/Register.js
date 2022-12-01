@@ -15,14 +15,12 @@ function Register() {
   const navigate = useNavigate();
 
   const registerWithEmailAndPassword = async (name, email, password) => {
-    if (!name) alert("Please enter name");
     try {
       const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredentials.user;
       await setDoc(doc(db, "users", user.uid), { name: name, pantry: [], posts: [] });
-    } catch (err) {
-      console.error(err);
-      alert(err.message);
+    } catch (error) {
+      alert("Invalid registration");
     }
   };
 
