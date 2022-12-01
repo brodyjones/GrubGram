@@ -29,7 +29,6 @@ export default function Post() {
               component="img"
               height="250"
               image={post.image}
-              alt="Paella dish"
             />
             <CardContent>
               <Typography variant="body2" color="text.secondary">
