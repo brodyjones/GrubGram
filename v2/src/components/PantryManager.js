@@ -18,29 +18,29 @@ export default function PantryManager() {
         if (!user) return navigate("/");
 
         getUser();
-    }, []);
+    }, [loading, user, navigate]);
 
     const getUser = async () => {
         try {
-        const queryUser = query(collection(db, "users"), where("uid", "==", user?.uid));
-        const data = await getDocs(queryUser);
-        setDocID(data.docs[0].id);
-        const fullData = data.docs[0].data();
-        setDocPantry(fullData.pantry);
+            const queryUser = query(collection(db, "users"), where("uid", "==", user?.uid));
+            const data = await getDocs(queryUser);
+            setDocID(data.docs[0].id);
+            const fullData = data.docs[0].data();
+            setDocPantry(fullData.pantry);
         } catch (err) {
-        console.error(err);
-        alert("An error occured while fetching user data");
+            console.error(err);
+            alert("An error occured while fetching user data");
         }
     };
 
     const addIngredient = async (id, newPantry, ingredient) => {
-        if (newPantry.includes(ingredient)){
+        if (newPantry.includes(ingredient)) {
             alert("pantry already contains ingredient")
         }
         else if (ingredient == "") {
             alert("please selct an ingredient to add")
         }
-        else{
+        else {
             newPantry.push(ingredient);
             const userDoc = doc(db, "users", id);
             const newFields = { pantry: newPantry };
@@ -50,10 +50,10 @@ export default function PantryManager() {
     }
 
     const deleteIngredient = async (id, newPantry, ingredient) => {
-        if(newPantry.includes(ingredient)){
-            for(var i = 0; i < newPantry.length; i++){
-                if(newPantry[i] == ingredient){
-                    newPantry.splice(i,1);
+        if (newPantry.includes(ingredient)) {
+            for (var i = 0; i < newPantry.length; i++) {
+                if (newPantry[i] == ingredient) {
+                    newPantry.splice(i, 1);
                     const userDoc = doc(db, "users", id);
                     const newFields = { pantry: newPantry };
                     await updateDoc(userDoc, newFields);
@@ -61,17 +61,17 @@ export default function PantryManager() {
                 }
             }
         }
-        else{
+        else {
             alert("pantry does not contain ingredient")
         }
         window.location.reload(false);
     }
 
     const clearPantry = async (id, newPantry) => {
-        if(newPantry.length == 0){
+        if (newPantry.length == 0) {
             alert("pantry is already cleared")
         }
-        else{
+        else {
             newPantry = []
             const userDoc = doc(db, "users", id);
             const newFields = { pantry: newPantry };
@@ -84,7 +84,7 @@ export default function PantryManager() {
         <div>
             <div className="rightcol">
                 <Card sx={{ maxWidth: 350, ml: 17, mt: 3 }}>
-                    <CardHeader title="Your Pantry:"/>
+                    <CardHeader title="Your Pantry:" />
                     <CardContent>
                         {docPantry.map((ingredient) => {
                             return (
@@ -112,19 +112,19 @@ export default function PantryManager() {
                     <CardActions>
                         <Button
                             variant="contained"
-                            onClick={() => {addIngredient(docID, docPantry, ingredient)}}
+                            onClick={() => { addIngredient(docID, docPantry, ingredient) }}
                         >
                             Add
                         </Button>
                         <Button
                             variant="contained"
-                            onClick={() => {deleteIngredient(docID, docPantry, ingredient)}}
+                            onClick={() => { deleteIngredient(docID, docPantry, ingredient) }}
                         >
                             Remove
                         </Button>
                         <Button
                             variant="contained"
-                            onClick={() => {clearPantry(docID, docPantry)}}
+                            onClick={() => { clearPantry(docID, docPantry) }}
                         >
                             Clear Pantry
                         </Button>
