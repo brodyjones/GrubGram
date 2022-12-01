@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
-import { auth, createUserWithEmailAndPassword, addDoc, db, collection } from "../firebase";
+import { auth, createUserWithEmailAndPassword, db, collection } from "../firebase";
 import "./Register.css";
 import GrubGram from '../assests/GrubGram.png';
 import { doc, setDoc } from "firebase/firestore";
@@ -16,10 +16,8 @@ function Register() {
 
   const registerWithEmailAndPassword = async (name, email, password) => {
     try {
-      const newUser = await createUserWithEmailAndPassword(auth, email, password);
-      const user = newUser.user;
-      const pantry = []
-      await setDoc(doc(db, "users", user.email), { uid: user.uid, name: name, email, pantry: pantry });
+      await createUserWithEmailAndPassword(auth, email, password);
+      await setDoc(doc(db, "users", email), { name: name, pantry: [], posts: [] });
     } catch (err) {
       console.error(err);
       alert(err.message);

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { auth, signInWithEmailAndPassword} from "../firebase";
+import { auth, signInWithEmailAndPassword } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "./Login.css";
 import GrubGram from '../assests/GrubGram.png';
@@ -33,12 +33,12 @@ function Login() {
         <div className='title_container'>
           <h1>Welcome To GrubGram</h1>
         </div>
-      <img src ={GrubGram} alt='' height='100' width='100'/>
+        <img src={GrubGram} alt='' height='100' width='100' />
       </div>
       <div className='login'>
         <div className="login_container">
-          <input type="text" className="login_textBox" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="E-mail Address"/>
-          <input type="password" className="login_textBox" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password"/>
+          <input type="text" className="login_textBox" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="E-mail Address" />
+          <input type="password" className="login_textBox" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
           <button className="login_btn" onClick={() => logInWithEmailAndPassword(email, password)}>Login</button>
           <div>Don't have an account? <Link to="/register">Register</Link> now.</div>
         </div>
