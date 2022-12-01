@@ -63,6 +63,18 @@ export default function PantryManager() {
         window.location.reload(false);
     }
 
+    const clearPantry = async (id, newPantry) => {
+        if(newPantry.length == 0){
+            alert("pantry is already cleared")
+        }
+        else{
+            newPantry = []
+            const userDoc = doc(db, "users", id);
+            const newFields = { pantry: newPantry };
+            await updateDoc(userDoc, newFields);
+        }
+    }
+
     return (
         <Card sx={{ maxWidth: 350, ml: 25, mt: 3 }}>
             <CardHeader
@@ -90,6 +102,12 @@ export default function PantryManager() {
                     onClick={() => {deleteIngredient(docID, docPantry, ingredient)}}
                 >
                     Remove
+                </Button>
+                <Button
+                    variant="contained"
+                    onClick={() => {clearPantry(docID, docPantry)}}
+                >
+                    Clear Pantry
                 </Button>
             </CardActions>
         </Card>
