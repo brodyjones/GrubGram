@@ -20,7 +20,7 @@ function Post() {
       setUserPosts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     }
 
-    getUserPosts()
+    getUserPosts();
   }, [])
 
   return (

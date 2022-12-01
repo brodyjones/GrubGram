@@ -46,6 +46,7 @@ export default function PantryManager() {
             const newFields = { pantry: newPantry };
             await updateDoc(userDoc, newFields);
         }
+        window.location.reload(false);
     }
 
     const deleteIngredient = async (id, newPantry, ingredient) => {
@@ -63,6 +64,7 @@ export default function PantryManager() {
         else{
             alert("pantry does not contain ingredient")
         }
+        window.location.reload(false);
     }
 
     const clearPantry = async (id, newPantry) => {
@@ -75,6 +77,7 @@ export default function PantryManager() {
             const newFields = { pantry: newPantry };
             await updateDoc(userDoc, newFields);
         }
+        window.location.reload(false);
     }
 
     return (
