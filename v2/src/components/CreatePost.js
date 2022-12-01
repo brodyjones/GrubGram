@@ -23,14 +23,14 @@ export default function CreatePost() {
     }
 
 
-    const createUserPost = async (imageLink) => {
+    const createUserPost = async (url) => {
         const docRef = doc(db, "users", user?.uid);
         const docSnap = await getDoc(docRef);
         const today = new Date();
         const dateCreated = (today.getMonth() + 1) + '-' + today.getDate() + '-' + today.getFullYear() + ' ' +
             today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
         const name = docSnap.data().name;
-        await setDoc(doc(db, "posts", dateCreated), { name: name, image: imageLink, caption: caption, recipe: recipe });
+        await setDoc(doc(db, "posts", dateCreated), { name: name, image: url, caption: caption, recipe: recipe });
         await updateDoc(docRef, { posts: arrayUnion(dateCreated) });
         window.location.reload(false);
     }
