@@ -21,7 +21,7 @@ export default function CreatePost() {
                 createUserPost(url);
             })
     }
- 
+
 
     const createUserPost = async (imageLink) => {
         const docRef = doc(db, "users", user?.uid);

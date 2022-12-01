@@ -10,7 +10,7 @@ export default function Post() {
   useEffect(() => {
     const getPosts = async () => {
       const data = await getDocs(postsRef);
-      setPosts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      setPosts((data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))).reverse());
     }
 
     getPosts();
