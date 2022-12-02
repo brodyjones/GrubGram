@@ -3,51 +3,55 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../firebase";
 import PostFeed from "./PostFeed";
-import Recipe from "./Recipe";
+import RecipeDialog from "./RecipeDialog";
 
 export default function RecipeSearcher() {
     const [name, setName] = useState("");
-    const [recipeObj, setRecipeObj] = useState(null);
+    const [recipe, setRecipe] = useState(null);
     const [recipePosts, setRecipePosts] = useState([]);
-    
+
     useEffect(() => {
         const getRecipeObj = async () => {
             const recipesRef = collection(db, "recipes");
             const q = query(recipesRef, where("name", "==", name));
             const querySnapshot = await getDocs(q);
-            setRecipeObj(querySnapshot.docs[0].data());
+            setRecipe(querySnapshot.docs[0].data());
         }
         const getRecipePosts = async () => {
             const postsRef = collection(db, "posts");
             const q = query(postsRef, where("recipe", "==", name));
             const querySnapshot = await getDocs(q);
-            setRecipePosts(querySnapshot.docs.map((doc) => ({...doc.data(), id: doc.id})));
+            setRecipePosts(querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
         }
-        
-        getRecipeObj();
-        getRecipePosts();
+        if (!name) {
+            setRecipe(null);
+            setRecipePosts([]);
+        } else {
+            getRecipeObj();
+            getRecipePosts();
+        }
     }, [name])
 
     return (
         <div>
-        <Card sx={{ maxWidth: 330, ml: 20, mt: 3 }} >
-            <CardHeader
-                style={{ color: "red" }}
-                title="Search All Recipes"
-            />
-            <CardContent>
-                <Autocomplete
-                    disablePortal
-                    id="recipe-dropdown"
-                    options={recipes}
-                    sx={{ width: 300 }}
-                    renderInput={(params) => <TextField {...params} label="Recipe..." />}
-                    onChange={(event, value) => setName(value)}
+            <Card sx={{ maxWidth: 330, ml: 20, mt: 3 }} >
+                <CardHeader
+                    style={{ color: "red" }}
+                    title="Search All Recipes"
                 />
-            </CardContent>
-        </Card>
-        <Recipe recipe={recipeObj}/>
-        <PostFeed posts={recipePosts}/>
+                <CardContent>
+                    <Autocomplete
+                        disablePortal
+                        id="recipe-dropdown"
+                        options={recipes}
+                        sx={{ width: 300 }}
+                        renderInput={(params) => <TextField {...params} label="Recipe..." />}
+                        onChange={(event, value) => setName(value)}
+                    />
+                </CardContent>
+                <RecipeDialog recipe={recipe} />
+            </Card>
+            <PostFeed posts={recipePosts} />
         </div>
     );
 }

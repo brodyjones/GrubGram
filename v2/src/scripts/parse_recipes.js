@@ -2606,15 +2606,15 @@ var prep = "";
 var name = "";
 var ings = [];
 var url = recipe_list[0];
-while (i != recipe_list.length) {
+while (i !== recipe_list.length) {
     const line = recipe_list[i];
-    if (line == "preparation") {
+    if (line === "preparation") {
         ingredient_flag = false;
     }
-    if (line[0] == "h" &&
-        line[1] == "t" &&
-        line[2] == "t" &&
-        line[3] == "p") {
+    if (line[0] === "h" &&
+        line[1] === "t" &&
+        line[2] === "t" &&
+        line[3] === "p") {
         prep_flag = false;
     }
     if (name_flag) {
@@ -2628,10 +2628,10 @@ while (i != recipe_list.length) {
         prep += line;
         prep += '\n';
     }
-    if (line[0] == "h" &&
-        line[1] == "t" &&
-        line[2] == "t" &&
-        line[3] == "p") {
+    if (line[0] === "h" &&
+        line[1] === "t" &&
+        line[2] === "t" &&
+        line[3] === "p") {
         recipes.push(new Recipe(name, ings, prep, url));
         url = line;
         name = "";
@@ -2639,10 +2639,10 @@ while (i != recipe_list.length) {
         prep = "";
         name_flag = true;
     }
-    if (line == 'ingredients') {
+    if (line === 'ingredients') {
         ingredient_flag = true;
     }
-    if (line == "preparation") {
+    if (line === "preparation") {
         prep_flag = true;
     }
     i += 1;
@@ -2678,7 +2678,7 @@ function top_five(arr) {
     }
     var index = [0, 1, 2, 3, 4];
     var i = 5;
-    while (i != arr.length) {
+    while (i !== arr.length) {
         var min = find_min(arr, index);
         if (arr[i].hits > arr[index[min]].hits) {
             index[min] = i;

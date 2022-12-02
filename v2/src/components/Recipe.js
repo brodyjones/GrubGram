@@ -1,38 +1,18 @@
-import { Button, Card, CardActions, CardContent, Typography } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, Typography } from "@mui/material";
+import RecipeContent from "./RecipeContent";
 
 export default function Recipe({ recipe }) {
   if (!recipe) return;
   return (
-    <Card sx={{ width: 600, ml: -15 }}>
-      <CardContent>
-        <Typography variant="h5">
+    <Accordion >
+      <AccordionSummary>
+        <Typography variant="h6">
           {recipe.name}
         </Typography>
-        <Typography variant="subtitle" color="text.secondary">
-          Ingredients:
-        </Typography>
-        {recipe.ingredients.map((ingredient) => {
-          return (
-            < Typography variant="body2" >
-              {ingredient}
-            </Typography>
-          );
-        })}
-        <Typography variant="subtitle" color="text.secondary">
-          Preparation:
-        </Typography>
-        <Typography variant="body2">
-          {recipe.preparation}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button
-          varaint="contained"
-          onClick={() => { window.open(recipe.url, '_blank') }}
-        >
-          Go To Website
-        </Button>
-      </CardActions>
-    </Card>
+      </AccordionSummary>
+      <AccordionDetails>
+        <RecipeContent recipe={recipe} />
+      </AccordionDetails>
+    </Accordion>
   );
 }
