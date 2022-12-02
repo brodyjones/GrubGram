@@ -70,5 +70,6 @@ export default function Social() {
                     </Grid>
                 </Card>
             </div>
-            );
+        </div>
+    );
 }
