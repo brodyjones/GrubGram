@@ -1,8 +1,25 @@
 import { Autocomplete, Button, Card, CardActions, CardContent, CardHeader, TextField } from "@mui/material";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { useEffect, useState } from "react";
+import { db } from "../firebase";
 
 export default function RecipeSearcher() {
+    const [url, setUrl] = useState("");
+    const [name, setName] = useState("");
+    
+    useEffect(() => {
+        const getUrl = async () => {
+            const recipesRef = collection(db, "recipes");
+            const q = query(recipesRef, where("name", "==", name));
+            const querySnapshot = await getDocs(q);
+            setUrl(querySnapshot.docs[0].data().url);
+        }
+
+        getUrl();
+    }, [name])
+
     return (
-        <Card sx={{ maxWidth: 330, ml: 35 }} >
+        <Card sx={{ maxWidth: 330, ml: 20, mt: 3 }} >
             <CardHeader
                 style={{ color: "red" }}
                 title="Search All Recipes"
@@ -14,13 +31,13 @@ export default function RecipeSearcher() {
                     options={recipes}
                     sx={{ width: 300 }}
                     renderInput={(params) => <TextField {...params} label="Recipe..." />}
-                //onChange={(event, value) => setRecipe(value)}
+                    onChange={(event, value) => setName(value)}
                 />
             </CardContent>
             <CardActions>
                 <Button
                     variant="contained"
-                //onClick={() => { gotoURL() }}
+                    onClick={() => { window.open(url, '_blank') }}
                 >
                     Go To Website
                 </Button>
