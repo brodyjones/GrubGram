@@ -44,6 +44,8 @@ export default function ProfileCard() {
 
     return (
         <Card sx={{ maxWidth: 300, ml: 20, mt: 3 }}>
+            <CardHeader title={userInfo.name}>
+            </CardHeader>
             <CardMedia
                 component="img"
                 height="250"
