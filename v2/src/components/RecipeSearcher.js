@@ -1,87 +1,35 @@
-import { useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { auth, db, storage } from "../firebase";
-import { addDoc, collection, doc, getDoc } from "firebase/firestore";
-import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 import { Autocomplete, Button, Card, CardActions, CardContent, CardHeader, TextField } from "@mui/material";
 
-export default function CreatePost() {
-    const [caption, setCaption] = useState("");
-    const [recipe, setRecipe] = useState("");
-    const [user] = useAuthState(auth);
-    const [image, setImage] = useState(null);
-
-
-    const initializeUserPost = async () => {
-        if (!image || !caption || !recipe) return;
-        const imageRef = ref(storage, `images/${image.name}`);
-        uploadBytes(imageRef, image);
-        getDownloadURL(ref(storage, `images/${image.name}`))
-            .then((url) => {
-                createUserPost(url);
-            })
-    }
-
-
-    const createUserPost = async (url) => {
-        const docRef = doc(db, "users", user?.uid);
-        const docSnap = await getDoc(docRef);
-        const name = docSnap.data().name;
-        const today = new Date();
-
-        var dateCreated = (today.getMonth() + 1) + '/' + today.getDate() + '/' + today.getFullYear() + ' ' +
-            today.getHours() + ':';
-        if (today.getMinutes() < 10) dateCreated += '0';
-        dateCreated += today.getMinutes() + ':';
-        if (today.getSeconds() < 10) dateCreated += '0';
-        dateCreated += today.getSeconds();
-
-        await addDoc(collection(db, "posts"), { name: name, uid: user?.uid, timestamp: dateCreated, image: url, caption: caption, recipe: recipe });
-        window.location.reload(false);
-    }
-
+export default function RecipeSearcher() {
     return (
-        <Card sx={{ width: 300, mt: 3 }}>
-            <CardHeader title="Create a Post"></CardHeader>
+        <Card sx={{ maxWidth: 330, ml: 35 }} >
+            <CardHeader
+                style={{ color: "red" }}
+                title="Search All Recipes"
+            />
             <CardContent>
-                <TextField type='file'
-                    sx={{ mt: 1, mb: 1, width: 267 }}
-                    id="filled-basic"
-                    onChange={(event) => {
-                        setImage(event.target.files[0]);
-                    }}
-                />
-                <br></br>
-                <TextField
-                    sx={{ mt: 1, mb: 1, width: 267 }}
-                    id="filled-basic"
-                    label='Caption...'
-                    onChange={(event) => {
-                        setCaption(event.target.value);
-                    }}
-                />
-                <br></br>
                 <Autocomplete
                     disablePortal
                     id="recipe-dropdown"
-                    options={recipeNames}
-                    sx={{ mt: 1, mb: 1, width: 267 }}
+                    options={recipes}
+                    sx={{ width: 300 }}
                     renderInput={(params) => <TextField {...params} label="Recipe..." />}
-                    onChange={(event, value) => {
-                        setRecipe(value);
-                    }}
+                //onChange={(event, value) => setRecipe(value)}
                 />
-
-                <br></br>
             </CardContent>
             <CardActions>
-                <Button variant="contained" onClick={initializeUserPost}>Post</Button>
+                <Button
+                    variant="contained"
+                //onClick={() => { gotoURL() }}
+                >
+                    Go To Website
+                </Button>
             </CardActions>
         </Card>
     );
 }
 
-const recipeNames = [
+const recipes = [
     "7 LAYER DIP",
     "ABC SWEET POTATO SOUFFLE",
     "AMBROSIA",
@@ -252,4 +200,4 @@ const recipeNames = [
     "VEGETABLE PIZZA",
     "WILD RICE CASSEROLE",
     "ZUCCHINI BREAD"
-] 
+]
