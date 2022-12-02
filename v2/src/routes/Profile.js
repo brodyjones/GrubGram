@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import PostFeed from "../components/PostFeed";
 import { auth, db } from "../firebase";
+import ProfileCard from "../components/PofileCard";
 
 export default function Profile() {
     const [posts, setPosts] = useState([]);
@@ -29,6 +30,7 @@ export default function Profile() {
     return (
         <div>
             <Navbar />
+            <ProfileCard/>
             <PostFeed posts={posts} />
         </div>
     );
