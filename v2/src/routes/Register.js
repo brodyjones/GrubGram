@@ -79,7 +79,7 @@ function Register() {
             <TextField
               sx={{ width: 260 }}
               onChange={(event) => setEmail(event.target.value)}
-              label="E-mail Address"
+              label="Email"
               type={'text'}
               id="filled-basic"
             /><br />
