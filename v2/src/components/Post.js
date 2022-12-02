@@ -1,4 +1,4 @@
-import { Avatar, Button, Card, CardActions, CardContent, CardHeader, CardMedia, createTheme, IconButton, ThemeProvider, Typography } from "@mui/material";
+import { Avatar, Box, Button, Card, CardActions, CardContent, CardHeader, CardMedia, createTheme, IconButton, ThemeProvider, Typography } from "@mui/material";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { collection, doc, getDocs, query, updateDoc, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
@@ -92,7 +92,7 @@ export default function Post({ post }) {
             onClick={() => { updateLikeCount(post.likes); }}>
             <FavoriteIcon />
           </IconButton>
-          <Typography sx={{ mr: 34 }}>{post.likes}</Typography>
+          <Typography sx={{ mr: 43 }}>{post.likes}</Typography>
           <RecipeDialog recipe={recipe} />
         </CardActions>
       </Card>
