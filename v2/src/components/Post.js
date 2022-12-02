@@ -1,4 +1,4 @@
-import { Button, Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, Typography } from "@mui/material";
+import { Avatar, Button, Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, Typography } from "@mui/material";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { collection, doc, getDocs, query, updateDoc, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
@@ -6,6 +6,8 @@ import { db } from "../firebase";
 
 export default function Post({ post }) {
   const [url, setUrl] = useState("");
+  const [profilePic, setProfilePic] = useState("");
+  const [userFirstLetter, setuserFirstLetter] = useState("");
 
   useEffect(() => {
     const getRecipe = async () => {
@@ -15,6 +17,15 @@ export default function Post({ post }) {
       setUrl(querySnapshot.docs[0].data().url);
     }
 
+    const getProfilePic = async () => {
+      const usersRef = collection(db, "users");
+      const q = query(usersRef, where("name", "==", post.name));
+      const querySnapshot = await getDocs(q);
+      setProfilePic(querySnapshot.docs[0].data().profilePic);
+      setuserFirstLetter(querySnapshot.docs[0].data().name[0])
+    }
+
+    getProfilePic();
     getRecipe();
   }, []);
 
@@ -28,6 +39,7 @@ export default function Post({ post }) {
       <CardHeader
         title={post.recipe}
         subheader={post.timestamp}
+        avatar={<Avatar src={profilePic}>{userFirstLetter}</Avatar>}
       />
       <CardMedia
         component="img"
