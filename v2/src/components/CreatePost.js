@@ -3,8 +3,20 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db, storage } from "../firebase";
 import { addDoc, collection, doc, getDoc } from "firebase/firestore";
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
-import { Autocomplete, Button, Card, CardActions, CardContent, CardHeader, IconButton, TextField } from "@mui/material";
+import { Autocomplete, Button, Card, CardActions, CardContent, CardHeader, createTheme, Grid, IconButton, TextField, ThemeProvider } from "@mui/material";
 import FileUploadRounded from "@mui/icons-material/FileUploadRounded";
+import { red } from "@mui/material/colors";
+
+const theme = createTheme({
+    palette: {
+        primary: {
+            main: red[600],
+        },
+        secondary: {
+            main: '#FFFFFF',
+        },
+    },
+});
 
 export default function CreatePost() {
     const [caption, setCaption] = useState("");
@@ -42,40 +54,54 @@ export default function CreatePost() {
     }
 
     return (
-        <Card sx={{ width: 300, mt: 3 }}>
-            <CardHeader title="Create a Post"></CardHeader>
-            <CardContent>
-                <TextField
-                    sx={{ mt: 1, mb: 1, width: 267 }}
-                    id="filled-basic"
-                    label='Caption...'
-                    onChange={(event) => {
-                        setCaption(event.target.value);
-                    }}
-                />
-                <Autocomplete
-                    disablePortal
-                    id="recipe-dropdown"
-                    options={recipeNames}
-                    sx={{ mt: 1, mb: 1, width: 267 }}
-                    renderInput={(params) => <TextField {...params} label="Recipe..." />}
-                    onChange={(event, value) => {
-                        setRecipe(value);
-                    }}
-                />
-            </CardContent>
-            <CardActions>
-                <IconButton color="primary" aria-label="upload picture" component="label" onChange={(event) => {
-                                setImage(event.target.files[0]);
-                            }}>
+        <ThemeProvider theme={theme}>
+            <Card sx={{ width: 300, mt: 3 }}>
+                <Grid
+                    container
+                    direction="column"
+                    alignItems="center"
+                    justify="center"
+                >
+                    <CardHeader
+                        sx={{ mb: -3 }}
+                        title="Create a Post"
+                        titleTypographyProps={{ fontSize: 30, color: 'primary', fontFamily: 'monospace', fontWeight: 'bold' }}
+                    >
+                    </CardHeader>
+                </Grid>
+                <CardContent>
+                    <TextField
+                        sx={{ mt: 1, width: 267 }}
+                        id="filled-basic"
+                        label='Caption...'
+                        onChange={(event) => {
+                            setCaption(event.target.value);
+                        }}
+                    />
+                    <Autocomplete
+                        disablePortal
+                        id="recipe-dropdown"
+                        options={recipeNames}
+                        sx={{ mt: 1, mb: -1, width: 267 }}
+                        renderInput={(params) => <TextField {...params} label="Recipe..." />}
+                        onChange={(event, value) => {
+                            setRecipe(value);
+                        }}
+                    />
+                </CardContent>
+                <CardActions sx={{ ml: 5 }}>
+                    <IconButton sx={{ color: red[500] }} color="primary" aria-label="upload picture" component="label" onChange={(event) => {
+                        setImage(event.target.files[0]);
+                    }}>
                         <input hidden accept="image/*" type="file" />
                         <FileUploadRounded />
-                </IconButton>
-                <Button variant="contained" component="label" onClick={initializeUserPost}>
-                    Post!
-                </Button>
-            </CardActions>
-        </Card>
+                    </IconButton>
+                    <Button sx={{ bgcolor: red[500] }} variant="contained" component="label" onClick={initializeUserPost}>
+                        Post To Feed
+                    </Button>
+                </CardActions>
+            </Card>
+        </ThemeProvider>
     );
 }
 
