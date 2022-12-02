@@ -53,6 +53,7 @@ export default function Post({ post }) {
   }
 
   return (
+    <ThemeProvider theme={theme}>
     <Card
       raised={true}
       sx={{ maxWidth: 500, ml: 20, mt: 3 }}>
@@ -93,5 +94,6 @@ export default function Post({ post }) {
         </Button>
       </CardActions>
     </Card>
+    </ThemeProvider>
   );
 }
