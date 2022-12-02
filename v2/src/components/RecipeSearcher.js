@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { db } from "../firebase";
 import PostFeed from "./PostFeed";
 import RecipeDialog from "./RecipeDialog";
+import './Recipe.css'
 
 export default function RecipeSearcher() {
     const [name, setName] = useState("");
@@ -34,34 +35,38 @@ export default function RecipeSearcher() {
 
     return (
         <div>
-            <Card sx={{ maxWidth: 330, ml: 20, mt: 3 }} >
-                <Grid
-                    container
-                    direction="column"
-                    alignItems="center"
-                    justify="center"
-                >
-                    <CardHeader
-                        sx={{ mb: -2 }}
-                        titleTypographyProps={{ fontFamily: 'monospace', fontWeight: 'bold', color: 'primary' }}
-                        title="Search All Recipes"
-                    />
-                    <CardContent>
-                        <Autocomplete
-                            disablePortal
-                            id="recipe-dropdown"
-                            options={recipes}
-                            sx={{ width: 300 }}
-                            renderInput={(params) => <TextField {...params} label="Recipe..." />}
-                            onChange={(event, value) => setName(value)}
+            <div className="rightcol">
+                <Card sx={{ maxWidth: 330, ml: 20, mt: 3 }} >
+                    <Grid
+                        container
+                        direction="column"
+                        alignItems="center"
+                        justify="center"
+                    >
+                        <CardHeader
+                            sx={{ mb: -2 }}
+                            titleTypographyProps={{ fontFamily: 'monospace', fontWeight: 'bold', color: 'primary' }}
+                            title="Search All Recipes"
                         />
-                    </CardContent>
-                    <CardActions sx={{ mb: 2 }}>
-                        <RecipeDialog recipe={recipe} />
-                    </CardActions>
-                </Grid>
-            </Card>
-            <PostFeed posts={recipePosts} />
+                        <CardContent>
+                            <Autocomplete
+                                disablePortal
+                                id="recipe-dropdown"
+                                options={recipes}
+                                sx={{ width: 300 }}
+                                renderInput={(params) => <TextField {...params} label="Recipe..." />}
+                                onChange={(event, value) => setName(value)}
+                            />
+                        </CardContent>
+                        <CardActions sx={{ mb: 2 }}>
+                            <RecipeDialog recipe={recipe} />
+                        </CardActions>
+                    </Grid>
+                </Card>
+            </div>
+            <div className="leftcol">
+                <PostFeed posts={recipePosts} />
+            </div>
         </div>
     );
 }
