@@ -31,7 +31,7 @@ export default function CreatePost() {
     const [open, setOpen] = useState(false);
     
 
-    const handleChange1 = () => {
+    const handleChange = () => {
         setOpen(true);
     };
     const handleClose = (event, reason) => {
@@ -111,7 +111,7 @@ export default function CreatePost() {
                 <CardActions sx={{ ml: 5 }}>
                     <IconButton sx={{ color: red[500] }} color="primary" aria-label="upload picture" component="label" onChange={(event) => {
                         setImage(event.target.files[0]);
-                        handleChange1();
+                        handleChange();
                     }}>
                         <input hidden accept="image/*" type="file" />
                         <FileUploadRounded />
