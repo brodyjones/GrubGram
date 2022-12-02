@@ -7,6 +7,9 @@ import FastfoodRoundedIcon from "@mui/icons-material/FastfoodRounded";
 import { useEffect, useState } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
+import * as React from 'react';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 
 const theme = createTheme({
     palette: {
@@ -26,6 +29,8 @@ function Navbar() {
     const [userInfo, setUserInfo] = useState([]);
     const [user] = useAuthState(auth);
     const [userFirstLetter, setuserFirstLetter] = useState("");
+    const [anchorEl, setAnchorEl] = useState(null);
+    const open = Boolean(anchorEl);
     useEffect(() => {
         const getUserInfo = async () => {
             const userRef = doc(db, "users", user?.uid);
@@ -36,6 +41,13 @@ function Navbar() {
     
         getUserInfo();
     }, [user]);
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+      };
+      const handleClose = () => {
+        setAnchorEl(null);
+      };
+    
 
     return (
         <ThemeProvider theme={theme}>
@@ -91,18 +103,34 @@ function Navbar() {
                             </Button>
                         </Box>
 
-                        <Box sx={{ flexGrow: 0 }}>
-                            <Button
-                                sx={{ my: 2 }}
-                                color="secondary"
-                                onClick={logout}
-                                href="/"
-                            >
-                                Logout
-                            </Button>
-                        </Box>
+                        <Button
+                        id="demo-positioned-button"
+                        aria-controls={open ? 'demo-positioned-menu' : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={open ? 'true' : undefined}
+                        onClick={handleClick}
+                        ><Avatar src={userInfo.profilePic}>{userFirstLetter}</Avatar></Button>
+                        <Menu
+                            id="demo-positioned-menu"
+                            aria-labelledby="demo-positioned-button"
+                            anchorEl={anchorEl}
+                            open={open}
+                            onClose={handleClose}
+                            anchorOrigin={{
+                            vertical: 'top',
+                            horizontal: 'left',
+                            }}
+                            transformOrigin={{
+                            vertical: 'top',
+                            horizontal: 'left',
+                            }}
+                        >
+                            <MenuItem onClick={() => {
+                                handleClose();
+                                logout();
+                            }}>Logout</MenuItem>
+                        </Menu>
 
-                        <Avatar src={userInfo.profilePic}>{userFirstLetter}</Avatar>
                     </Toolbar>
                 </Container>
             </AppBar >
