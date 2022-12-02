@@ -35,13 +35,13 @@ export default function PantryList() {
                     sx={{ mb: -3 }}
                     title="Your Pantry"
                     titleTypographyProps={{
-                        fontSize: 26, color: 'primary', fontFamily: 'monospace', fontWeight: 'bold'
+                        variant: 'h5', fontFamily: 'monospace', fontWeight: 'bold'
                     }}
                 />
                 <CardContent>
                     {pantry.map((ingredient) => {
                         return (
-                            <Typography variant="h6">
+                            <Typography variant="body1">
                                 <IconButton sx={{ ml: -3 }} color="primary" onClick={() => (removeIngredient(ingredient))}><DeleteIcon></DeleteIcon></IconButton>
                                 {ingredient}
                             </Typography>

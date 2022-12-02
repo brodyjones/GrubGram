@@ -1,10 +1,13 @@
-.left {
+.leftProfile {
+    margin-top: 80px;
     float: left;
-    width: 55%;
+    width: 50%;
+    margin-bottom: 30px;
 }
 
-.right {
+.rightProfile {
+    right: 250px;
     position: fixed;
-    right: 0px;
     margin-top: 80px;
+    margin-bottom: 30px;
 }

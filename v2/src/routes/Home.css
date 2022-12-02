@@ -1,9 +1,13 @@
-.column1 {
-    left: 100px;
-    margin-top: 90px;
+.leftHome {
+    float: left;
+    margin-top: 80px;
+    width: 50%;
+    margin-bottom: 30px;
 }
 
-.column2 {
-    right: 150px;
+.rightHome {
+    right: 250px;
+    margin-top: 80px;
     position: fixed;
+    margin-bottom: 30px;
 }

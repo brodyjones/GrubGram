@@ -12,6 +12,7 @@ import "./Home.css"
 
 const theme = createTheme({
   palette: {
+    mode: 'dark',
     primary: {
       main: red[600],
     },
@@ -41,13 +42,11 @@ export default function Home() {
 
   return (
     <ThemeProvider theme={theme}>
-      <div className="navbar">
-        <Navbar />
-      </div>
-      <div className="column2">
+      <Navbar />
+      <div className="rightHome">
         <CreatePost />
       </div>
-      <div className="column1">
+      <div className="leftHome">
         <PostFeed posts={posts} />
       </div>
     </ThemeProvider>

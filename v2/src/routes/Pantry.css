@@ -1,10 +1,13 @@
-.right {
+.rightPantry {
     float: right;
     width: 50%;
+    margin-top: 80px;
+    margin-bottom: 30px;
 }
 
-.left {
+.leftPantry {
     float: left;
     width: 50%;
     margin-top: 80px;
+    margin-bottom: 30px;
 }

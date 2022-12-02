@@ -11,6 +11,7 @@ import './Profile.css'
 
 const theme = createTheme({
     palette: {
+        mode: 'dark',
         primary: {
             main: red[600],
         },
@@ -54,22 +55,22 @@ export default function Social() {
         <ThemeProvider theme={theme}>
             <div>
                 <Navbar />
-                <div className='left'>
+                <div className='leftProfile'>
                     <PostFeed posts={userPosts} />
                 </div>
-                <div className='right'>
-                    <Card raised={true} sx={{ maxWidth: 275, ml: 20, mt: 3 }}>
+                <div className='rightProfile'>
+                    <Card raised={true} sx={{ p: 3, maxWidth: 300, ml: 20, mt: 3 }}>
                         <Grid
                             container
                             direction="column"
                             alignItems="center"
                             justify="center">
                             <CardHeader title={userSoc.name} titleTypographyProps={{
-                                fontSize: 26, color: 'primary', fontFamily: 'monospace', fontWeight: 'bold'
+                                variant: 'h5', fontFamily: 'monospace', fontWeight: 'bold'
                             }} />
                             <Avatar sx={{ mb: 3, height: 200, width: 200 }} src={userSoc.profilePic} />
                         </Grid>
-                        <Typography sx={{ ml: 1.5, fontSize: 15, color: 'primary', fontFamily: 'monospace', fontWeight: 'bold' }}>{userSoc.bio}</Typography>
+                        <Typography sx={{ ml: 1.5, variant: 'body1', color: 'primary' }}>{userSoc.bio}</Typography>
                     </Card>
                 </div>
             </div>

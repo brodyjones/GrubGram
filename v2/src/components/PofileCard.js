@@ -64,7 +64,7 @@ export default function ProfileCard() {
     }
 
     return (
-        <Card raised={true} sx={{ maxWidth: 275, ml: 20, mt: 3 }}>
+        <Card raised={true} sx={{ p: 2, maxWidth: 300, ml: 20, mt: 3 }}>
             <Grid
                 container
                 direction="column"
@@ -74,7 +74,7 @@ export default function ProfileCard() {
                 <CardHeader
                     title={userInfo.name}
                     titleTypographyProps={{
-                        fontSize: 26, color: 'primary', fontFamily: 'monospace', fontWeight: 'bold'
+                        variant: "h5", fontFamily: 'monospace', fontWeight: 'bold'
                     }}
                 />
                 <Avatar
@@ -83,6 +83,9 @@ export default function ProfileCard() {
                 />
             </Grid>
             <CardContent>
+                <br></br>
+                <Typography sx={{ variant: 'subtitle', fontWeight: 'body1' }}>{userInfo.bio}</Typography>
+                <br></br>
                 <IconButton color="primary" aria-label="upload picture" component="label" onChange={(event) => {
                     setImage(event.target.files[0]);
                     handleChange();
@@ -100,8 +103,6 @@ export default function ProfileCard() {
                 </Snackbar>
                 <br></br>
                 <br></br>
-                <Typography sx={{ fontSize: 15, color: 'primary', fontFamily: 'monospace', fontWeight: 'bold' }}>Bio: {userInfo.bio}</Typography>
-                <br></br>
                 <TextField
                     sx={{ width: 245 }}
                     id="filled-basic"
@@ -111,8 +112,9 @@ export default function ProfileCard() {
                     }} />
                 <br></br>
                 <br></br>
-                <Button variant="contained"
+                <Button variant="outlined"
                     onClick={updateBio}
+                    sx={{ mb: -2 }}
                 >
                     Update Bio
                 </Button>

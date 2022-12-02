@@ -15,6 +15,7 @@ import "./Pantry.css";
 
 const theme = createTheme({
     palette: {
+        mode: 'dark',
         primary: {
             main: red[600],
         },
@@ -128,19 +129,21 @@ export default function Pantry() {
         <ThemeProvider theme={theme}>
             <div>
                 <Navbar />
-                <div className="left">
+                <div className="leftPantry">
                     <PantryManager />
                     <PantryList />
                 </div>
-                <div className="right">
-                    <Card sx={{ width: 600, mt: 3, ml: -6 }}>
+                <div className="rightPantry">
+                    <Card
+                        raised={true}
+                        sx={{ width: 600, mt: 3, ml: -6 }}>
                         <Grid
                             container
                             direction="column"
                             alignItems="center"
                             justify="center"
                         >
-                            <CardHeader title="Your Recommended Recipes" titleTypographyProps={{ variant: 'h4' }} />
+                            <CardHeader title="Recommended Recipes" titleTypographyProps={{ mb: -2, variant: 'h5', fontFamily: 'monospace', fontWeight: 'bold' }} />
                             <CardContent>
                                 {recipes.map((recipe) => {
                                     return (

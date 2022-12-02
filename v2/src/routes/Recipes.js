@@ -5,6 +5,7 @@ import RecipeSearcher from "../components/RecipeSearcher";
 
 const theme = createTheme({
     palette: {
+        mode: 'dark',
         primary: {
             main: red[600],
         },

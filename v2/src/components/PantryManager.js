@@ -32,7 +32,7 @@ export default function PantryManager() {
                     sx={{ mb: -2 }}
                     title="Update Pantry"
                     titleTypographyProps={{
-                        fontSize: 26, color: 'primary', fontFamily: 'monospace', fontWeight: 'bold'
+                        variant: 'h5', fontFamily: 'monospace', fontWeight: 'bold'
                     }}
                 />
                 <CardContent>

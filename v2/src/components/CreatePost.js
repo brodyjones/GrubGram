@@ -69,7 +69,6 @@ export default function CreatePost() {
                 justify="center"
             >
                 <CardHeader
-
                     title="Create a Post"
                     titleTypographyProps={{ variant: 'h5', fontFamily: 'monospace', fontWeight: 'bold' }}
                 >

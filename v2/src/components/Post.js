@@ -66,10 +66,10 @@ export default function Post({ post }) {
         image={post.image}
       />
       <CardContent sx={{ mb: -3 }}>
-        <Typography variant="body2" color="text.secondary" sx={{ fontWeight: "bold" }}>
+        <Typography variant="body1" color="text.secondary" sx={{ fontWeight: "bold" }}>
           {post.name}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body1" color="text.secondary">
           {post.caption}
         </Typography>
       </CardContent>

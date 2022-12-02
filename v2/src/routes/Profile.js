@@ -12,6 +12,7 @@ import { red } from "@mui/material/colors";
 
 const theme = createTheme({
     palette: {
+        mode: 'dark',
         primary: {
             main: red[600],
         },
@@ -44,10 +45,10 @@ export default function Profile() {
         <ThemeProvider theme={theme}>
             <div>
                 <Navbar />
-                <div className="right">
+                <div className="rightProfile">
                     <ProfileCard />
                 </div>
-                <div className="left">
+                <div className="leftProfile">
                     <PostFeed posts={posts} />
                 </div>
             </div>
