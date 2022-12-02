@@ -18,7 +18,7 @@ export default function PantryList() {
     }, [user]);
 
     return (
-        <Card sx={{ maxWidth: 350, ml: 20, mt: 3 }}>
+        <Card raised={true} sx={{ maxWidth: 350, ml: 20, mt: 3 }}>
             <CardHeader title="Your Pantry:" />
             <CardContent>
                 {pantry.map((ingredient) => {

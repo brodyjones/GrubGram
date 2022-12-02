@@ -9,7 +9,7 @@ export default function RecipeSearcher() {
     const [name, setName] = useState("");
     const [recipeObj, setRecipeObj] = useState(null);
     const [recipePosts, setRecipePosts] = useState([]);
-    
+
     useEffect(() => {
         const getRecipeObj = async () => {
             const recipesRef = collection(db, "recipes");
@@ -21,33 +21,33 @@ export default function RecipeSearcher() {
             const postsRef = collection(db, "posts");
             const q = query(postsRef, where("recipe", "==", name));
             const querySnapshot = await getDocs(q);
-            setRecipePosts(querySnapshot.docs.map((doc) => ({...doc.data(), id: doc.id})));
+            setRecipePosts(querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
         }
-        
+
         getRecipeObj();
         getRecipePosts();
     }, [name])
 
     return (
         <div>
-        <Card sx={{ maxWidth: 330, ml: 20, mt: 3 }} >
-            <CardHeader
-                style={{ color: "red" }}
-                title="Search All Recipes"
-            />
-            <CardContent>
-                <Autocomplete
-                    disablePortal
-                    id="recipe-dropdown"
-                    options={recipes}
-                    sx={{ width: 300 }}
-                    renderInput={(params) => <TextField {...params} label="Recipe..." />}
-                    onChange={(event, value) => setName(value)}
+            <Card raised={true} sx={{ maxWidth: 330, ml: 20, mt: 3 }} >
+                <CardHeader
+                    style={{ color: "red" }}
+                    title="Search All Recipes"
                 />
-            </CardContent>
-        </Card>
-        <Recipe recipe={recipeObj}/>
-        <PostFeed posts={recipePosts}/>
+                <CardContent>
+                    <Autocomplete
+                        disablePortal
+                        id="recipe-dropdown"
+                        options={recipes}
+                        sx={{ width: 300 }}
+                        renderInput={(params) => <TextField {...params} label="Recipe..." />}
+                        onChange={(event, value) => setName(value)}
+                    />
+                </CardContent>
+            </Card>
+            <Recipe recipe={recipeObj} />
+            <PostFeed posts={recipePosts} />
         </div>
     );
 }

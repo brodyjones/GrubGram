@@ -74,7 +74,7 @@ export default function CreatePost() {
 
     return (
         <ThemeProvider theme={theme}>
-            <Card sx={{ width: 300, mt: 3 }}>
+            <Card raised={true} sx={{ width: 300, mt: 3 }}>
                 <Grid
                     container
                     direction="column"
@@ -84,7 +84,7 @@ export default function CreatePost() {
                     <CardHeader
                         sx={{ mb: -3 }}
                         title="Create a Post"
-                        titleTypographyProps={{ fontSize: 30, color: 'primary', fontFamily: 'monospace', fontWeight: 'bold' }}
+                        titleTypographyProps={{ fontSize: 26, color: 'primary', fontFamily: 'monospace', fontWeight: 'bold' }}
                     >
                     </CardHeader>
                 </Grid>
