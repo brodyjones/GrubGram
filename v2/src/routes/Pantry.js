@@ -1,7 +1,7 @@
-import { Card, CardContent, Grid, Typography } from "@mui/material";
+import { Card, CardContent, CardHeader, Grid, Typography } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material";
 import { red } from "@mui/material/colors";
-import { addDoc, collection, doc, getDoc, getDocs, limit, query, where } from "firebase/firestore";
+import { addDoc, collection, doc, getDoc, getDocs, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
@@ -42,10 +42,10 @@ export default function Pantry() {
             const querySnapshot = await getDocs(q);
             const data = querySnapshot.docs.map((doc) => (doc.data()));
             const sortedData = [];
-            const temp = (pantry.length == 0) ? 0 : 7;
+            const temp = (pantry.length === 0) ? 0 : 7;
             for (var i = 0; i < temp; i++) {
                 for (var j = 0; j < 7; j++) {
-                    if (data[j].name == top7[i]) {
+                    if (data[j].name === top7[i]) {
                         sortedData.push(data[j]);
                         break;
                     }
@@ -66,15 +66,15 @@ export default function Pantry() {
         var ingredients = []
         var url = recipeList[0];
 
-        while (i != recipeList.length) {
+        while (i !== recipeList.length) {
             const line = recipeList[i];
-            if (line == "preparation") {
+            if (line === "preparation") {
                 ingredientFlag = false;
             }
-            if (line[0] == "h" &&
-                line[1] == "t" &&
-                line[2] == "t" &&
-                line[3] == "p") {
+            if (line[0] === "h" &&
+                line[1] === "t" &&
+                line[2] === "t" &&
+                line[3] === "p") {
                 preparationFlag = false;
             }
             if (nameFlag) {
@@ -88,10 +88,10 @@ export default function Pantry() {
                 preparation += line;
                 preparation += '\n';
             }
-            if (line[0] == "h" &&
-                line[1] == "t" &&
-                line[2] == "t" &&
-                line[3] == "p") {
+            if (line[0] === "h" &&
+                line[1] === "t" &&
+                line[2] === "t" &&
+                line[3] === "p") {
 
                 await addDoc(collection(db, "recipes"), {
                     name: name,
@@ -107,10 +107,10 @@ export default function Pantry() {
                 preparation = "";
                 nameFlag = true;
             }
-            if (line == 'ingredients') {
+            if (line === 'ingredients') {
                 ingredientFlag = true;
             }
-            if (line == "preparation") {
+            if (line === "preparation") {
                 preparationFlag = true;
             }
             i += 1;
@@ -133,23 +133,23 @@ export default function Pantry() {
                     <PantryList />
                 </div>
                 <div className="right">
-                    <Card sx={{ width: 559, mt: 3, ml: -6 }}>
+                    <Card sx={{ width: 600, mt: 3, ml: -6 }}>
                         <Grid
                             container
                             direction="column"
                             alignItems="center"
                             justify="center"
                         >
+                            <CardHeader title="Your Recommended Recipes" titleTypographyProps={{ variant: 'h4' }} />
                             <CardContent>
-                                <Typography sx={{ mb: -1 }} color="primary" variant='h4'>Your Recommended Recipies</Typography>
+                                {recipes.map((recipe) => {
+                                    return (
+                                        <Recipe recipe={recipe} />
+                                    );
+                                })}
                             </CardContent>
                         </Grid>
                     </Card>
-                    {recipes.map((recipe) => {
-                        return (
-                            <Recipe recipe={recipe} />
-                        );
-                    })}
                 </div>
             </div>
         </ThemeProvider>

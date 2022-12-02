@@ -4,13 +4,13 @@ import RecipeContent from "./RecipeContent";
 export default function Recipe({ recipe }) {
   if (!recipe) return;
   return (
-    <Accordion sx={{ ml: -6, mr: 8 }}>
+    <Accordion>
       <AccordionSummary>
         <Typography variant="h6">
           {recipe.name}
         </Typography>
       </AccordionSummary>
-      <AccordionDetails>
+      <AccordionDetails sx={{ mt: -1 }}>
         <RecipeContent recipe={recipe} />
       </AccordionDetails>
     </Accordion>

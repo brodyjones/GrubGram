@@ -23,7 +23,7 @@ export default function RecipeContent({ recipe }) {
             </Typography>
             <br></br>
             <Button
-                variant="contained"
+                variant="text"
                 onClick={() => { window.open(recipe.url, '_blank') }}
             >
                 GO TO WEBSITE

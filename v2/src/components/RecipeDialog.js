@@ -27,7 +27,7 @@ export default function RecipeDialog({ recipe }) {
 
     if (!recipe) {
         return (
-            <Button variant="contained">
+            <Button variant="outlined">
                 Recipe
             </Button>
         );
@@ -52,7 +52,7 @@ export default function RecipeDialog({ recipe }) {
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={handleClose}>Close</Button>
+                        <Button variant='contained' onClick={handleClose}>Close</Button>
                     </DialogActions>
                 </Dialog>
             </div>
