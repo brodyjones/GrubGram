@@ -1,9 +1,11 @@
 import { Button, Card, CardContent, CardHeader, CardMedia, TextField } from "@mui/material";
 import { useEffect, useState } from "react";
 import { auth, db, storage } from "../firebase";
-import { addDoc, doc, getDoc, setDoc, updateDoc } from 'firebase/firestore'
+import { doc, getDoc, updateDoc } from 'firebase/firestore'
 import { useAuthState } from "react-firebase-hooks/auth";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import IconButton from '@mui/material/IconButton';
+import FileUploadRoundedIcon from '@mui/icons-material/FileUploadRounded';
 
 export default function ProfileCard() {
     const [userInfo, setUserInfo] = useState([]);
@@ -48,17 +50,19 @@ export default function ProfileCard() {
                 image={userInfo.profilePic}
             />
             <CardContent>
-                <TextField type={"file"} variant="filled" size="small"
-                    sx={{ mt: 1, mb: 1, width: 267 }}
-                    id="filled-basic"
-                    onChange={(event) => {
-                        setImage(event.target.files[0]);
-                    }}
-                />
                 <br></br>
                 <br></br>
-                <Button variant="contained" onClick={UploadProfile}>Update Profile Picture</Button>
-
+                <IconButton color="primary" aria-label="upload picture" component="label" onChange={(event) => {
+                            setImage(event.target.files[0]);
+                        }}>
+                    <input hidden accept="image/*" type="file" />
+                    <FileUploadRoundedIcon />
+                </IconButton>
+                <Button variant="contained" component="label" onClick={UploadProfile}>
+                    Upload Image
+                </Button>
+                <br></br>
+                <br></br>
             </CardContent>
         </Card>
     );
