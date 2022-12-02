@@ -41,7 +41,7 @@ export default function PantryManager() {
                         id="ingredient-dropdown"
                         options={ingredientsList}
                         sx={{ width: 300 }}
-                        renderInput={(params) => <TextField {...params} label="Ingredient..." />}
+                        renderInput={(params) => <TextField {...params} label="Ingredient" />}
                         onChange={(event, value) => setIngredient(value)}
                     />
                 </CardContent>
