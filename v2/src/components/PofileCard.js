@@ -1,4 +1,4 @@
-import { Avatar, Card, CardHeader, CardMedia } from "@mui/material";
+import { Card, CardHeader, CardMedia } from "@mui/material";
 import { useEffect, useState } from "react";
 import { auth, db } from "../firebase";
 import { doc, getDoc } from 'firebase/firestore'

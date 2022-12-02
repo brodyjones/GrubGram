@@ -1,4 +1,4 @@
-import { AppBar, Button, createTheme, ThemeProvider, Toolbar, Typography } from "@mui/material";
+import { AppBar, Avatar, Button, createTheme, ThemeProvider, Toolbar, Typography } from "@mui/material";
 import { red, yellow } from "@mui/material/colors";
 import { Box, Container } from "@mui/system";
 import { signOut } from "firebase/auth";
@@ -85,6 +85,8 @@ function Navbar() {
                                 Logout
                             </Button>
                         </Box>
+
+                        <Avatar src="https://media-exp1.licdn.com/dms/image/C5603AQFogoxY-JrbbA/profile-displayphoto-shrink_800_800/0/1625536311919?e=1675296000&v=beta&t=8DfVVmYTl_w4js7hEO5d0bgJUB8Kpsxo43s1ndWhWqI"/>
                     </Toolbar>
                 </Container>
             </AppBar >
