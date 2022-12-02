@@ -4,6 +4,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import Navbar from "../components/Navbar";
 import PostFeed from "../components/PostFeed";
 import { auth, db } from "../firebase";
+import ProfileCard from "../components/PofileCard";
 
 export default function Profile() {
     const [posts, setPosts] = useState([]);
@@ -12,7 +13,6 @@ export default function Profile() {
     useEffect(() => {
         const getPosts = async () => {
             const postsRef = collection(db, "posts");
-            console.log(user?.uid);
             const q = query(postsRef, where("uid", "==", user?.uid));
             const querySnapshot = await getDocs(q);
             const data = querySnapshot.docs.map((doc) => (doc.data()));
@@ -24,6 +24,7 @@ export default function Profile() {
     return (
         <div>
             <Navbar />
+            <ProfileCard/>
             <PostFeed posts={posts} />
         </div>
     );
