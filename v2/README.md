@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+How to run our project:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1. clone our entire repository on local machine
+2. enter the v2 folder
+3. download npm
+4. run these commands:
+npm install @mui/material-icons @mui/material @emotion/react @emotion/styled
+npm install firebase
+npm install react-firebase-hooks
+npm install react-router-dom
 
-## Available Scripts
+Project Features:
 
-In the project directory, you can run:
+Login/Authentication/Register: User must sign in with email and password before navigating to the other pages of the webapp or create an account with name, email, and password. After signing in or logging up, the user is automatically navigated to the home page and the user is now logged in and authenticated.
 
-### `yarn start`
+NavBar: The top of every page but login/register has the same navbar where the user can navigate between pages: Home, Pantry, RecipeSearch. Also, the profile photo is displayed on the right as a dropdown which has buttons to the user profile page and to logout and return to the login/register page.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Posting: On the left of the home page, the user can create a post. They must choose a file, input a caption, and choose a recipe from the database list and then click the post button to do so. Their post will show up to the right at the top of the feed.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+GrubFeed: On the right of the home page, all of the posts created by any user are displayed in order of date/time created with the most recent at the top. Each post has this format on a card: profile photot and username of who posted, timestamp, image, caption, recipe. There is also a like button that increments every time another user presses the button on a post. The recipe is a button that can be clicked to navigate to the recipe URL in a separate window. 
 
-### `yarn test`
+Pantry: On the pantry page to the left, the user can choose from a dropdown of ingredients from our database and then add said ingredient from their pantry which will be updated upon clicking. They can also clear their whole pantry or delete individual items with the trash icon. The pantry of the logged in user is displayed below.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+RecipeRecommender: On the pantry page to the right, the top recipes in our database that are compatible with their pantry ingredients are displayed on cards in accordian style. The recipes have their name, ingredients, preparation instructions, and the same URL button from the posts.
 
-### `yarn build`
+ProfileFeed: On the profile page on the right, the same exact format as the GrubFeed is displayed but only the logged in user has their posts displayed. 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+ProfilePhotoUpdate: on the right of the profile page, the user’s name and profile photo (or lack thereof) is displayed. They can choose an image to upload as their profile photo, and by clicking the button below they can change their profile image displayed on this page and in the top right corner of the NavBar. Also, they can update their bio which is displayed below the image.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+RecipeSearch: on the recipe page, the user can select from our database of recipes and search for it. This will display the recipes with the same card as the recipe recommender and the associated posts with the recipe.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Social Pages: on the GrubFeed, if a user clicks on the profile picture of another user's post it navigates to that users respective profile page, but there is no option to edit the image or bio.
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
