@@ -2,10 +2,15 @@
 
 How to run our project:
 
-clone our entire repository on local machine
-enter the v2 folder
-download npm
-run these commands: npm install @mui/material-icons @mui/material @emotion/react @emotion/styled npm install firebase npm install react-firebase-hooks npm install react-router-dom
+1. clone our entire repository on local machine
+2. enter the v2 folder
+3. download npm
+4. run these commands: 
+npm install @mui/material-icons @mui/material @emotion/react @emotion/styled 
+npm install firebase 
+npm install react-firebase-hooks 
+npm install react-router-dom
+
 Project Features:
 
 Login/Authentication/Register: User must sign in with email and password before navigating to the other pages of the webapp or create an account with name, email, and password. After signing in or logging up, the user is automatically navigated to the home page and the user is now logged in and authenticated.
