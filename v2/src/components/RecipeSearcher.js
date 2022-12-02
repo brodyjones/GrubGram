@@ -36,7 +36,7 @@ export default function RecipeSearcher() {
     return (
         <div>
             <div className="rightcol">
-                <Card sx={{ p: 2, maxWidth: 330, ml: 5, mt: 3 }} >
+                <Card sx={{ p: 2, maxWidth: 350, ml: 5, mt: 3 }} >
                     <Grid
                         container
                         direction="column"
@@ -44,8 +44,7 @@ export default function RecipeSearcher() {
                         justify="center"
                     >
                         <CardHeader
-                            sx={{ mb: -2 }}
-                            titleTypographyProps={{ fontFamily: 'monospace', fontWeight: 'bold', color: 'primary' }}
+                            titleTypographyProps={{ fontFamily: 'monospace', fontWeight: 'bold' }}
                             title="Search All Recipes"
                         />
                         <CardContent>
@@ -54,7 +53,7 @@ export default function RecipeSearcher() {
                                 id="recipe-dropdown"
                                 options={recipes}
                                 sx={{ width: 300 }}
-                                renderInput={(params) => <TextField {...params} label="Recipe..." />}
+                                renderInput={(params) => <TextField {...params} label="Recipe" />}
                                 onChange={(event, value) => setName(value)}
                             />
                         </CardContent>

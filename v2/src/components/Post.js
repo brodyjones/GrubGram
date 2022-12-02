@@ -52,9 +52,9 @@ export default function Post({ post }) {
     <Card
       raised={true}
       sx={{ maxWidth: 500, ml: 20, mt: 3 }}>
-      <CardHeader
+      <CardHeader sx={{ my: -1 }}
         title={post.recipe}
-        titleTypographyProps={{ color: 'primary', variant: 'h6', fontFamily: 'monospace', fontSize: 25, fontWeight: 'bold' }}
+        titleTypographyProps={{ variant: 'h6' }}
         subheader={post.timestamp}
         avatar={<Button onClick={navSoc}><Avatar sx={{ width: 50, height: 50 }} src={profilePic}>
           {userFirstLetter}
@@ -62,10 +62,10 @@ export default function Post({ post }) {
       />
       <CardMedia
         component="img"
-        height="250"
+        height="300"
         image={post.image}
       />
-      <CardContent>
+      <CardContent sx={{ mb: -3 }}>
         <Typography variant="body2" color="text.secondary" sx={{ fontWeight: "bold" }}>
           {post.name}
         </Typography>
