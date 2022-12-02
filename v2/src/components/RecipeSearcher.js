@@ -36,7 +36,7 @@ export default function RecipeSearcher() {
     return (
         <div>
             <div className="rightcol">
-                <Card sx={{ maxWidth: 330, ml: 20, mt: 3 }} >
+                <Card sx={{ p: 2, maxWidth: 330, ml: 5, mt: 3 }} >
                     <Grid
                         container
                         direction="column"
