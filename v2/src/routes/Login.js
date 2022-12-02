@@ -44,7 +44,10 @@ export default function Login() {
         alignItems="center"
         justify="center"
       >
-        <Card sx={{ mt: 16, width: 324 }}>
+        <Card
+          raised={true}
+          sx={{ mt: 16, width: 324 }}
+        >
           <Grid
             container
             direction="column"

@@ -48,7 +48,7 @@ function Register() {
         alignItems="center"
         justify="center"
       >
-        <Card sx={{ mt: 12, width: 324 }}>
+        <Card raised={true} sx={{ mt: 12, width: 324 }}>
           <Grid
             container
             direction="column"

@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 const theme = createTheme({
     palette: {
         primary: {
-            main: red[600],
+            main: red[700],
         },
         secondary: {
             main: '#FFFFFF',
@@ -38,20 +38,20 @@ function Navbar() {
             setUserInfo(userSnap.data());
             setuserFirstLetter(userSnap.data().name[0])
         }
-    
+
         getUserInfo();
     }, [user]);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
-      };
-      const handleClose = () => {
+    };
+    const handleClose = () => {
         setAnchorEl(null);
-      };
-    
+    };
+
 
     return (
         <ThemeProvider theme={theme}>
-            <AppBar color="primary" position="static">
+            <AppBar raised={true} color="primary" position="static">
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
                         <FastfoodRoundedIcon color="secondary" sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -104,11 +104,11 @@ function Navbar() {
                         </Box>
 
                         <Button
-                        id="demo-positioned-button"
-                        aria-controls={open ? 'demo-positioned-menu' : undefined}
-                        aria-haspopup="true"
-                        aria-expanded={open ? 'true' : undefined}
-                        onClick={handleClick}
+                            id="demo-positioned-button"
+                            aria-controls={open ? 'demo-positioned-menu' : undefined}
+                            aria-haspopup="true"
+                            aria-expanded={open ? 'true' : undefined}
+                            onClick={handleClick}
                         ><Avatar src={userInfo.profilePic}>{userFirstLetter}</Avatar></Button>
                         <Menu
                             id="demo-positioned-menu"
@@ -117,18 +117,23 @@ function Navbar() {
                             open={open}
                             onClose={handleClose}
                             anchorOrigin={{
-                            vertical: 'top',
-                            horizontal: 'left',
+                                vertical: 'top',
+                                horizontal: 'left',
                             }}
                             transformOrigin={{
-                            vertical: 'top',
-                            horizontal: 'left',
+                                vertical: 'top',
+                                horizontal: 'left',
                             }}
                         >
                             <MenuItem onClick={() => {
                                 handleClose();
                                 logout();
                             }}>Logout</MenuItem>
+                            <MenuItem 
+                                sx={{ my: 2 }}
+                                color="secondary"
+                                href="/profile"
+                                >Profile</MenuItem>
                         </Menu>
 
                     </Toolbar>

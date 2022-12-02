@@ -6,6 +6,7 @@ import Recipes from "./routes/Recipes";
 import Profile from "./routes/Profile";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css"
+import Social from "./routes/Social"
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
           <Route path='/pantry' element={<Pantry />} />
           <Route path='/recipes' element={<Recipes />} />
           <Route path='/profile' element={<Profile />} />
+          <Route path='/social' element={<Social />} />
         </Routes>
       </div>
     </BrowserRouter>
