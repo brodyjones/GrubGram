@@ -3,11 +3,17 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { collection, doc, getDocs, query, updateDoc, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../firebase";
+import { useNavigate } from "react-router-dom";
 
 export default function Post({ post }) {
   const [url, setUrl] = useState("");
   const [profilePic, setProfilePic] = useState("");
   const [userFirstLetter, setuserFirstLetter] = useState("");
+  const navigate = useNavigate();
+
+  const navSoc = () => {
+    navigate('/social', {state: {post}});
+  }
 
   useEffect(() => {
     const getRecipe = async () => {
@@ -40,7 +46,9 @@ export default function Post({ post }) {
         title={post.recipe}
         titleTypographyProps={{variant:'h6' }}
         subheader={post.timestamp}
-        avatar={<Avatar sx={{ width: 50, height: 50 }} src={profilePic}>{userFirstLetter}</Avatar>}
+        avatar={<Button onClick={navSoc}><Avatar  sx={{ width: 50, height: 50 }} src={profilePic}>
+                  {userFirstLetter}
+                </Avatar></Button>}
       />
       <CardMedia
         component="img"
