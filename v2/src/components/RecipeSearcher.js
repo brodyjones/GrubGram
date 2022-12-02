@@ -19,9 +19,9 @@ export default function RecipeSearcher() {
         getRecipeObj();
     }, [name])
 
-    if (recipeObj == null) {
-        return (
-            <Card sx={{ maxWidth: 330, ml: 20, mt: 3 }} >
+    return (
+        <div>
+        <Card sx={{ maxWidth: 330, ml: 20, mt: 3 }} >
             <CardHeader
                 style={{ color: "red" }}
                 title="Search All Recipes"
@@ -37,31 +37,9 @@ export default function RecipeSearcher() {
                 />
             </CardContent>
         </Card>
-        );
-    } else {
-        return (
-            <div>
-            <Card sx={{ maxWidth: 330, ml: 20, mt: 3 }} >
-                <CardHeader
-                    style={{ color: "red" }}
-                    title="Search All Recipes"
-                />
-                <CardContent>
-                    <Autocomplete
-                        disablePortal
-                        id="recipe-dropdown"
-                        options={recipes}
-                        sx={{ width: 300 }}
-                        renderInput={(params) => <TextField {...params} label="Recipe..." />}
-                        onChange={(event, value) => setName(value)}
-                    />
-                </CardContent>
-            </Card>
-            <Recipe recipe={recipeObj}/>
-            </div>
-        );
-    }
-    
+        <Recipe recipe={recipeObj}/>
+        </div>
+    );
 }
 
 const recipes = [
