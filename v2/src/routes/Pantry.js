@@ -1,4 +1,4 @@
-import { Card, CardContent, Typography } from "@mui/material";
+import { Card, CardContent, Grid, Typography } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material";
 import { red } from "@mui/material/colors";
 import { addDoc, collection, doc, getDoc, getDocs, limit, query, where } from "firebase/firestore";
@@ -139,9 +139,16 @@ export default function Pantry() {
                 </div>
                 <div className="right">
                     <Card sx={{ mt: 3, mr: 3 }}>
-                        <CardContent>
-                            <Typography sx={{ fontWeight: 'bold' }} variant='h4'>Your Reccomended Recipies</Typography>
-                        </CardContent>
+                        <Grid
+                            container
+                            direction="column"
+                            alignItems="center"
+                            justify="center"
+                        >
+                            <CardContent>
+                                <Typography sx={{ mb: -1 }} color="primary" variant='h4'>Your Recommended Recipies</Typography>
+                            </CardContent>
+                        </Grid>
                     </Card>
                     {recipes.map((recipe) => {
                         return (
