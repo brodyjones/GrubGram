@@ -2,7 +2,19 @@ import { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db } from '../firebase';
 import { arrayRemove, arrayUnion, doc, updateDoc } from 'firebase/firestore';
-import { Autocomplete, Card, CardContent, CardHeader, CardActions, TextField, Button } from '@mui/material';
+import { Autocomplete, Card, CardContent, CardHeader, CardActions, TextField, Button, Grid, createTheme, ThemeProvider } from '@mui/material';
+import { red } from '@mui/material/colors';
+
+const theme = createTheme({
+    palette: {
+        primary: {
+            main: red[600],
+        },
+        secondary: {
+            main: '#FFFFFF',
+        },
+    },
+});
 
 export default function PantryManager() {
     const [ingredient, setIngredient] = useState("");
@@ -27,41 +39,54 @@ export default function PantryManager() {
     }
 
     return (
-        <Card raised={true} sx={{ maxWidth: 350, ml: 20, mt: 3 }}>
-            <CardHeader
-                title="Update Pantry"
-            />
-            <CardContent>
-                <Autocomplete
-                    disablePortal
-                    id="ingredient-dropdown"
-                    options={ingredientsList}
-                    sx={{ width: 300 }}
-                    renderInput={(params) => <TextField {...params} label="Ingredient..." />}
-                    onChange={(event, value) => setIngredient(value)}
-                />
-            </CardContent>
-            <CardActions sx={{ mb: 2 }}>
-                <Button
-                    variant="contained"
-                    onClick={() => { addIngredient(ingredient) }}
+        <ThemeProvider theme={theme}>
+            <Card raised={true} sx={{ maxWidth: 350, ml: 20, mt: 3 }}>
+                <Grid
+                    container
+                    direction="column"
+                    alignItems="center"
+                    justify="center"
                 >
-                    Add
-                </Button>
-                <Button
-                    variant="contained"
-                    onClick={() => { removeIngredient(ingredient) }}
-                >
-                    Remove
-                </Button>
-                <Button
-                    variant="contained"
-                    onClick={() => { clearPantry() }}
-                >
-                    Clear Pantry
-                </Button>
-            </CardActions>
-        </Card>
+                    <CardHeader
+                        sx={{ mb: -2 }}
+                        title="Update Pantry"
+                        titleTypographyProps={{
+                            fontSize: 26, color: red[600], fontFamily: 'monospace', fontWeight: 'bold'
+                        }}
+                    />
+                    <CardContent>
+                        <Autocomplete
+                            disablePortal
+                            id="ingredient-dropdown"
+                            options={ingredientsList}
+                            sx={{ width: 300 }}
+                            renderInput={(params) => <TextField {...params} label="Ingredient..." />}
+                            onChange={(event, value) => setIngredient(value)}
+                        />
+                    </CardContent>
+                    <CardActions sx={{ mb: 1 }}>
+                        <Button
+                            variant="contained"
+                            onClick={() => { addIngredient(ingredient) }}
+                        >
+                            Add
+                        </Button>
+                        <Button
+                            variant="contained"
+                            onClick={() => { removeIngredient(ingredient) }}
+                        >
+                            Remove
+                        </Button>
+                        <Button
+                            variant="contained"
+                            onClick={() => { clearPantry() }}
+                        >
+                            Clear Pantry
+                        </Button>
+                    </CardActions>
+                </Grid>
+            </Card>
+        </ThemeProvider>
     );
 }
 
