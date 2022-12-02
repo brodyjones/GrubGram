@@ -9,7 +9,7 @@ export default function Post({ post }) {
 
   useEffect(() => {
     const getRecipe = async () => {
-      const recipeDoc = doc(db, "recipe", post.recipe);
+      const recipeDoc = doc(db, "recipes", post.recipe);
       const docSnap = await getDoc(recipeDoc);
       console.log(docSnap.data().url);
       setUrl(docSnap.data().url);
@@ -34,11 +34,6 @@ export default function Post({ post }) {
         height="250"
         image={post.image}
       />
-      <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          {post.caption}
-        </Typography>
-      </CardContent>
       <CardActions>
         <IconButton onClick={() => {updateLikeCount(post.likes);}}>
             <FavoriteIcon/>
@@ -51,6 +46,11 @@ export default function Post({ post }) {
           {post.recipe}
         </Button>
       </CardActions>
+      <CardContent>
+        <Typography variant="body2" color="text.secondary">
+          {post.caption}
+        </Typography>
+      </CardContent>
     </Card>
   );
 }

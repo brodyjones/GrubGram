@@ -6,6 +6,7 @@ import Navbar from "../components/Navbar";
 import PostFeed from "../components/PostFeed";
 import { auth, db } from "../firebase";
 import ProfileCard from "../components/PofileCard";
+import './Profile.css'
 
 export default function Profile() {
     const [posts, setPosts] = useState([]);
@@ -30,8 +31,12 @@ export default function Profile() {
     return (
         <div>
             <Navbar />
-            <ProfileCard/>
-            <PostFeed posts={posts} />
+            <div className = "right">
+                <ProfileCard/>
+            </div>
+            <div className = "left">
+                <PostFeed posts={posts} />
+            </div>
         </div>
     );
 }

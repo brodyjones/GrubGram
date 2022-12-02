@@ -42,25 +42,24 @@ export default function ProfileCard() {
 
     return (
         <Card sx={{ maxWidth: 300, ml: 20, mt: 3 }}>
-            <CardHeader
-                title={userInfo.name}
+            <CardMedia
+                component="img"
+                height="250"
+                image={userInfo.profilePic}
             />
             <CardContent>
-                <TextField type={"file"}
+                <TextField type={"file"} variant="filled" size="small"
                     sx={{ mt: 1, mb: 1, width: 267 }}
                     id="filled-basic"
                     onChange={(event) => {
                         setImage(event.target.files[0]);
                     }}
                 />
-                <Button variant="contained" onClick={UploadProfile}>Update Profile</Button>
+                <br></br>
+                <br></br>
+                <Button variant="contained" onClick={UploadProfile}>Update Profile Picture</Button>
 
             </CardContent>
-            <CardMedia
-                component="img"
-                height="250"
-                image={userInfo.profilePic}
-            />
         </Card>
     );
 }
