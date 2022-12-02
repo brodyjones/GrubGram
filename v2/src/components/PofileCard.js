@@ -59,7 +59,7 @@ export default function ProfileCard() {
                     <FileUploadRoundedIcon />
                 </IconButton>
                 <Button variant="contained" component="label" onClick={UploadProfile}>
-                    Upload Image
+                    Update Profile Pic
                 </Button>
                 <br></br>
                 <br></br>

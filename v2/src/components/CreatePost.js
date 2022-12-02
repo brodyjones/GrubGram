@@ -72,7 +72,7 @@ export default function CreatePost() {
                         <FileUploadRounded />
                 </IconButton>
                 <Button variant="contained" component="label" onClick={initializeUserPost}>
-                    Upload Image
+                    Post!
                 </Button>
             </CardActions>
         </Card>
