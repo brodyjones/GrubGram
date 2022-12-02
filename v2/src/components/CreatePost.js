@@ -3,7 +3,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db, storage } from "../firebase";
 import { addDoc, collection, doc, getDoc } from "firebase/firestore";
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
-import { Autocomplete, Button, Card, CardActions, CardContent, CardHeader, TextField } from "@mui/material";
+import { Autocomplete, Button, Card, CardActions, CardContent, CardHeader, IconButton, TextField } from "@mui/material";
+import FileUploadRounded from "@mui/icons-material/FileUploadRounded";
 
 export default function CreatePost() {
     const [caption, setCaption] = useState("");
@@ -44,14 +45,6 @@ export default function CreatePost() {
         <Card sx={{ width: 300, mt: 3 }}>
             <CardHeader title="Create a Post"></CardHeader>
             <CardContent>
-                <TextField type='file'
-                    sx={{ mt: 1, mb: 1, width: 267 }}
-                    id="filled-basic"
-                    onChange={(event) => {
-                        setImage(event.target.files[0]);
-                    }}
-                />
-                <br></br>
                 <TextField
                     sx={{ mt: 1, mb: 1, width: 267 }}
                     id="filled-basic"
@@ -60,7 +53,6 @@ export default function CreatePost() {
                         setCaption(event.target.value);
                     }}
                 />
-                <br></br>
                 <Autocomplete
                     disablePortal
                     id="recipe-dropdown"
@@ -71,11 +63,17 @@ export default function CreatePost() {
                         setRecipe(value);
                     }}
                 />
-
-                <br></br>
             </CardContent>
             <CardActions>
-                <Button variant="contained" onClick={initializeUserPost}>Post</Button>
+                <IconButton color="primary" aria-label="upload picture" component="label" onChange={(event) => {
+                                setImage(event.target.files[0]);
+                            }}>
+                        <input hidden accept="image/*" type="file" />
+                        <FileUploadRounded />
+                </IconButton>
+                <Button variant="contained" component="label" onClick={initializeUserPost}>
+                    Post!
+                </Button>
             </CardActions>
         </Card>
     );

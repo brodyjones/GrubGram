@@ -1,6 +1,7 @@
 import { Button, Card, CardActions, CardContent, Typography } from "@mui/material";
 
 export default function Recipe({ recipe }) {
+  if (!recipe) return;
   return (
     <Card sx={{ width: 850, ml: 1 }}>
       <CardContent>
@@ -27,6 +28,7 @@ export default function Recipe({ recipe }) {
       <CardActions>
         <Button
           varaint="contained"
+          onClick={() => { window.open(recipe.url, '_blank') }}
         >
           Go To Website
         </Button>

@@ -1,15 +1,17 @@
-import { Button, Card, CardContent, CardHeader, CardMedia, TextField } from "@mui/material";
+import { Button, Card, CardContent, CardHeader, CardMedia } from "@mui/material";
 import { useEffect, useState } from "react";
 import { auth, db, storage } from "../firebase";
-import { addDoc, doc, getDoc, setDoc, updateDoc } from 'firebase/firestore'
+import { doc, getDoc, updateDoc } from 'firebase/firestore'
 import { useAuthState } from "react-firebase-hooks/auth";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import IconButton from '@mui/material/IconButton';
+import FileUploadRoundedIcon from '@mui/icons-material/FileUploadRounded';
+import './ProfileCard.css'
 
 export default function ProfileCard() {
     const [userInfo, setUserInfo] = useState([]);
     const [user] = useAuthState(auth);
     const [image, setImage] = useState(null);
-    const [imageLink, setImageLink] = useState("");
 
     useEffect(() => {
         const getUserInfo = async () => {
@@ -27,7 +29,6 @@ export default function ProfileCard() {
         uploadBytes(imageRef, image);
         getDownloadURL(ref(storage, `images/${image.name}`))
             .then((url) => {
-                setImageLink(url);
                 updateUserLink(url);
             })
     }
@@ -41,24 +42,25 @@ export default function ProfileCard() {
 
 
     return (
-        <Card sx={{ maxWidth: 300, ml: 20, mt: 3 }}>
+        <Card sx={{ maxWidth: 275, ml: 20, mt: 3 }}>
+            <CardHeader title={userInfo.name}>
+            </CardHeader>
             <CardMedia
                 component="img"
                 height="250"
                 image={userInfo.profilePic}
+                className="image"
             />
             <CardContent>
-                <TextField type={"file"} variant="filled" size="small"
-                    sx={{ mt: 1, mb: 1, width: 267 }}
-                    id="filled-basic"
-                    onChange={(event) => {
-                        setImage(event.target.files[0]);
-                    }}
-                />
-                <br></br>
-                <br></br>
-                <Button variant="contained" onClick={UploadProfile}>Update Profile Picture</Button>
-
+                <IconButton color="primary" aria-label="upload picture" component="label" onChange={(event) => {
+                            setImage(event.target.files[0]);
+                        }}>
+                    <input hidden accept="image/*" type="file" />
+                    <FileUploadRoundedIcon />
+                </IconButton>
+                <Button variant="contained" component="label" onClick={UploadProfile}>
+                    Update Profile Pic
+                </Button>
             </CardContent>
         </Card>
     );

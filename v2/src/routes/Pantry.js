@@ -1,4 +1,4 @@
-import { addDoc, collection, getDocs, limit, query } from "firebase/firestore";
+import { addDoc, collection, doc, getDoc, getDocs, limit, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
@@ -7,7 +7,10 @@ import PantryList from "../components/PantryList";
 import PantryManager from "../components/PantryManager";
 import Recipe from "../components/Recipe";
 import { auth, db } from "../firebase";
+import { parse_recipes } from "../scripts/parse_recipes";
 import "./Pantry.css";
+
+
 
 export default function Pantry() {
     const [recipes, setRecipes] = useState([]);
@@ -18,8 +21,12 @@ export default function Pantry() {
         if (loading) return;
         if (!user) navigate("/");
         const getRecipes = async () => {
+            const docRef = doc(db, "users", user?.uid);
+            const docSnap = await getDoc(docRef);
+            const pantry = docSnap.data().pantry;
+            const top5 = parse_recipes(pantry);
             const recipesRef = collection(db, "recipes");
-            const q = query(recipesRef, limit(5));
+            const q = query(recipesRef, where("name", "in", top5));
             const querySnapshot = await getDocs(q);
             const data = querySnapshot.docs.map((doc) => (doc.data()));
             setRecipes(data);
@@ -28,14 +35,14 @@ export default function Pantry() {
     }, [loading, user, navigate]);
 
     const writeRecipes = async () => {
-        var i = 0;
-        var nameFlag = false;
+        var i = 1;
+        var nameFlag = true;
         var ingredientFlag = false;
         var preparationFlag = false;
         var preparation = "";
         var name = "";
         var ingredients = []
-        var url = "";
+        var url = recipeList[0];
 
         while (i != recipeList.length) {
             const line = recipeList[i];

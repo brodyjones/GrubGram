@@ -1,20 +1,31 @@
-import { Button, Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, Typography } from "@mui/material";
+import { Avatar, Button, Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, Typography } from "@mui/material";
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { collection, doc, getDocs, query, updateDoc, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../firebase";
 
 export default function Post({ post }) {
   const [url, setUrl] = useState("");
+  const [profilePic, setProfilePic] = useState("");
+  const [userFirstLetter, setuserFirstLetter] = useState("");
 
   useEffect(() => {
     const getRecipe = async () => {
-      const recipeDoc = doc(db, "recipes", post.recipe);
-      const docSnap = await getDoc(recipeDoc);
-      console.log(docSnap.data().url);
-      setUrl(docSnap.data().url);
+      const recipesRef = collection(db, "recipes");
+      const q = query(recipesRef, where("name", "==", post.recipe));
+      const querySnapshot = await getDocs(q);
+      setUrl(querySnapshot.docs[0].data().url);
     }
 
+    const getProfilePic = async () => {
+      const usersRef = collection(db, "users");
+      const q = query(usersRef, where("name", "==", post.name));
+      const querySnapshot = await getDocs(q);
+      setProfilePic(querySnapshot.docs[0].data().profilePic);
+      setuserFirstLetter(querySnapshot.docs[0].data().name[0])
+    }
+
+    getProfilePic();
     getRecipe();
   }, []);
 
@@ -26,31 +37,36 @@ export default function Post({ post }) {
   return (
     <Card sx={{ maxWidth: 500, ml: 20, mt: 3 }}>
       <CardHeader
-        title={post.name}
+        title={post.recipe}
+        titleTypographyProps={{variant:'h6' }}
         subheader={post.timestamp}
+        avatar={<Avatar sx={{ width: 50, height: 50 }} src={profilePic}>{userFirstLetter}</Avatar>}
       />
       <CardMedia
         component="img"
         height="250"
         image={post.image}
       />
-      <CardActions>
-        <IconButton onClick={() => {updateLikeCount(post.likes);}}>
-            <FavoriteIcon/>
-        </IconButton>
-        <Typography sx={{mr:20}}>{post.likes}</Typography>
-        <Button
-          variant="contained"
-          onClick={() => { window.open(url, '_blank') }}
-        >
-          {post.recipe}
-        </Button>
-      </CardActions>
       <CardContent>
+        <Typography variant="body2" color="text.secondary" sx={{ fontWeight: "bold"}}>
+          {post.name}: 
+        </Typography>
         <Typography variant="body2" color="text.secondary">
           {post.caption}
         </Typography>
       </CardContent>
+      <CardActions>
+        <IconButton onClick={() => {updateLikeCount(post.likes);}}>
+            <FavoriteIcon/>
+        </IconButton>
+        <Typography sx={{ mr:34 }}>{post.likes}</Typography>
+        <Button
+          variant="contained"
+          onClick={() => { window.open(url, '_blank') }}
+        >
+          GO TO WEBSITE
+        </Button>
+      </CardActions>
     </Card>
   );
 }
