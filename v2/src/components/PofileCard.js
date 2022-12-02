@@ -1,4 +1,4 @@
-import { Avatar, Button, Card, CardContent, CardHeader, CardMedia, createTheme, Grid, Snackbar, ThemeProvider } from "@mui/material";
+import { Avatar, Button, Card, CardContent, CardHeader, createTheme, Grid, Snackbar, ThemeProvider } from "@mui/material";
 import { forwardRef, useEffect, useState } from "react";
 import { auth, db, storage } from "../firebase";
 import { doc, getDoc, updateDoc } from 'firebase/firestore'
