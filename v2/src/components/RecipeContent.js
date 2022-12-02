@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 
 export default function RecipeContent({ recipe }) {
     if (!recipe) return;
@@ -20,6 +20,12 @@ export default function RecipeContent({ recipe }) {
             <Typography variant="body2">
                 {recipe.preparation}
             </Typography>
+            <Button
+                variant="contained"
+                onClick={() => { window.open(recipe.url, '_blank') }}
+            >
+                GO TO WEBSITE
+            </Button>
         </div>
     );
 }
