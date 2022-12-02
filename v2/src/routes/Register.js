@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { auth, createUserWithEmailAndPassword, db } from "../firebase";
 import { doc, setDoc } from "firebase/firestore";
 import { Avatar, Button, Card, CardActions, CardContent, CardHeader, createTheme, Grid, TextField, ThemeProvider } from "@mui/material";
-import { red } from "@mui/material/colors";
 import FastfoodRoundedIcon from "@mui/icons-material/FastfoodRounded";
+import { red } from "@mui/material/colors";
 
 const theme = createTheme({
   palette: {
@@ -58,7 +58,7 @@ function Register() {
             <CardHeader
               sx={{ mt: 3 }}
               avatar={
-                <Avatar sx={{ mr: -1, color: red[600], bgcolor: '#FFFFFF' }}>
+                <Avatar sx={{ mr: -1, color: red[500], bgcolor: '#FFFFFF' }}>
                   <FastfoodRoundedIcon sx={{ fontSize: 37 }} />
                 </Avatar>
               }
@@ -92,14 +92,13 @@ function Register() {
           </CardContent>
           <CardActions sx={{ ml: 3.5 }}>
             <Button
-              sx={{ bgcolor: 'primary' }}
               variant="contained"
               onClick={() => registerWithEmailAndPassword(name, email, password)}
             >
               Create Account
             </Button>
             <Button
-              sx={{ ml: 1, color: 'primary' }}
+              sx={{ ml: 1 }}
               href="/"
               variant="outlined"
             >

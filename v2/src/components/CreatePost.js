@@ -3,25 +3,13 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db, storage } from "../firebase";
 import { addDoc, collection, doc, getDoc } from "firebase/firestore";
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
-import { Autocomplete, Button, Card, CardActions, CardContent, CardHeader, createTheme, Grid, IconButton, Snackbar, TextField, ThemeProvider} from "@mui/material";
+import { Autocomplete, Button, Card, CardActions, CardContent, CardHeader, Grid, IconButton, Snackbar, TextField } from "@mui/material";
 import FileUploadRounded from "@mui/icons-material/FileUploadRounded";
-import { red } from "@mui/material/colors";
 import MuiAlert from '@mui/material/Alert';
-
-const theme = createTheme({
-    palette: {
-        primary: {
-            main: red[600],
-        },
-        secondary: {
-            main: '#FFFFFF',
-        },
-    },
-});
 
 const Alert = forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={10} ref={ref} variant="filled" {...props} />;
-  });
+});
 
 export default function CreatePost() {
     const [caption, setCaption] = useState("");
@@ -29,20 +17,20 @@ export default function CreatePost() {
     const [user] = useAuthState(auth);
     const [image, setImage] = useState(null);
     const [open, setOpen] = useState(false);
-    
+
 
     const handleChange = () => {
         setOpen(true);
     };
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
-          return;
+            return;
         }
-    
-        setOpen(false);
-      };
 
-      
+        setOpen(false);
+    };
+
+
     const initializeUserPost = async () => {
         if (!image || !caption || !recipe) return;
         console.log(3);
@@ -73,65 +61,60 @@ export default function CreatePost() {
     }
 
     return (
-        <ThemeProvider theme={theme}>
-            <Card raised={true} sx={{ width: 300, mt: 3 }}>
-                <Grid
-                    container
-                    direction="column"
-                    alignItems="center"
-                    justify="center"
+        <Card raised={true} sx={{ width: 300, mt: 3 }}>
+            <Grid
+                container
+                direction="column"
+                alignItems="center"
+                justify="center"
+            >
+                <CardHeader
+                    sx={{ mb: -3 }}
+                    title="Create a Post"
+                    titleTypographyProps={{ fontSize: 26, color: 'primary', fontFamily: 'monospace', fontWeight: 'bold' }}
                 >
-                    <CardHeader
-                        sx={{ mb: -3 }}
-                        title="Create a Post"
-                        titleTypographyProps={{ fontSize: 26, color: 'primary', fontFamily: 'monospace', fontWeight: 'bold' }}
-                    >
-                    </CardHeader>
-                </Grid>
-                <CardContent>
-                    <TextField
-                        sx={{ mt: 1, width: 267 }}
-                        id="filled-basic"
-                        label='Caption...'
-                        onChange={(event) => {
-                            setCaption(event.target.value);
-                        }}
-                    />
-                    <Autocomplete
-                        disablePortal
-                        id="recipe-dropdown"
-                        options={recipeNames}
-                        sx={{ mt: 1, mb: -1, width: 267 }}
-                        renderInput={(params) => <TextField {...params} label="Recipe..." />}
-                        onChange={(event, value) => {
-                            setRecipe(value);
-                        }}
-                    />
-                </CardContent>
-                <CardActions sx={{ ml: 5 }}>
-                    <IconButton sx={{ color: red[500] }} color="primary" aria-label="upload picture" component="label" onChange={(event) => {
-                        setImage(event.target.files[0]);
-                        handleChange();
-                    }}>
-                        <input hidden accept="image/*" type="file" />
-                        <FileUploadRounded />
-                    </IconButton>
-                    <Button sx={{ bgcolor: red[500] }} variant="contained" component="label" onClick={() => {
-                        initializeUserPost();
-                    }}>
-                        Post To Feed
-                    </Button>
-                    <Snackbar anchorOrigin={{vertical:'bottom', horizontal:'right'}} open={open} autoHideDuration={6000} onClose={handleClose}>
-                        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                </CardHeader>
+            </Grid>
+            <CardContent>
+                <TextField
+                    sx={{ mt: 1, width: 267 }}
+                    id="filled-basic"
+                    label='Caption...'
+                    onChange={(event) => {
+                        setCaption(event.target.value);
+                    }}
+                />
+                <Autocomplete
+                    disablePortal
+                    id="recipe-dropdown"
+                    options={recipeNames}
+                    sx={{ mt: 1, mb: -1, width: 267 }}
+                    renderInput={(params) => <TextField {...params} label="Recipe..." />}
+                    onChange={(event, value) => {
+                        setRecipe(value);
+                    }}
+                />
+            </CardContent>
+            <CardActions sx={{ ml: 5 }}>
+                <IconButton aria-label="upload picture" component="label" onChange={(event) => {
+                    setImage(event.target.files[0]);
+                    handleChange();
+                }}>
+                    <input hidden accept="image/*" type="file" />
+                    <FileUploadRounded />
+                </IconButton>
+                <Button variant="contained" component="label" onClick={() => {
+                    initializeUserPost();
+                }}>
+                    Post To Feed
+                </Button>
+                <Snackbar anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} open={open} autoHideDuration={6000} onClose={handleClose}>
+                    <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
                         Uploaded Image!
-                        </Alert>
-                    </Snackbar>
-
-
-
-                </CardActions>
-            </Card>'
-        </ThemeProvider>
+                    </Alert>
+                </Snackbar>
+            </CardActions>
+        </Card>
     );
 }
 

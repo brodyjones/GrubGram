@@ -1,4 +1,6 @@
 import { Card, CardContent, Typography } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material";
+import { red } from "@mui/material/colors";
 import { addDoc, collection, doc, getDoc, getDocs, limit, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -11,7 +13,16 @@ import { auth, db } from "../firebase";
 import { parse_recipes } from "../scripts/parse_recipes";
 import "./Pantry.css";
 
-
+const theme = createTheme({
+    palette: {
+        primary: {
+            main: red[600],
+        },
+        secondary: {
+            main: '#FFFFFF',
+        },
+    },
+});
 
 export default function Pantry() {
     const [recipes, setRecipes] = useState([]);
@@ -119,25 +130,27 @@ export default function Pantry() {
     }
 
     return (
-        <div>
-            <Navbar />
-            <div className="left">
-                <PantryManager />
-                <PantryList />
+        <ThemeProvider theme={theme}>
+            <div>
+                <Navbar />
+                <div className="left">
+                    <PantryManager />
+                    <PantryList />
+                </div>
+                <div className="right">
+                    <Card sx={{ mt: 3, mr: 3 }}>
+                        <CardContent>
+                            <Typography sx={{ fontWeight: 'bold' }} variant='h4'>Your Reccomended Recipies</Typography>
+                        </CardContent>
+                    </Card>
+                    {recipes.map((recipe) => {
+                        return (
+                            <Recipe recipe={recipe} />
+                        );
+                    })}
+                </div>
             </div>
-            <div className="right">
-                <Card sx={{ mt: 3, mr: 3 }}>
-                    <CardContent>
-                        <Typography sx={{ fontWeight: 'bold' }} variant='h4'>Your Reccomended Recipies</Typography>
-                    </CardContent>
-                </Card>
-                {recipes.map((recipe) => {
-                    return (
-                        <Recipe recipe={recipe} />
-                    );
-                })}
-            </div>
-        </div>
+        </ThemeProvider>
     );
 }
 

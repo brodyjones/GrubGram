@@ -57,8 +57,9 @@ export default function Login() {
             <CardHeader
               sx={{ mt: 3 }}
               avatar={
-                <Avatar sx={{ mr: -1, color: red[600], bgcolor: '#FFFFFF' }}>
-                  <FastfoodRoundedIcon sx={{ fontSize: 37 }} />
+                <Avatar sx={{ mr: -1, color: red[500], bgcolor: '#FFFFFF' }}>
+                  <FastfoodRoundedIcon
+                    sx={{ fontSize: 37 }} />
                 </Avatar>
               }
               titleTypographyProps={{ fontWeight: 'bold', color: 'primary', fontSize: 35, variant: 'h4', fontFamily: 'monospace' }}
@@ -83,14 +84,13 @@ export default function Login() {
             </CardContent>
             <CardActions>
               <Button
-                sx={{ bgcolor: 'primary' }}
                 variant="contained"
                 onClick={() => logInWithEmailAndPassword(email, password)}
               >
                 Login
               </Button>
               <Button
-                sx={{ ml: 1, color: 'primary' }}
+                sx={{ ml: 1 }}
                 href="/register"
                 variant="outlined"
               >

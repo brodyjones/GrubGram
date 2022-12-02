@@ -1,4 +1,4 @@
-import { Avatar, Card, CardHeader, Grid } from "@mui/material";
+import { Avatar, Card, CardHeader, createTheme, Grid, ThemeProvider } from "@mui/material";
 import { red } from "@mui/material/colors";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
@@ -8,6 +8,17 @@ import Navbar from "../components/Navbar";
 import PostFeed from "../components/PostFeed";
 import { auth, db } from "../firebase";
 import './Profile.css'
+
+const theme = createTheme({
+    palette: {
+        primary: {
+            main: red[600],
+        },
+        secondary: {
+            main: '#FFFFFF',
+        },
+    },
+});
 
 export default function Social() {
     const location = useLocation();
@@ -52,10 +63,10 @@ export default function Social() {
                         direction="column"
                         alignItems="center"
                         justify="center">
-                        <CardHeader title={userSoc.name} titleTypographyProps={{
-                            fontSize: 26, color: red[600], fontFamily: 'monospace', fontWeight: 'bold'
+                        <CardHeader title={user.name} titleTypographyProps={{
+                            fontSize: 26, color: 'primary', fontFamily: 'monospace', fontWeight: 'bold'
                         }} />
-                        <Avatar sx={{ mb: 3, height: 200, width: 200 }} src={userSoc.profilePic} />
+                        <Avatar sx={{ mb: 3, height: 200, width: 200 }} src={user.profilePic} />
                     </Grid>
                 </Card>
             </div>
