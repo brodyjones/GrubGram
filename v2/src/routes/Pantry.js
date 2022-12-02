@@ -35,8 +35,12 @@ export default function Pantry() {
             const docRef = doc(db, "users", user?.uid);
             const docSnap = await getDoc(docRef);
             const pantry = docSnap.data().pantry;
+            console.log(pantry);
             const top5 = parse_recipes(pantry);
-            console.log(top5);
+            var temp = 5;
+            if (pantry.length == 0) {
+                temp = 0;
+            }
             const recipesRef = collection(db, "recipes");
             const q = query(recipesRef, where("name", "in", top5));
             const querySnapshot = await getDocs(q);
@@ -44,7 +48,7 @@ export default function Pantry() {
 
             const sortedData = [];
 
-            for (var i = 0; i < 5; i++) {
+            for (var i = 0; i < temp; i++) {
                 for (var j = 0; j < 5; j++) {
                     if (data[j].name == top5[i]) {
                         sortedData.push(data[j]);

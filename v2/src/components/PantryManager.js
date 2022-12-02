@@ -14,12 +14,6 @@ export default function PantryManager() {
         window.location.reload(false);
     }
 
-    const removeIngredient = async (ingredient) => {
-        const docRef = doc(db, "users", user?.uid);
-        await updateDoc(docRef, { pantry: arrayRemove(ingredient) });
-        window.location.reload(false);
-    }
-
     const clearPantry = async () => {
         const docRef = doc(db, "users", user?.uid);
         await updateDoc(docRef, { pantry: [] });
@@ -27,52 +21,51 @@ export default function PantryManager() {
     }
 
     return (
-        <Card raised={true} sx={{ maxWidth: 350, ml: 20, mt: 3 }}>
-            <Grid
-                container
-                direction="column"
-                alignItems="center"
-                justify="center"
-            >
-                <CardHeader
-                    sx={{ mb: -2 }}
-                    title="Update Pantry"
-                    titleTypographyProps={{
-                        fontSize: 26, color: 'primary', fontFamily: 'monospace', fontWeight: 'bold'
-                    }}
-                />
-                <CardContent>
-                    <Autocomplete
-                        disablePortal
-                        id="ingredient-dropdown"
-                        options={ingredientsList}
-                        sx={{ width: 300 }}
-                        renderInput={(params) => <TextField {...params} label="Ingredient..." />}
-                        onChange={(event, value) => setIngredient(value)}
+        <ThemeProvider theme={theme}>
+            <Card raised={true} sx={{ maxWidth: 350, ml: 20, mt: 3 }}>
+                <Grid
+                    container
+                    direction="column"
+                    alignItems="center"
+                    justify="center"
+                >
+                    <CardHeader
+                        sx={{ mb: -2 }}
+                        title="Update Pantry"
+                        titleTypographyProps={{
+                            fontSize: 26, color: red[600], fontFamily: 'monospace', fontWeight: 'bold'
+                        }}
                     />
-                </CardContent>
-                <CardActions sx={{ mb: 1 }}>
-                    <Button
-                        variant="contained"
-                        onClick={() => { addIngredient(ingredient) }}
-                    >
-                        Add
-                    </Button>
-                    <Button
-                        variant="contained"
-                        onClick={() => { removeIngredient(ingredient) }}
-                    >
-                        Remove
-                    </Button>
-                    <Button
-                        variant="contained"
-                        onClick={() => { clearPantry() }}
-                    >
-                        Clear Pantry
-                    </Button>
-                </CardActions>
-            </Grid>
-        </Card>
+                    <CardContent>
+                        <Autocomplete
+                            disablePortal
+                            id="ingredient-dropdown"
+                            options={ingredientsList}
+                            sx={{ width: 300 }}
+                            renderInput={(params) => <TextField {...params} label="Ingredient..." />}
+                            onChange={(event, value) => setIngredient(value)}
+                        />
+                    </CardContent>
+                    <CardActions sx={{ mb: 1 }}>
+                        <Button
+                            variant="contained"
+                            onClick={() => {
+                                if (!ingredient) return;
+                                addIngredient(ingredient);
+                            }}
+                        >
+                            Add
+                        </Button>
+                        <Button
+                            variant="contained"
+                            onClick={() => { clearPantry() }}
+                        >
+                            Clear Pantry
+                        </Button>
+                    </CardActions>
+                </Grid>
+            </Card>
+        </ThemeProvider>
     );
 }
 
