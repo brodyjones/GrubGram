@@ -37,17 +37,12 @@ export default function Pantry() {
             const docSnap = await getDoc(docRef);
             const pantry = docSnap.data().pantry;
             const top7 = parse_recipes(pantry);
-            var temp = 7;
-            if (pantry.length == 0) {
-                temp = 0;
-            }
             const recipesRef = collection(db, "recipes");
             const q = query(recipesRef, where("name", "in", top7));
             const querySnapshot = await getDocs(q);
             const data = querySnapshot.docs.map((doc) => (doc.data()));
-
             const sortedData = [];
-
+            const temp = (pantry.length == 0) ? 0 : 7;
             for (var i = 0; i < temp; i++) {
                 for (var j = 0; j < 7; j++) {
                     if (data[j].name == top7[i]) {
