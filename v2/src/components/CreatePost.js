@@ -96,7 +96,7 @@ export default function CreatePost() {
                 />
             </CardContent>
             <CardActions sx={{ ml: 5 }}>
-                <IconButton aria-label="upload picture" component="label" onChange={(event) => {
+                <IconButton color="primary" aria-label="upload picture" component="label" onChange={(event) => {
                     setImage(event.target.files[0]);
                     handleChange();
                 }}>
@@ -114,7 +114,7 @@ export default function CreatePost() {
                     </Alert>
                 </Snackbar>
             </CardActions>
-        </Card>
+        </Card >
     );
 }
 

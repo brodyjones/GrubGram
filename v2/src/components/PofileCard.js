@@ -78,7 +78,7 @@ export default function ProfileCard() {
                 />
             </Grid>
             <CardContent>
-                <IconButton aria-label="upload picture" component="label" onChange={(event) => {
+                <IconButton color="primary" aria-label="upload picture" component="label" onChange={(event) => {
                     setImage(event.target.files[0]);
                     handleChange();
                 }}>

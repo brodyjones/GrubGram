@@ -75,6 +75,7 @@ export default function Post({ post }) {
       </CardContent>
       <CardActions>
         <IconButton
+          color="primary"
           onClick={() => { updateLikeCount(post.likes); }}>
           <FavoriteIcon />
         </IconButton>

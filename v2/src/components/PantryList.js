@@ -42,7 +42,7 @@ export default function PantryList() {
                     {pantry.map((ingredient) => {
                         return (
                             <Typography variant="h6">
-                                <IconButton onClick={() => (removeIngredient(ingredient))}><DeleteIcon></DeleteIcon></IconButton>
+                                <IconButton sx={{ ml: -3 }} color="primary" onClick={() => (removeIngredient(ingredient))}><DeleteIcon></DeleteIcon></IconButton>
                                 {ingredient}
                             </Typography>
                         );
