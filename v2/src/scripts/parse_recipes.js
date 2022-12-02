@@ -1,5 +1,4 @@
-
-recipe_list = [
+const recipe_list = [
     "https://cookbooks.com/Recipe-Details.aspx?id=8",
     "ROCKY ROAD CAKE",
     "ingredients",
@@ -2574,7 +2573,7 @@ recipe_list = [
     "Meanwhile, in a saucepan, sauté onion and garlic in butter until tender. Stir in flour and pepper until blended. Gradually add milk and bouillon. Bring to a boil. Cook and stir for 2 minutes or until thickened. Reduce heat. Stir in Parmesan cheese. Spread over hot crust. Sprinkle with bacon, Monterey Jack cheese and green onions. Bake at 425° for 8 to 12 minutes or until cheese is melted. Let stand for 5 minutes before cutting. Yield: 4 to 6 servings.",
     "",
     "https://cookbooks.com/Recipe-Details.aspx?id=9260",
-    "BAKED CHICKEN SUPREME",	
+    "BAKED CHICKEN SUPREME",
     "ingredients",
     "4 c. cooked, cut up chicken",
     "4 c. thinly sliced celery",
@@ -2605,15 +2604,12 @@ recipe_list = [
 class Recipe {
     constructor(name, ingredients, preparation, url) {
         this.name = name;
-        this.ingredients = ingredients; 
+        this.ingredients = ingredients;
         this.preparation = preparation;
         this.url = url;
         this.hits = 0;
     }
 }
-
-
-
 
 var recipes = [];
 
@@ -2627,28 +2623,28 @@ var name = "";
 var ings = []
 var url = "";
 while (i != recipe_list.length) {
-    line = recipe_list[i];
-    if(line == "preparation"){
+    const line = recipe_list[i];
+    if (line == "preparation") {
         ingredient_flag = false;
     }
-    if (line[0] == "h" && 
+    if (line[0] == "h" &&
         line[1] == "t" &&
         line[2] == "t" &&
         line[3] == "p") {
         prep_flag = false;
     }
-    if (name_flag){
+    if (name_flag) {
         name = line;
         name_flag = false;
     }
     if (ingredient_flag) {
         ings.push(line)
     }
-    if(prep_flag){
+    if (prep_flag) {
         prep += line;
         prep += '\n';
     }
-    if (line[0] == "h" && 
+    if (line[0] == "h" &&
         line[1] == "t" &&
         line[2] == "t" &&
         line[3] == "p") {
@@ -2659,10 +2655,10 @@ while (i != recipe_list.length) {
         prep = "";
         name_flag = true;
     }
-    if(line == 'ingredients'){
+    if (line == 'ingredients') {
         ingredient_flag = true;
     }
-    if (line == "preparation"){
+    if (line == "preparation") {
         prep_flag = true;
     }
     i += 1;
@@ -2679,13 +2675,13 @@ function searchRecipe(ingredient, recipe) {
 
 function countHits(pantry) {
     var i = 0;
-    while(i != recipes.length){
+    while (i != recipes.length) {
         var j = 0;
-        while(j != pantry.length){
+        while (j != pantry.length) {
             var k = 0;
-            while(k != recipes[i].ingredients.length){
+            while (k != recipes[i].ingredients.length) {
                 var flag = searchRecipe(pantry[j], recipes[i].ingredients[k])
-                if(flag){
+                if (flag) {
                     recipes[i].hits += 1;
                 }
                 k += 1;
@@ -2699,8 +2695,8 @@ function countHits(pantry) {
 function find_min(values, index) {
     var min = 0
     var i = 1
-    while (i != index.length){
-        if(values[index[i]].hits < values[index[min]].hits){
+    while (i != index.length) {
+        if (values[index[i]].hits < values[index[min]].hits) {
             min = i;
         }
         i += 1;
@@ -2710,14 +2706,14 @@ function find_min(values, index) {
 
 
 function top_five(arr) {
-    if(arr.length < 5){
+    if (arr.length < 5) {
         return;
     }
     var index = [0, 1, 2, 3, 4];
     var i = 5;
-    while (i != arr.length){
-        min = find_min(arr, index);
-        if(arr[i].hits > arr[index[min]].hits) {
+    while (i != arr.length) {
+        var min = find_min(arr, index);
+        if (arr[i].hits > arr[index[min]].hits) {
             index[min] = i;
         }
         i += 1;
@@ -2725,12 +2721,12 @@ function top_five(arr) {
     return index;
 }
 
-function parse_recipes(pantry){
+export function parse_recipes(pantry) {
     countHits(pantry);
     const top = top_five(recipes);
     var i = 0;
     var final = []
-    while(i != top.length){
+    while (i != top.length) {
         final.push(recipes[top[i]].name);
         i += 1;
     }
