@@ -1,6 +1,7 @@
-import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import PostFeed from "../components/PostFeed";
 import { auth, db } from "../firebase";
@@ -8,9 +9,13 @@ import ProfileCard from "../components/PofileCard";
 
 export default function Profile() {
     const [posts, setPosts] = useState([]);
-    const [user] = useAuthState(auth);
+    const [user, loading] = useAuthState(auth);
+    const navigate = useNavigate();
+
 
     useEffect(() => {
+        if (loading) return;
+        if (!user) navigate("/");
         const getPosts = async () => {
             const postsRef = collection(db, "posts");
             const q = query(postsRef, where("uid", "==", user?.uid));
@@ -19,7 +24,8 @@ export default function Profile() {
             setPosts(data);
         }
         getPosts();
-    }, [user]);
+    }, [user, loading, navigate]);
+
 
     return (
         <div>
