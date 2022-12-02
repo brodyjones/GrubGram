@@ -1,11 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { auth, createUserWithEmailAndPassword, db } from "../firebase";
 import "./Register.css";
-import GrubGram from '../assests/GrubGram.png';
 import { doc, setDoc } from "firebase/firestore";
+import { Avatar, Button, Card, CardActions, CardContent, CardHeader, createTheme, Grid, TextField, ThemeProvider } from "@mui/material";
+import { red } from "@mui/material/colors";
+import FastfoodRoundedIcon from "@mui/icons-material/FastfoodRounded";
 
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: red[600],
+    },
+    secondary: {
+      main: '#FFFFFF',
+    },
+  },
+});
 
 function Register() {
   const [email, setEmail] = useState("");
@@ -30,25 +42,75 @@ function Register() {
   };
 
   return (
-    <div className='registerpage'>
-      <div className='title'>
-        <div className='title_container'>
-          <h1>Welcome To GrubGram</h1>
-        </div>
-        <img src={GrubGram} alt='' height='100' width='100' />
-      </div>
-      <div className="register">
-        <div className="register_container">
-          <input type="text" className="register_textBox" value={name} onChange={(event) => setName(event.target.value)} placeholder="Full Name" />
-          <input type="text" className="register_textBox" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="E-mail Address" />
-          <input type="password" className="register_textBox" value={password} onChange={(event) => setPassword(event.target.value)} placeholder="Password" />
-          <button className="register_btn" onClick={() => registerWithEmailAndPassword(name, email, password)}>Register</button>
-          <div>
-            Already have an account? <Link to="/">Login</Link> now.
-          </div>
-        </div>
-      </div>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Grid
+        container
+        direction="column"
+        alignItems="center"
+        justify="center"
+      >
+        <Card sx={{ mt: 12, width: 324 }}>
+          <Grid
+            container
+            direction="column"
+            alignItems="center"
+            justify="center"
+          >
+            <CardHeader
+              sx={{ mt: 3 }}
+              avatar={
+                <Avatar sx={{ mr: -1, color: red[600], bgcolor: '#FFFFFF' }}>
+                  <FastfoodRoundedIcon sx={{ fontSize: 37 }} />
+                </Avatar>
+              }
+              titleTypographyProps={{ fontWeight: 'bold', color: 'primary', fontSize: 35, variant: 'h4', fontFamily: 'monospace' }}
+              title="GrubGram"
+              style={{ align: 'center' }}
+            />
+          </Grid>
+          <CardContent sx={{ mt: 2, mx: 2 }}>
+            <TextField
+              sx={{ mb: 1, width: 260 }}
+              onChange={(event) => setName(event.target.value)}
+              label="Full Name"
+              type={'text'}
+              id="filled-basic"
+            />
+            <TextField
+              sx={{ width: 260 }}
+              onChange={(event) => setEmail(event.target.value)}
+              label="E-mail Address"
+              type={'text'}
+              id="filled-basic"
+            /><br />
+            <TextField
+              sx={{ mt: 1, width: 260 }}
+              onChange={(event) => setPassword(event.target.value)}
+              label="Password"
+              type={'password'}
+              id="filled-basic"
+            />
+          </CardContent>
+          <CardActions sx={{ ml: 3.5 }}>
+            <Button
+              sx={{ bgcolor: 'primary' }}
+              variant="contained"
+              onClick={() => registerWithEmailAndPassword(name, email, password)}
+            >
+              Create Account
+            </Button>
+            <Button
+              sx={{ ml: 1, color: 'primary' }}
+              href="/"
+              variant="outlined"
+            >
+              Login
+            </Button>
+          </CardActions>
+          <br />
+        </Card>
+      </Grid>
+    </ThemeProvider>
   );
 }
 
