@@ -1,9 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { auth, signInWithEmailAndPassword } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "./Login.css";
-import GrubGram from '../assests/GrubGram.png';
+import { Card, CardHeader, CardContent, TextField, Button, CardActions, Avatar, Grid, createTheme, ThemeProvider } from "@mui/material";
+import FastfoodRoundedIcon from "@mui/icons-material/FastfoodRounded";
+import { red } from "@mui/material/colors";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: red[600],
+    },
+    secondary: {
+      main: '#FFFFFF',
+    },
+  },
+});
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -25,22 +38,68 @@ function Login() {
   }, [loading, user, navigate]);
 
   return (
-    <div className="loginpage">
-      <div className='title'>
-        <div className='title_container'>
-          <h1>Welcome To GrubGram</h1>
-        </div>
-        <img src={GrubGram} alt='' height='100' width='100' />
-      </div>
-      <div className='login'>
-        <div className="login_container">
-          <input type="text" className="login_textBox" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="E-mail Address" />
-          <input type="password" className="login_textBox" value={password} onChange={(event) => setPassword(event.target.value)} placeholder="Password" />
-          <button className="login_btn" onClick={() => logInWithEmailAndPassword(email, password)}>Login</button>
-          <div>Don't have an account? <Link to="/register">Register</Link> now.</div>
-        </div>
-      </div>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Grid
+        container
+        direction="column"
+        alignItems="center"
+        justify="center"
+      >
+        <Card sx={{ mt: 18, width: 324 }}>
+          <Grid
+            container
+            direction="column"
+            alignItems="center"
+            justify="center"
+          >
+            <CardHeader
+              sx={{ mt: 3 }}
+              avatar={
+                <Avatar sx={{ mr: -1, color: red[600], bgcolor: '#FFFFFF' }}>
+                  <FastfoodRoundedIcon sx={{fontSize: 37}}/>
+                </Avatar>
+              }
+              titleTypographyProps={{ fontWeight: 'bold', color: 'primary', fontSize: 35, variant: 'h4', fontFamily: 'monospace' }}
+              title="GrubGram"
+              style={{ align: 'center' }}
+            />
+          </Grid>
+          <CardContent sx={{ mt: 2, mx: 2 }}>
+            <TextField
+              sx={{ width: 260 }}
+              onChange={(event) => setEmail(event.target.value)}
+              label="E-mail Address"
+              type={'text'}
+              id="filled-basic"
+            /><br />
+            <TextField
+              sx={{ mt: 1, width: 260 }}
+              onChange={(event) => setPassword(event.target.value)}
+              label="Password"
+              type={'password'}
+              id="filled-basic"
+            />
+          </CardContent>
+          <CardActions sx={{ ml: 2 }}>
+            <Button
+              sx={{ bgcolor: 'primary' }}
+              variant="contained"
+              onClick={() => logInWithEmailAndPassword(email, password)}
+            >
+              Login
+            </Button>
+            <Button
+              sx={{ ml: 1, color: 'primary' }}
+              href="/register"
+              variant="outlined"
+            >
+              Create an Account
+            </Button>
+          </CardActions>
+          <br />
+        </Card>
+      </Grid>
+    </ThemeProvider>
   );
 }
 

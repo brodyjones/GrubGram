@@ -1,24 +1,35 @@
-import { Autocomplete, Button, Card, CardActions, CardContent, CardHeader, TextField } from "@mui/material";
+import { Autocomplete, Card, CardContent, CardHeader, TextField } from "@mui/material";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../firebase";
+import PostFeed from "./PostFeed";
+import Recipe from "./Recipe";
 
 export default function RecipeSearcher() {
-    const [url, setUrl] = useState("");
     const [name, setName] = useState("");
+    const [recipeObj, setRecipeObj] = useState(null);
+    const [recipePosts, setRecipePosts] = useState([]);
     
     useEffect(() => {
-        const getUrl = async () => {
+        const getRecipeObj = async () => {
             const recipesRef = collection(db, "recipes");
             const q = query(recipesRef, where("name", "==", name));
             const querySnapshot = await getDocs(q);
-            setUrl(querySnapshot.docs[0].data().url);
+            setRecipeObj(querySnapshot.docs[0].data());
         }
-
-        getUrl();
+        const getRecipePosts = async () => {
+            const postsRef = collection(db, "posts");
+            const q = query(postsRef, where("recipe", "==", name));
+            const querySnapshot = await getDocs(q);
+            setRecipePosts(querySnapshot.docs.map((doc) => ({...doc.data(), id: doc.id})));
+        }
+        
+        getRecipeObj();
+        getRecipePosts();
     }, [name])
 
     return (
+        <div>
         <Card sx={{ maxWidth: 330, ml: 20, mt: 3 }} >
             <CardHeader
                 style={{ color: "red" }}
@@ -34,15 +45,10 @@ export default function RecipeSearcher() {
                     onChange={(event, value) => setName(value)}
                 />
             </CardContent>
-            <CardActions>
-                <Button
-                    variant="contained"
-                    onClick={() => { window.open(url, '_blank') }}
-                >
-                    Go To Website
-                </Button>
-            </CardActions>
         </Card>
+        <Recipe recipe={recipeObj}/>
+        <PostFeed posts={recipePosts}/>
+        </div>
     );
 }
 
