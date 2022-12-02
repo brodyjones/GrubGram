@@ -5,14 +5,18 @@ export default function Recipe({ recipe }) {
     <Card sx={{ width: 850, ml: 1 }}>
       <CardContent>
         <Typography variant="h5">
-          {recipe.id}
+          {recipe.name}
         </Typography>
         <Typography variant="subtitle" color="text.secondary">
           Ingredients:
         </Typography>
-        <Typography variant="body2">
-          {recipe.ingredients}
-        </Typography>
+        {recipe.ingredients.map((ingredient) => {
+          return (
+            < Typography variant="body2" >
+              {ingredient}
+            </Typography>
+          );
+        })}
         <Typography variant="subtitle" color="text.secondary">
           Preparation:
         </Typography>

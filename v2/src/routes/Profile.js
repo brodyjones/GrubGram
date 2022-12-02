@@ -13,7 +13,6 @@ export default function Profile() {
     const [user, loading] = useAuthState(auth);
     const navigate = useNavigate();
 
-
     useEffect(() => {
         if (loading) return;
         if (!user) navigate("/");

@@ -35,7 +35,7 @@ export default function PantryManager() {
                 <Autocomplete
                     disablePortal
                     id="ingredient-dropdown"
-                    options={ingredients}
+                    options={ingredientsList}
                     sx={{ width: 300 }}
                     renderInput={(params) => <TextField {...params} label="Ingredient..." />}
                     onChange={(event, value) => setIngredient(value)}
@@ -65,7 +65,7 @@ export default function PantryManager() {
     );
 }
 
-const ingredients = [
+const ingredientsList = [
     "acorn squash",
     "all-purpose flour",
     "allspice",

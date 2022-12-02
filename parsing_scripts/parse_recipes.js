@@ -2608,6 +2608,7 @@ class Recipe {
         this.ingredients = ingredients; 
         this.preparation = preparation;
         this.url = url;
+        this.hits = 0;
     }
 }
 
@@ -2669,12 +2670,6 @@ while (i != recipe_list.length) {
 recipes.push(new Recipe(name, ings, prep, url))
 
 
-
-
-
-
-
-
 function searchRecipe(ingredient, recipe) {
     const lower_recipe = recipe.toLowerCase();
     var result = lower_recipe.includes(ingredient);
@@ -2682,40 +2677,37 @@ function searchRecipe(ingredient, recipe) {
 }
 
 
-function search_matches(pantry) {
-    var matches = []
+function countHits(pantry) {
     var i = 0;
     while(i != recipes.length){
         var j = 0;
-        var count = 0;
         while(j != pantry.length){
             var k = 0;
             while(k != recipes[i].ingredients.length){
                 var flag = searchRecipe(pantry[j], recipes[i].ingredients[k])
                 if(flag){
-                    count += 1;
+                    recipes[i].hits += 1;
                 }
                 k += 1;
             }
             j += 1;
         }
-        matches.push(count);
         i += 1;
     }
-    return matches
 }
 
 function find_min(values, index) {
     var min = 0
     var i = 1
     while (i != index.length){
-        if(values[index[i]] < values[index[min]]){
+        if(values[index[i]].hits < values[index[min]].hits){
             min = i;
         }
         i += 1;
     }
     return min;
 }
+
 
 function top_five(arr) {
     if(arr.length < 5){
@@ -2725,28 +2717,27 @@ function top_five(arr) {
     var i = 5;
     while (i != arr.length){
         min = find_min(arr, index);
-        if(arr[i] > arr[index[min]]) {
+        if(arr[i].hits > arr[index[min]].hits) {
             index[min] = i;
         }
         i += 1;
     }
-
     return index;
 }
 
 function parse_recipes(pantry){
-    matches = search_matches(pantry);
-    top = top_five(matches);
+    countHits(pantry);
+    const top = top_five(recipes);
     var i = 0;
-    final = []
+    var final = []
     while(i != top.length){
-        final.push(recipes[top[i]]);
+        final.push(recipes[top[i]].name);
         i += 1;
     }
     return final;
 }
 
-
+/*
 const pantry = ["egg", "vanilla", "pumpkin", "salt"]
 
 final = parse_recipes(pantry);
@@ -2764,3 +2755,4 @@ while(i != final.length){
     console.log(final[i].preparation);
     i += 1;
 }
+*/
