@@ -3,6 +3,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { collection, doc, getDocs, query, updateDoc, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../firebase";
+import { useNavigate } from "react-router-dom";
 import { red } from "@mui/material/colors";
 
 const theme = createTheme({
@@ -20,6 +21,11 @@ export default function Post({ post }) {
   const [url, setUrl] = useState("");
   const [profilePic, setProfilePic] = useState("");
   const [userFirstLetter, setuserFirstLetter] = useState("");
+  const navigate = useNavigate();
+
+  const navSoc = () => {
+    navigate('/social', { state: { post } });
+  }
 
   useEffect(() => {
     const getRecipe = async () => {
@@ -47,45 +53,45 @@ export default function Post({ post }) {
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <Card
-        raised={true}
-        sx={{ maxWidth: 500, ml: 20, mt: 3 }}>
-        <CardHeader
-          title={post.recipe}
-          titleTypographyProps={{ color: red[600], variant: 'h6', fontFamily: 'monospace', fontSize: 25, fontWeight: 'bold' }}
-          subheader={post.timestamp}
-          avatar={<Avatar sx={{ width: 50, height: 50 }} src={profilePic}>{userFirstLetter}</Avatar>}
-        />
-        <CardMedia
-          component="img"
-          height="250"
-          image={post.image}
-        />
-        <CardContent>
-          <Typography variant="body2" color="text.secondary" sx={{ fontWeight: "bold" }}>
-            {post.name}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {post.caption}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <IconButton
-            sx={{ color: red[600] }}
-            onClick={() => { updateLikeCount(post.likes); }}>
-            <FavoriteIcon />
-          </IconButton>
-          <Typography sx={{ mr: 34 }}>{post.likes}</Typography>
-          <Button
-            sx={{ bgcolor: red[600] }}
-            variant="contained"
-            onClick={() => { window.open(url, '_blank') }}
-          >
-            GO TO WEBSITE
-          </Button>
-        </CardActions>
-      </Card>
-    </ThemeProvider>
+    <Card
+      raised={true}
+      sx={{ maxWidth: 500, ml: 20, mt: 3 }}>
+      <CardHeader
+        title={post.recipe}
+        titleTypographyProps={{ color: red[600], variant: 'h6', fontFamily: 'monospace', fontSize: 25, fontWeight: 'bold' }}
+        subheader={post.timestamp}
+        avatar={<Button onClick={navSoc}><Avatar sx={{ width: 50, height: 50 }} src={profilePic}>
+          {userFirstLetter}
+        </Avatar></Button>}
+      />
+      <CardMedia
+        component="img"
+        height="250"
+        image={post.image}
+      />
+      <CardContent>
+        <Typography variant="body2" color="text.secondary" sx={{ fontWeight: "bold" }}>
+          {post.name}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          {post.caption}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <IconButton
+          sx={{ color: red[600] }}
+          onClick={() => { updateLikeCount(post.likes); }}>
+          <FavoriteIcon />
+        </IconButton>
+        <Typography sx={{ mr: 34 }}>{post.likes}</Typography>
+        <Button
+          sx={{ bgcolor: red[600] }}
+          variant="contained"
+          onClick={() => { window.open(url, '_blank') }}
+        >
+          GO TO WEBSITE
+        </Button>
+      </CardActions>
+    </Card>
   );
 }
