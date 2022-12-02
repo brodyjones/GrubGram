@@ -2,11 +2,13 @@ import { Autocomplete, Card, CardContent, CardHeader, TextField } from "@mui/mat
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../firebase";
+import PostFeed from "./PostFeed";
 import Recipe from "./Recipe";
 
 export default function RecipeSearcher() {
     const [name, setName] = useState("");
     const [recipeObj, setRecipeObj] = useState(null);
+    const [recipePosts, setRecipePosts] = useState([]);
     
     useEffect(() => {
         const getRecipeObj = async () => {
@@ -15,8 +17,15 @@ export default function RecipeSearcher() {
             const querySnapshot = await getDocs(q);
             setRecipeObj(querySnapshot.docs[0].data());
         }
-
+        const getRecipePosts = async () => {
+            const postsRef = collection(db, "posts");
+            const q = query(postsRef, where("recipe", "==", name));
+            const querySnapshot = await getDocs(q);
+            setRecipePosts(querySnapshot.docs.map((doc) => ({...doc.data(), id: doc.id})));
+        }
+        
         getRecipeObj();
+        getRecipePosts();
     }, [name])
 
     return (
@@ -38,6 +47,7 @@ export default function RecipeSearcher() {
             </CardContent>
         </Card>
         <Recipe recipe={recipeObj}/>
+        <PostFeed posts={recipePosts}/>
         </div>
     );
 }
