@@ -106,7 +106,7 @@ export default function CreatePost() {
                 <Button variant="contained" component="label" onClick={() => {
                     initializeUserPost();
                 }}>
-                    Post To Feed
+                    Post
                 </Button>
                 <Snackbar anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} open={open} autoHideDuration={6000} onClose={handleClose}>
                     <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
