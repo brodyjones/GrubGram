@@ -10,6 +10,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import * as React from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import { useNavigate } from "react-router-dom";
 
 const theme = createTheme({
     palette: {
@@ -31,6 +32,7 @@ function Navbar() {
     const [userFirstLetter, setuserFirstLetter] = useState("");
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
+    const navigate = useNavigate();
     useEffect(() => {
         const getUserInfo = async () => {
             const userRef = doc(db, "users", user?.uid);
@@ -47,6 +49,10 @@ function Navbar() {
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+    const navProfile = () => {
+        navigate('/profile')
+    }
 
 
     return (
@@ -94,13 +100,6 @@ function Navbar() {
                             >
                                 Recipes
                             </Button>
-                            <Button
-                                sx={{ my: 2 }}
-                                color="secondary"
-                                href="/profile"
-                            >
-                                Profile
-                            </Button>
                         </Box>
 
                         <Button
@@ -132,7 +131,7 @@ function Navbar() {
                             <MenuItem 
                                 sx={{ my: 2 }}
                                 color="secondary"
-                                href="/profile"
+                                href="/profile" onClick={navProfile}
                                 >Profile</MenuItem>
                         </Menu>
 
