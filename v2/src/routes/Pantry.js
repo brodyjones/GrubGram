@@ -133,7 +133,7 @@ export default function Pantry() {
                     <PantryList />
                 </div>
                 <div className="right">
-                    <Card sx={{ mt: 3, mr: 3 }}>
+                    <Card sx={{ width: 559, mt: 3, ml: -6 }}>
                         <Grid
                             container
                             direction="column"

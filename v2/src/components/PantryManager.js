@@ -56,7 +56,7 @@ export default function PantryManager() {
                         Add
                     </Button>
                     <Button
-                        variant="contained"
+                        variant="outlined"
                         onClick={() => { clearPantry() }}
                     >
                         Clear Pantry
