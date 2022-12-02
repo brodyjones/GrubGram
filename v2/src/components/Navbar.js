@@ -2,8 +2,11 @@ import { AppBar, Avatar, Button, createTheme, ThemeProvider, Toolbar, Typography
 import { red, yellow } from "@mui/material/colors";
 import { Box, Container } from "@mui/system";
 import { signOut } from "firebase/auth";
-import { auth } from "../firebase";
+import { auth, db } from "../firebase";
 import FastfoodRoundedIcon from "@mui/icons-material/FastfoodRounded";
+import { useEffect, useState } from "react";
+import { doc, getDoc } from "firebase/firestore";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const theme = createTheme({
     palette: {
@@ -20,6 +23,19 @@ function Navbar() {
     const logout = () => {
         signOut(auth);
     };
+    const [userInfo, setUserInfo] = useState([]);
+    const [user] = useAuthState(auth);
+    const [userFirstLetter, setuserFirstLetter] = useState("");
+    useEffect(() => {
+        const getUserInfo = async () => {
+            const userRef = doc(db, "users", user?.uid);
+            const userSnap = await getDoc(userRef);
+            setUserInfo(userSnap.data());
+            setuserFirstLetter(userSnap.data().name[0])
+        }
+    
+        getUserInfo();
+    }, [user]);
 
     return (
         <ThemeProvider theme={theme}>
@@ -86,7 +102,7 @@ function Navbar() {
                             </Button>
                         </Box>
 
-                        <Avatar src="https://media-exp1.licdn.com/dms/image/C5603AQFogoxY-JrbbA/profile-displayphoto-shrink_800_800/0/1625536311919?e=1675296000&v=beta&t=8DfVVmYTl_w4js7hEO5d0bgJUB8Kpsxo43s1ndWhWqI"/>
+                        <Avatar src={userInfo.profilePic}>{userFirstLetter}</Avatar>
                     </Toolbar>
                 </Container>
             </AppBar >
