@@ -14,6 +14,11 @@ function Register() {
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (loading) return;
+    if (user) navigate("/home");
+  }, [loading, user, navigate]);
+
   const registerWithEmailAndPassword = async (name, email, password) => {
     try {
       const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
@@ -23,11 +28,6 @@ function Register() {
       alert("Invalid registration");
     }
   };
-
-  useEffect(() => {
-    if (loading) return;
-    if (user) navigate("/home");
-  }, [loading, user, navigate]);
 
   return (
     <div className='registerpage'>
