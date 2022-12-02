@@ -1,4 +1,4 @@
-import { Button, Card, CardContent, CardHeader, CardMedia, TextField } from "@mui/material";
+import { Button, Card, CardContent, CardHeader, CardMedia } from "@mui/material";
 import { useEffect, useState } from "react";
 import { auth, db, storage } from "../firebase";
 import { doc, getDoc, updateDoc } from 'firebase/firestore'
@@ -11,7 +11,6 @@ export default function ProfileCard() {
     const [userInfo, setUserInfo] = useState([]);
     const [user] = useAuthState(auth);
     const [image, setImage] = useState(null);
-    const [imageLink, setImageLink] = useState("");
 
     useEffect(() => {
         const getUserInfo = async () => {
@@ -29,7 +28,6 @@ export default function ProfileCard() {
         uploadBytes(imageRef, image);
         getDownloadURL(ref(storage, `images/${image.name}`))
             .then((url) => {
-                setImageLink(url);
                 updateUserLink(url);
             })
     }
