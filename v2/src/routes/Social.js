@@ -51,25 +51,27 @@ export default function Social() {
     }, [user, loading, navigate])
 
     return (
-        <div>
-            <Navbar />
-            <div className='left'>
-                <PostFeed posts={userPosts} />
+        <ThemeProvider theme={theme}>
+            <div>
+                <Navbar />
+                <div className='left'>
+                    <PostFeed posts={userPosts} />
+                </div>
+                <div className='right'>
+                    <Card raised={true} sx={{ maxWidth: 275, ml: 20, mt: 3 }}>
+                        <Grid
+                            container
+                            direction="column"
+                            alignItems="center"
+                            justify="center">
+                            <CardHeader title={userSoc.name} titleTypographyProps={{
+                                fontSize: 26, color: 'primary', fontFamily: 'monospace', fontWeight: 'bold'
+                            }} />
+                            <Avatar sx={{ mb: 3, height: 200, width: 200 }} src={userSoc.profilePic} />
+                        </Grid>
+                    </Card>
+                </div>
             </div>
-            <div className='right'>
-                <Card raised={true} sx={{ maxWidth: 275, ml: 20, mt: 3 }}>
-                    <Grid
-                        container
-                        direction="column"
-                        alignItems="center"
-                        justify="center">
-                        <CardHeader title={user.name} titleTypographyProps={{
-                            fontSize: 26, color: 'primary', fontFamily: 'monospace', fontWeight: 'bold'
-                        }} />
-                        <Avatar sx={{ mb: 3, height: 200, width: 200 }} src={user.profilePic} />
-                    </Grid>
-                </Card>
-            </div>
-        </div>
+        </ThemeProvider>
     );
 }
