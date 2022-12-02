@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { db } from "../firebase";
 import PostFeed from "./PostFeed";
 import RecipeDialog from "./RecipeDialog";
-import './Recipe.css'
+import './RecipeSearcher.css'
 
 export default function RecipeSearcher() {
     const [name, setName] = useState("");

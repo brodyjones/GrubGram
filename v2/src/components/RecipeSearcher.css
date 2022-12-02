@@ -1,0 +1,8 @@
+.rightcol {
+    right: 150px;
+    position: fixed;
+}
+
+.leftcol {
+    margin-top: 90px;
+}

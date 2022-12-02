@@ -98,7 +98,10 @@ export default function ProfileCard() {
                         Uploaded Image!
                     </Alert>
                 </Snackbar>
-                <Typography>{userInfo.bio}</Typography>
+                <br></br>
+                <br></br>
+                <Typography sx={{ fontSize: 15, color: 'primary', fontFamily: 'monospace', fontWeight: 'bold' }}>Bio: {userInfo.bio}</Typography>
+                <br></br>
                 <TextField
                     sx={{ width: 245 }}
                     id="filled-basic"
@@ -106,7 +109,9 @@ export default function ProfileCard() {
                     onChange={(event) => {
                         setBio(event.target.value);
                     }} />
-                <Button
+                <br></br>
+                <br></br>
+                <Button variant="contained"
                     onClick={updateBio}
                 >
                     Update Bio

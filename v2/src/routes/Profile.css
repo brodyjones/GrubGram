@@ -4,6 +4,7 @@
 }
 
 .right {
-    float: right;
-    width: 45%;
+    position: fixed;
+    right: 0px;
+    margin-top: 80px;
 }

@@ -68,8 +68,8 @@ export default function Social() {
                                 fontSize: 26, color: 'primary', fontFamily: 'monospace', fontWeight: 'bold'
                             }} />
                             <Avatar sx={{ mb: 3, height: 200, width: 200 }} src={userSoc.profilePic} />
-                            <Typography>{userSoc.bio}</Typography>
                         </Grid>
+                        <Typography sx={{ ml: 1.5, fontSize: 15, color: 'primary', fontFamily: 'monospace', fontWeight: 'bold' }}>{userSoc.bio}</Typography>
                     </Card>
                 </div>
             </div>

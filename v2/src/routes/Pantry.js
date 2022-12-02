@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, Grid, Typography } from "@mui/material";
+import { Card, CardContent, CardHeader, Grid } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material";
 import { red } from "@mui/material/colors";
 import { addDoc, collection, doc, getDoc, getDocs, query, where } from "firebase/firestore";
