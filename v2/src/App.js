@@ -6,7 +6,7 @@ import Recipes from "./routes/Recipes";
 import Profile from "./routes/Profile";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css"
-import Social from "./routes/Social"
+import Social from "./routes/Social";
 
 export default function App() {
   return (

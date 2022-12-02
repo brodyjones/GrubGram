@@ -7,6 +7,19 @@ import PostFeed from "../components/PostFeed";
 import { auth, db } from "../firebase";
 import ProfileCard from "../components/PofileCard";
 import './Profile.css'
+import { createTheme, ThemeProvider } from "@mui/material";
+import { red } from "@mui/material/colors";
+
+const theme = createTheme({
+    palette: {
+        primary: {
+            main: red[600],
+        },
+        secondary: {
+            main: '#FFFFFF',
+        },
+    },
+});
 
 export default function Profile() {
     const [posts, setPosts] = useState([]);
@@ -28,14 +41,16 @@ export default function Profile() {
 
 
     return (
-        <div>
-            <Navbar />
-            <div className = "right">
-                <ProfileCard/>
+        <ThemeProvider theme={theme}>
+            <div>
+                <Navbar />
+                <div className="right">
+                    <ProfileCard />
+                </div>
+                <div className="left">
+                    <PostFeed posts={posts} />
+                </div>
             </div>
-            <div className = "left">
-                <PostFeed posts={posts} />
-            </div>
-        </div>
+        </ThemeProvider>
     );
 }

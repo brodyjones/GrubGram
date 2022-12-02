@@ -3,7 +3,6 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { Card, CardContent, CardHeader, Grid, Typography } from "@mui/material";
-import { red } from '@mui/material/colors';
 
 export default function PantryList() {
     const [pantry, setPantry] = useState([]);
@@ -30,7 +29,7 @@ export default function PantryList() {
                     sx={{ mb: -3 }}
                     title="Your Pantry"
                     titleTypographyProps={{
-                        fontSize: 26, color: red[600], fontFamily: 'monospace', fontWeight: 'bold'
+                        fontSize: 26, color: 'primary', fontFamily: 'monospace', fontWeight: 'bold'
                     }}
                 />
                 <CardContent>

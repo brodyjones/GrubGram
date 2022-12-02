@@ -1,3 +1,5 @@
+import { createTheme, ThemeProvider } from "@mui/material";
+import { red } from "@mui/material/colors";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -7,6 +9,17 @@ import Navbar from "../components/Navbar";
 import PostFeed from "../components/PostFeed";
 import { auth, db } from "../firebase";
 import "./Home.css"
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: red[600],
+    },
+    secondary: {
+      main: '#FFFFFF',
+    },
+  },
+});
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
@@ -20,21 +33,23 @@ export default function Home() {
       const postsRef = collection(db, "posts");
       const q = query(postsRef, orderBy("timestamp", "desc"));
       const querySnapshot = await getDocs(q);
-      const data = querySnapshot.docs.map((doc) => ({...doc.data(), id: doc.id}));
+      const data = querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
       setPosts(data);
     }
     getPosts();
   }, [user, loading, navigate]);
 
   return (
-    <div>
-      <Navbar />
-      <div className="column2">
-        <CreatePost />
+    <ThemeProvider theme={theme}>
+      <div>
+        <Navbar />
+        <div className="column2">
+          <CreatePost />
+        </div>
+        <div className="column1">
+          <PostFeed posts={posts} />
+        </div>
       </div>
-      <div className="column1">
-        <PostFeed posts={posts} />
-      </div>
-    </div>
+    </ThemeProvider>
   );
 }

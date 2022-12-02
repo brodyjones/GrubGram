@@ -36,7 +36,7 @@ export default function RecipeSearcher() {
         <div>
             <Card sx={{ maxWidth: 330, ml: 20, mt: 3 }} >
                 <CardHeader
-                    style={{ color: "red" }}
+                    titleTypographyProps={{ color: 'primary' }}
                     title="Search All Recipes"
                 />
                 <CardContent>

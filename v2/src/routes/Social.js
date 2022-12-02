@@ -1,4 +1,4 @@
-import { Avatar, Card, CardHeader, Grid } from "@mui/material";
+import { Avatar, Card, CardHeader, createTheme, Grid, ThemeProvider } from "@mui/material";
 import { red } from "@mui/material/colors";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
@@ -7,6 +7,17 @@ import Navbar from "../components/Navbar";
 import PostFeed from "../components/PostFeed";
 import { db } from "../firebase";
 import './Profile.css'
+
+const theme = createTheme({
+    palette: {
+        primary: {
+            main: red[600],
+        },
+        secondary: {
+            main: '#FFFFFF',
+        },
+    },
+});
 
 export default function Social() {
     const location = useLocation();
@@ -34,25 +45,27 @@ export default function Social() {
     }, [])
 
     return (
-        <div>
-            <Navbar />
-            <div className='left'>
-                <PostFeed posts={userPosts} />
+        <ThemeProvider theme={theme}>
+            <div>
+                <Navbar />
+                <div className='left'>
+                    <PostFeed posts={userPosts} />
+                </div>
+                <div className='right'>
+                    <Card raised={true} sx={{ maxWidth: 275, ml: 20, mt: 3 }}>
+                        <Grid
+                            container
+                            direction="column"
+                            alignItems="center"
+                            justify="center">
+                            <CardHeader title={user.name} titleTypographyProps={{
+                                fontSize: 26, color: 'primary', fontFamily: 'monospace', fontWeight: 'bold'
+                            }} />
+                            <Avatar sx={{ mb: 3, height: 200, width: 200 }} src={user.profilePic} />
+                        </Grid>
+                    </Card>
+                </div>
             </div>
-            <div className='right'>
-                <Card raised={true} sx={{ maxWidth: 275, ml: 20, mt: 3 }}>
-                    <Grid
-                        container
-                        direction="column"
-                        alignItems="center"
-                        justify="center">
-                        <CardHeader title={user.name} titleTypographyProps={{
-                            fontSize: 26, color: red[600], fontFamily: 'monospace', fontWeight: 'bold'
-                        }} />
-                        <Avatar sx={{ mb: 3, height: 200, width: 200 }} src={user.profilePic} />
-                    </Grid>
-                </Card>
-            </div>
-        </div>
+        </ThemeProvider>
     );
 }
