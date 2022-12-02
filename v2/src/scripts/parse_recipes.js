@@ -2614,14 +2614,14 @@ class Recipe {
 var recipes = [];
 
 
-var i = 0;
-var name_flag = false;
+var i = 1;
+var name_flag = true;
 var ingredient_flag = false;
 var prep_flag = false;
 var prep = "";
 var name = "";
 var ings = []
-var url = "";
+var url = recipe_list[0];
 while (i != recipe_list.length) {
     const line = recipe_list[i];
     if (line == "preparation") {

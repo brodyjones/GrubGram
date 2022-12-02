@@ -38,8 +38,9 @@ export default function Post({ post }) {
     <Card sx={{ maxWidth: 500, ml: 20, mt: 3 }}>
       <CardHeader
         title={post.recipe}
+        titleTypographyProps={{variant:'h6' }}
         subheader={post.timestamp}
-        avatar={<Avatar src={profilePic}>{userFirstLetter}</Avatar>}
+        avatar={<Avatar sx={{ width: 50, height: 50 }} src={profilePic}>{userFirstLetter}</Avatar>}
       />
       <CardMedia
         component="img"
@@ -47,15 +48,18 @@ export default function Post({ post }) {
         image={post.image}
       />
       <CardContent>
-        <Typography variant="body2" color="text.secondary" sx={{fontWeight: "bold"}}>
-          {post.name}:  {post.caption}
+        <Typography variant="body2" color="text.secondary" sx={{ fontWeight: "bold"}}>
+          {post.name}: 
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          {post.caption}
         </Typography>
       </CardContent>
       <CardActions>
         <IconButton onClick={() => {updateLikeCount(post.likes);}}>
             <FavoriteIcon/>
         </IconButton>
-        <Typography>{post.likes}</Typography>
+        <Typography sx={{ mr:34 }}>{post.likes}</Typography>
         <Button
           variant="contained"
           onClick={() => { window.open(url, '_blank') }}

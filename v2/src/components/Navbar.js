@@ -1,5 +1,5 @@
 import { AppBar, Avatar, Button, createTheme, ThemeProvider, Toolbar, Typography } from "@mui/material";
-import { red, yellow } from "@mui/material/colors";
+import { red } from "@mui/material/colors";
 import { Box, Container } from "@mui/system";
 import { signOut } from "firebase/auth";
 import { auth, db } from "../firebase";
@@ -17,7 +17,7 @@ const theme = createTheme({
             main: red[600],
         },
         secondary: {
-            main: yellow[500],
+            main: '#FFFFFF',
         },
     },
 });

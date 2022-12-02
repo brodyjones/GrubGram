@@ -35,14 +35,14 @@ export default function Pantry() {
     }, [loading, user, navigate]);
 
     const writeRecipes = async () => {
-        var i = 0;
-        var nameFlag = false;
+        var i = 1;
+        var nameFlag = true;
         var ingredientFlag = false;
         var preparationFlag = false;
         var preparation = "";
         var name = "";
         var ingredients = []
-        var url = "";
+        var url = recipeList[0];
 
         while (i != recipeList.length) {
             const line = recipeList[i];
