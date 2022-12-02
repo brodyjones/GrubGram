@@ -20,7 +20,7 @@ export default function Home() {
       const postsRef = collection(db, "posts");
       const q = query(postsRef, orderBy("timestamp", "desc"));
       const querySnapshot = await getDocs(q);
-      const data = querySnapshot.docs.map((doc) => (doc.data()));
+      const data = querySnapshot.docs.map((doc) => ({...doc.data(), id: doc.id}));
       setPosts(data);
     }
     getPosts();

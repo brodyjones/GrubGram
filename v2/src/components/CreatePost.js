@@ -36,7 +36,7 @@ export default function CreatePost() {
         if (today.getSeconds() < 10) dateCreated += '0';
         dateCreated += today.getSeconds();
 
-        await addDoc(collection(db, "posts"), { name: name, uid: user?.uid, timestamp: dateCreated, image: url, caption: caption, recipe: recipe });
+        await addDoc(collection(db, "posts"), { name: name, uid: user?.uid, timestamp: dateCreated, image: url, caption: caption, recipe: recipe, likes: 0 });
         window.location.reload(false);
     }
 
