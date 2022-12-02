@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db } from "../firebase";
-import { doc, getDoc } from "firebase/firestore";
-import { Card, CardContent, CardHeader, Grid, Typography } from "@mui/material";
+import { arrayRemove, doc, getDoc, updateDoc } from "firebase/firestore";
+import { Card, CardContent, CardHeader, Grid, IconButton, Typography } from "@mui/material";
 import { red } from '@mui/material/colors';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export default function PantryList() {
     const [pantry, setPantry] = useState([]);
@@ -17,6 +18,11 @@ export default function PantryList() {
         }
         getPantry();
     }, [user]);
+    const removeIngredient = async (ingredient) => {
+        const docRef = doc(db, "users", user?.uid);
+        await updateDoc(docRef, { pantry: arrayRemove(ingredient) });
+        window.location.reload(false);
+    }
 
     return (
         <Card raised={true} sx={{ maxWidth: 350, ml: 20, mt: 3 }}>
@@ -37,6 +43,7 @@ export default function PantryList() {
                     {pantry.map((ingredient) => {
                         return (
                             <Typography variant="h6">
+                                <IconButton onClick={() => (removeIngredient(ingredient))}><DeleteIcon></DeleteIcon></IconButton>
                                 {ingredient}
                             </Typography>
                         );

@@ -26,12 +26,6 @@ export default function PantryManager() {
         window.location.reload(false);
     }
 
-    const removeIngredient = async (ingredient) => {
-        const docRef = doc(db, "users", user?.uid);
-        await updateDoc(docRef, { pantry: arrayRemove(ingredient) });
-        window.location.reload(false);
-    }
-
     const clearPantry = async () => {
         const docRef = doc(db, "users", user?.uid);
         await updateDoc(docRef, { pantry: [] });
@@ -67,15 +61,12 @@ export default function PantryManager() {
                     <CardActions sx={{ mb: 1 }}>
                         <Button
                             variant="contained"
-                            onClick={() => { addIngredient(ingredient) }}
+                            onClick={() => { 
+                                if(!ingredient) return;
+                                addIngredient(ingredient);
+                             }}
                         >
                             Add
-                        </Button>
-                        <Button
-                            variant="contained"
-                            onClick={() => { removeIngredient(ingredient) }}
-                        >
-                            Remove
                         </Button>
                         <Button
                             variant="contained"
