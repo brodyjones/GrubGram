@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { auth, createUserWithEmailAndPassword, db } from "../firebase";
-import "./Register.css";
 import { doc, setDoc } from "firebase/firestore";
 import { Avatar, Button, Card, CardActions, CardContent, CardHeader, createTheme, Grid, TextField, ThemeProvider } from "@mui/material";
 import { red } from "@mui/material/colors";
