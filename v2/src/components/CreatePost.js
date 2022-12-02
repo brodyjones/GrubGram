@@ -61,7 +61,7 @@ export default function CreatePost() {
     }
 
     return (
-        <Card raised={true} sx={{ width: 300, mt: 3 }}>
+        <Card raised={true} sx={{ p: 2, width: 300, mt: 3 }}>
             <Grid
                 container
                 direction="column"
@@ -69,51 +69,51 @@ export default function CreatePost() {
                 justify="center"
             >
                 <CardHeader
-                    sx={{ mb: -3 }}
+                    sx={{ mb: -2 }}
                     title="Create a Post"
                     titleTypographyProps={{ fontSize: 26, color: 'primary', fontFamily: 'monospace', fontWeight: 'bold' }}
                 >
                 </CardHeader>
+                <CardContent>
+                    <TextField
+                        sx={{ mb: 1, width: 267 }}
+                        id="filled-basic"
+                        label='Caption'
+                        onChange={(event) => {
+                            setCaption(event.target.value);
+                        }}
+                    />
+                    <Autocomplete
+                        disablePortal
+                        id="recipe-dropdown"
+                        options={recipeNames}
+                        sx={{ mb: -1, width: 267 }}
+                        renderInput={(params) => <TextField {...params} label="Recipe" />}
+                        onChange={(event, value) => {
+                            setRecipe(value);
+                        }}
+                    />
+                </CardContent>
+                <CardActions>
+                    <IconButton color="primary" aria-label="upload picture" component="label" onChange={(event) => {
+                        setImage(event.target.files[0]);
+                        handleChange();
+                    }}>
+                        <input hidden accept="image/*" type="file" />
+                        <FileUploadRounded />
+                    </IconButton>
+                    <Button variant="contained" component="label" onClick={() => {
+                        initializeUserPost();
+                    }}>
+                        Post
+                    </Button>
+                    <Snackbar anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} open={open} autoHideDuration={6000} onClose={handleClose}>
+                        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                            Uploaded Image!
+                        </Alert>
+                    </Snackbar>
+                </CardActions>
             </Grid>
-            <CardContent>
-                <TextField
-                    sx={{ mt: 1, width: 267 }}
-                    id="filled-basic"
-                    label='Caption...'
-                    onChange={(event) => {
-                        setCaption(event.target.value);
-                    }}
-                />
-                <Autocomplete
-                    disablePortal
-                    id="recipe-dropdown"
-                    options={recipeNames}
-                    sx={{ mt: 1, mb: -1, width: 267 }}
-                    renderInput={(params) => <TextField {...params} label="Recipe..." />}
-                    onChange={(event, value) => {
-                        setRecipe(value);
-                    }}
-                />
-            </CardContent>
-            <CardActions sx={{ ml: 5 }}>
-                <IconButton color="primary" aria-label="upload picture" component="label" onChange={(event) => {
-                    setImage(event.target.files[0]);
-                    handleChange();
-                }}>
-                    <input hidden accept="image/*" type="file" />
-                    <FileUploadRounded />
-                </IconButton>
-                <Button variant="contained" component="label" onClick={() => {
-                    initializeUserPost();
-                }}>
-                    Post
-                </Button>
-                <Snackbar anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} open={open} autoHideDuration={6000} onClose={handleClose}>
-                    <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-                        Uploaded Image!
-                    </Alert>
-                </Snackbar>
-            </CardActions>
         </Card >
     );
 }
