@@ -1,6 +1,6 @@
 import { Button, Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, Typography } from "@mui/material";
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { collection, doc, getDocs, query, updateDoc, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../firebase";
 
@@ -9,10 +9,10 @@ export default function Post({ post }) {
 
   useEffect(() => {
     const getRecipe = async () => {
-      const recipeDoc = doc(db, "recipes", post.recipe);
-      const docSnap = await getDoc(recipeDoc);
-      console.log(docSnap.data().url);
-      setUrl(docSnap.data().url);
+      const recipesRef = collection(db, "recipes");
+      const q = query(recipesRef, where("name", "==", post.recipe));
+      const querySnapshot = await getDocs(q);
+      setUrl(querySnapshot.docs[0].data().url);
     }
 
     getRecipe();
@@ -38,7 +38,7 @@ export default function Post({ post }) {
         <IconButton onClick={() => {updateLikeCount(post.likes);}}>
             <FavoriteIcon/>
         </IconButton>
-        <Typography sx={{mr:20}}>{post.likes}</Typography>
+        <Typography>{post.likes}</Typography>
         <Button
           variant="contained"
           onClick={() => { window.open(url, '_blank') }}
