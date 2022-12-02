@@ -4,7 +4,7 @@ export default function RecipeContent({ recipe }) {
     if (!recipe) return;
     return (
         <div>
-            <Typography variant="subtitle">
+            <Typography sx={{ fontWeight: 'bold' }} variant="subtitle">
                 Ingredients
             </Typography>
             {recipe.ingredients.map((ingredient) => {
@@ -14,12 +14,14 @@ export default function RecipeContent({ recipe }) {
                     </Typography>
                 );
             })}
-            <Typography variant="subtitle">
+            <br></br>
+            <Typography sx={{ fontWeight: 'bold' }} variant="subtitle">
                 Preparation
             </Typography>
             <Typography variant="body2">
                 {recipe.preparation}
             </Typography>
+            <br></br>
             <Button
                 variant="contained"
                 onClick={() => { window.open(recipe.url, '_blank') }}
