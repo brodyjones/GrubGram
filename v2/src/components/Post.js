@@ -26,7 +26,7 @@ export default function Post({ post }) {
   return (
     <Card sx={{ maxWidth: 500, ml: 20, mt: 3 }}>
       <CardHeader
-        title={post.name}
+        title={post.recipe}
         subheader={post.timestamp}
       />
       <CardMedia
@@ -34,6 +34,11 @@ export default function Post({ post }) {
         height="250"
         image={post.image}
       />
+      <CardContent>
+        <Typography variant="body2" color="text.secondary" sx={{fontWeight: "bold"}}>
+          {post.name}:  {post.caption}
+        </Typography>
+      </CardContent>
       <CardActions>
         <IconButton onClick={() => {updateLikeCount(post.likes);}}>
             <FavoriteIcon/>
@@ -43,14 +48,9 @@ export default function Post({ post }) {
           variant="contained"
           onClick={() => { window.open(url, '_blank') }}
         >
-          {post.recipe}
+          GO TO WEBSITE
         </Button>
       </CardActions>
-      <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          {post.caption}
-        </Typography>
-      </CardContent>
     </Card>
   );
 }
