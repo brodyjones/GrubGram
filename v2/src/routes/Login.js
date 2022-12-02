@@ -45,7 +45,7 @@ function Login() {
         alignItems="center"
         justify="center"
       >
-        <Card sx={{ mt: 18, width: 324 }}>
+        <Card sx={{ mt: 16, width: 324 }}>
           <Grid
             container
             direction="column"
@@ -63,8 +63,7 @@ function Login() {
               title="GrubGram"
               style={{ align: 'center' }}
             />
-          </Grid>
-          <CardContent sx={{ mt: 2, mx: 2 }}>
+          <CardContent sx={{ mt: 2 }}>
             <TextField
               sx={{ width: 260 }}
               onChange={(event) => setEmail(event.target.value)}
@@ -80,7 +79,7 @@ function Login() {
               id="filled-basic"
             />
           </CardContent>
-          <CardActions sx={{ ml: 2 }}>
+          <CardActions>
             <Button
               sx={{ bgcolor: 'primary' }}
               variant="contained"
@@ -93,9 +92,10 @@ function Login() {
               href="/register"
               variant="outlined"
             >
-              Create an Account
+              Create Account
             </Button>
           </CardActions>
+          </Grid>
           <br />
         </Card>
       </Grid>

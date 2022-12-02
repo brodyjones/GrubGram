@@ -49,7 +49,7 @@ export default function Post({ post }) {
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary" sx={{ fontWeight: "bold"}}>
-          {post.name}: 
+          {post.name} 
         </Typography>
         <Typography variant="body2" color="text.secondary">
           {post.caption}

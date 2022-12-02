@@ -3,7 +3,7 @@ import { Button, Card, CardActions, CardContent, Typography } from "@mui/materia
 export default function Recipe({ recipe }) {
   if (!recipe) return;
   return (
-    <Card sx={{ width: 850, ml: 1 }}>
+    <Card sx={{ width: 600, ml: -15 }}>
       <CardContent>
         <Typography variant="h5">
           {recipe.name}

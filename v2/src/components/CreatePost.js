@@ -65,7 +65,7 @@ export default function CreatePost() {
                     <CardHeader
                         sx={{ mb: -3 }}
                         title="Create a Post"
-                        titleTypographyProps={{ fontSize: 30, color: 'primary', fontFamily: 'monospace', fontWeight: 'bold' }}
+                        titleTypographyProps={{ fontSize: 26, color: 'primary', fontFamily: 'monospace', fontWeight: 'bold' }}
                     >
                     </CardHeader>
                 </Grid>
