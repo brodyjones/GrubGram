@@ -43,7 +43,7 @@ function Navbar() {
 
 
     return (
-        <AppBar raised={true} color="primary" position="static">
+        <AppBar raised={true} color="primary">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <FastfoodRoundedIcon color="secondary" sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />

@@ -41,14 +41,14 @@ export default function Home() {
 
   return (
     <ThemeProvider theme={theme}>
-      <div>
+      <div className="navbar">
         <Navbar />
-        <div className="column2">
-          <CreatePost />
-        </div>
-        <div className="column1">
-          <PostFeed posts={posts} />
-        </div>
+      </div>
+      <div className="column2">
+        <CreatePost />
+      </div>
+      <div className="column1">
+        <PostFeed posts={posts} />
       </div>
     </ThemeProvider>
   );
