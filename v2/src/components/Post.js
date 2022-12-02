@@ -6,6 +6,7 @@ import { auth, db } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import { red } from "@mui/material/colors";
 import { useAuthState } from "react-firebase-hooks/auth";
+import RecipeDialog from "./RecipeDialog";
 
 const theme = createTheme({
   palette: {
@@ -19,14 +20,14 @@ const theme = createTheme({
 });
 
 export default function Post({ post }) {
-  const [url, setUrl] = useState("");
+  const [recipe, setRecipe] = useState(null);
   const [profilePic, setProfilePic] = useState("");
   const [userFirstLetter, setuserFirstLetter] = useState("");
   const navigate = useNavigate();
   const [user] = useAuthState(auth);
 
   const navSoc = () => {
-    if (post.uid != user?.uid) {
+    if (post.uid !== user?.uid) {
       navigate('/social', { state: { post } });
     }
     else {
@@ -39,7 +40,7 @@ export default function Post({ post }) {
       const recipesRef = collection(db, "recipes");
       const q = query(recipesRef, where("name", "==", post.recipe));
       const querySnapshot = await getDocs(q);
-      setUrl(querySnapshot.docs[0].data().url);
+      setRecipe(querySnapshot.docs[0].data());
     }
 
     const getProfilePic = async () => {
@@ -92,13 +93,7 @@ export default function Post({ post }) {
             <FavoriteIcon />
           </IconButton>
           <Typography sx={{ mr: 34 }}>{post.likes}</Typography>
-          <Button
-            sx={{ bgcolor: red[600] }}
-            variant="contained"
-            onClick={() => { window.open(url, '_blank') }}
-          >
-            GO TO WEBSITE
-          </Button>
+          <RecipeDialog recipe={recipe} />
         </CardActions>
       </Card>
     </ThemeProvider>
