@@ -12,7 +12,6 @@ export default function Profile() {
     const [user, loading] = useAuthState(auth);
     const navigate = useNavigate();
 
-
     useEffect(() => {
         if (loading) return;
         if (!user) navigate("/");
@@ -30,7 +29,7 @@ export default function Profile() {
     return (
         <div>
             <Navbar />
-            <ProfileCard/>
+            <ProfileCard />
             <PostFeed posts={posts} />
         </div>
     );

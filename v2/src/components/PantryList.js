@@ -23,7 +23,9 @@ export default function PantryList() {
             <CardContent>
                 {pantry.map((ingredient) => {
                     return (
-                        <Typography>{ingredient}</Typography>
+                        <Typography>
+                            {ingredient}
+                        </Typography>
                     );
                 })}
             </CardContent>
