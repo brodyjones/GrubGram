@@ -1,4 +1,4 @@
-import { Avatar, Card, CardHeader, createTheme, Grid, ThemeProvider } from "@mui/material";
+import { Avatar, Card, CardHeader, createTheme, Grid, ThemeProvider, Typography } from "@mui/material";
 import { red } from "@mui/material/colors";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
@@ -68,6 +68,7 @@ export default function Social() {
                                 fontSize: 26, color: 'primary', fontFamily: 'monospace', fontWeight: 'bold'
                             }} />
                             <Avatar sx={{ mb: 3, height: 200, width: 200 }} src={userSoc.profilePic} />
+                            <Typography>{userSoc.bio}</Typography>
                         </Grid>
                     </Card>
                 </div>

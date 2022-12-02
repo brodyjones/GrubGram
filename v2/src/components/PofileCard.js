@@ -1,4 +1,4 @@
-import { Avatar, Button, Card, CardContent, CardHeader, Grid, Snackbar } from "@mui/material";
+import { Avatar, Button, Card, CardContent, CardHeader, Grid, Snackbar, TextField, Typography } from "@mui/material";
 import { forwardRef, useEffect, useState } from "react";
 import { auth, db, storage } from "../firebase";
 import { doc, getDoc, updateDoc } from 'firebase/firestore'
@@ -17,6 +17,7 @@ export default function ProfileCard() {
     const [user] = useAuthState(auth);
     const [image, setImage] = useState(null);
     const [open, setOpen] = useState(false);
+    const [bio, setBio] = useState("");
 
 
     const handleChange = () => {
@@ -56,7 +57,11 @@ export default function ProfileCard() {
         window.location.reload(false);
     }
 
-
+    const updateBio = async () => {
+        const docRef = doc(db, "users", user?.uid);
+        await updateDoc(docRef, { bio: bio });
+        window.location.reload(false);
+    }
 
     return (
         <Card raised={true} sx={{ maxWidth: 275, ml: 20, mt: 3 }}>
@@ -93,6 +98,19 @@ export default function ProfileCard() {
                         Uploaded Image!
                     </Alert>
                 </Snackbar>
+                <Typography>{userInfo.bio}</Typography>
+                <TextField
+                    sx={{ width: 245 }}
+                    id="filled-basic"
+                    label='Bio'
+                    onChange={(event) => {
+                        setBio(event.target.value);
+                    }} />
+                <Button
+                    onClick={updateBio}
+                >
+                    Update Bio
+                </Button>
             </CardContent>
         </Card>
     );
