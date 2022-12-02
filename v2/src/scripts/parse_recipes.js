@@ -2585,21 +2585,7 @@ const recipe_list = [
     "",
     "preparation",
     "Lightly toss chicken, celery and pecans together. Puree mayonnaise, onion, lemon juice and grated cheese in the blender. Toss the chicken mixture with the sauce. Pour into casserole dish. Top with 2 cups crushed potato chips and 1/4 cup chopped pecans. Bake at 450° for 10 to 15 minutes. Serve hot."
-]
-
-
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////
-////                                                                                ////
-////                                                                                ////
-////                                   IMPLEMENTATION                               ////
-////                                                                                ////
-////                                                                                ////
-////////////////////////////////////////////////////////////////////////////////////////
-
+];
 
 class Recipe {
     constructor(name, ingredients, preparation, url) {
@@ -2612,15 +2598,13 @@ class Recipe {
 }
 
 var recipes = [];
-
-
 var i = 1;
 var name_flag = true;
 var ingredient_flag = false;
 var prep_flag = false;
 var prep = "";
 var name = "";
-var ings = []
+var ings = [];
 var url = recipe_list[0];
 while (i != recipe_list.length) {
     const line = recipe_list[i];
@@ -2648,7 +2632,7 @@ while (i != recipe_list.length) {
         line[1] == "t" &&
         line[2] == "t" &&
         line[3] == "p") {
-        recipes.push(new Recipe(name, ings, prep, url))
+        recipes.push(new Recipe(name, ings, prep, url));
         url = line;
         name = "";
         ings = [];
@@ -2663,43 +2647,26 @@ while (i != recipe_list.length) {
     }
     i += 1;
 }
-recipes.push(new Recipe(name, ings, prep, url))
-
-
-function searchRecipe(ingredient, recipe) {
-    const lower_recipe = recipe.toLowerCase();
-    var result = lower_recipe.includes(ingredient);
-    return result;
-}
+recipes.push(new Recipe(name, ings, prep, url));
 
 
 function countHits(pantry) {
-    var i = 0;
-    while (i != recipes.length) {
-        var j = 0;
-        while (j != pantry.length) {
-            var k = 0;
-            while (k != recipes[i].ingredients.length) {
-                var flag = searchRecipe(pantry[j], recipes[i].ingredients[k])
-                if (flag) {
-                    recipes[i].hits += 1;
-                }
-                k += 1;
+    for (var i = 0; i < recipes.length; i++) {
+        for (var j = 0; j < pantry.length; j++) {
+            for (var k = 0; k < recipes[i].ingredients.length; k++) {
+                if (recipes[i].ingredients[k].toLowerCase().includes(pantry[j]))
+                    recipes[i].hits++;
             }
-            j += 1;
         }
-        i += 1;
     }
 }
 
 function find_min(values, index) {
     var min = 0
-    var i = 1
-    while (i != index.length) {
+    for (var i = 0; i < index.length; i++) {
         if (values[index[i]].hits < values[index[min]].hits) {
             min = i;
         }
-        i += 1;
     }
     return min;
 }
@@ -2724,31 +2691,20 @@ function top_five(arr) {
 export function parse_recipes(pantry) {
     countHits(pantry);
     const top = top_five(recipes);
-    var i = 0;
+    for (var i = 0; i < top.length - 1; i++) {
+        var max = i;
+        for (var j = i + 1; j < top.length; j++) {
+            if (recipes[top[j]].hits > recipes[top[max]].hits) {
+                max = j;
+            }
+        }
+        var temp = top[i];
+        top[i] = top[max];
+        top[max] = temp;
+    }
     var final = []
-    while (i != top.length) {
+    for (i = 0; i < top.length; i++) {
         final.push(recipes[top[i]].name);
-        i += 1;
     }
     return final;
 }
-
-/*
-const pantry = ["egg", "vanilla", "pumpkin", "salt"]
-
-final = parse_recipes(pantry);
-
-
-var i = 0;
-while(i != final.length){
-    console.log(final[i].url);
-    console.log(final[i].name);
-    var j = 0;
-    while(j != final[i].ingredients.length){
-        console.log(final[i].ingredients[j]);
-        j += 1;
-    }
-    console.log(final[i].preparation);
-    i += 1;
-}
-*/
