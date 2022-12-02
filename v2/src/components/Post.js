@@ -1,6 +1,22 @@
 import { Button, Card, CardActions, CardContent, CardHeader, CardMedia, Typography } from "@mui/material";
+import { doc, getDoc } from "firebase/firestore";
+import { useEffect, useState } from "react";
+import { db } from "../firebase";
 
 export default function Post({ post }) {
+  const [url, setUrl] = useState("");
+  
+  useEffect(() => {
+    const getRecipe = async () => {
+      const recipeDoc = doc(db, "recipe", post.recipe);
+      const docSnap = await getDoc(recipeDoc);
+      console.log(docSnap.data().url);
+      setUrl(docSnap.data().url);
+    }
+    
+    getRecipe();
+  }, []);
+
   return (
     <Card sx={{ maxWidth: 500, ml: 20, mt: 3 }}>
       <CardHeader
@@ -18,7 +34,12 @@ export default function Post({ post }) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button variant="contained">{post.recipe}</Button>
+          <Button 
+            variant="contained"
+            onClick={() => {window.open(url, '_blank')}}
+          >
+            {post.recipe}
+          </Button>
       </CardActions>
     </Card>
   );

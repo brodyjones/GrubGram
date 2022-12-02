@@ -14,7 +14,6 @@ export default function PantryList() {
             const docSnap = await getDoc(docRef);
             setPantry(docSnap.data().pantry);
         }
-
         getPantry();
     }, [user]);
 
