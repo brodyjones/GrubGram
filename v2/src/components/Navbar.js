@@ -115,7 +115,6 @@ function Navbar() {
                             logout();
                         }}>Logout</MenuItem>
                         <MenuItem
-                            sx={{ my: 2 }}
                             color="secondary"
                             href="/profile" onClick={navProfile}
                         >Profile</MenuItem>
