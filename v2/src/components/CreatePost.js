@@ -55,7 +55,7 @@ export default function CreatePost() {
 
     return (
         <ThemeProvider theme={theme}>
-            <Card sx={{ width: 300, mt: 3 }}>
+            <Card raised={true} sx={{ width: 300, mt: 3 }}>
                 <Grid
                     container
                     direction="column"

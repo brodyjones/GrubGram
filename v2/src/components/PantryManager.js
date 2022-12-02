@@ -27,7 +27,7 @@ export default function PantryManager() {
     }
 
     return (
-        <Card sx={{ maxWidth: 350, ml: 20, mt: 3 }}>
+        <Card raised={true} sx={{ maxWidth: 350, ml: 20, mt: 3 }}>
             <CardHeader
                 title="Update Pantry"
             />

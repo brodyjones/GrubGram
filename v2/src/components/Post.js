@@ -3,6 +3,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { collection, doc, getDocs, query, updateDoc, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../firebase";
+import { red } from "@mui/material/colors";
 
 export default function Post({ post }) {
   const [url, setUrl] = useState("");
@@ -30,15 +31,17 @@ export default function Post({ post }) {
   }, []);
 
   const updateLikeCount = async (l) => {
-      const docRef = doc(db, "posts", post.id);
-      await updateDoc(docRef, { likes: l + 1 });
+    const docRef = doc(db, "posts", post.id);
+    await updateDoc(docRef, { likes: l + 1 });
   }
 
   return (
-    <Card sx={{ maxWidth: 500, ml: 20, mt: 3 }}>
+    <Card
+      raised={true}
+      sx={{ maxWidth: 500, ml: 20, mt: 3 }}>
       <CardHeader
         title={post.recipe}
-        titleTypographyProps={{variant:'h6' }}
+        titleTypographyProps={{ color: red[600], variant: 'h6', fontFamily: 'monospace', fontSize: 25, fontWeight: 'bold' }}
         subheader={post.timestamp}
         avatar={<Avatar sx={{ width: 50, height: 50 }} src={profilePic}>{userFirstLetter}</Avatar>}
       />
@@ -48,19 +51,22 @@ export default function Post({ post }) {
         image={post.image}
       />
       <CardContent>
-        <Typography variant="body2" color="text.secondary" sx={{ fontWeight: "bold"}}>
-          {post.name} 
+        <Typography variant="body2" color="text.secondary" sx={{ fontWeight: "bold" }}>
+          {post.name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           {post.caption}
         </Typography>
       </CardContent>
       <CardActions>
-        <IconButton onClick={() => {updateLikeCount(post.likes);}}>
-            <FavoriteIcon/>
+        <IconButton
+          sx={{ color: red[600] }}
+          onClick={() => { updateLikeCount(post.likes); }}>
+          <FavoriteIcon />
         </IconButton>
-        <Typography sx={{ mr:34 }}>{post.likes}</Typography>
+        <Typography sx={{ mr: 34 }}>{post.likes}</Typography>
         <Button
+          sx={{ bgcolor: red[600] }}
           variant="contained"
           onClick={() => { window.open(url, '_blank') }}
         >

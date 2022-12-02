@@ -45,7 +45,10 @@ function Login() {
         alignItems="center"
         justify="center"
       >
-        <Card sx={{ mt: 16, width: 324 }}>
+        <Card
+          raised={true}
+          sx={{ mt: 16, width: 324 }}
+        >
           <Grid
             container
             direction="column"
@@ -56,45 +59,45 @@ function Login() {
               sx={{ mt: 3 }}
               avatar={
                 <Avatar sx={{ mr: -1, color: red[600], bgcolor: '#FFFFFF' }}>
-                  <FastfoodRoundedIcon sx={{fontSize: 37}}/>
+                  <FastfoodRoundedIcon sx={{ fontSize: 37 }} />
                 </Avatar>
               }
               titleTypographyProps={{ fontWeight: 'bold', color: 'primary', fontSize: 35, variant: 'h4', fontFamily: 'monospace' }}
               title="GrubGram"
               style={{ align: 'center' }}
             />
-          <CardContent sx={{ mt: 2 }}>
-            <TextField
-              sx={{ width: 260 }}
-              onChange={(event) => setEmail(event.target.value)}
-              label="E-mail Address"
-              type={'text'}
-              id="filled-basic"
-            /><br />
-            <TextField
-              sx={{ mt: 1, width: 260 }}
-              onChange={(event) => setPassword(event.target.value)}
-              label="Password"
-              type={'password'}
-              id="filled-basic"
-            />
-          </CardContent>
-          <CardActions>
-            <Button
-              sx={{ bgcolor: 'primary' }}
-              variant="contained"
-              onClick={() => logInWithEmailAndPassword(email, password)}
-            >
-              Login
-            </Button>
-            <Button
-              sx={{ ml: 1, color: 'primary' }}
-              href="/register"
-              variant="outlined"
-            >
-              Create Account
-            </Button>
-          </CardActions>
+            <CardContent sx={{ mt: 2 }}>
+              <TextField
+                sx={{ width: 260 }}
+                onChange={(event) => setEmail(event.target.value)}
+                label="E-mail Address"
+                type={'text'}
+                id="filled-basic"
+              /><br />
+              <TextField
+                sx={{ mt: 1, width: 260 }}
+                onChange={(event) => setPassword(event.target.value)}
+                label="Password"
+                type={'password'}
+                id="filled-basic"
+              />
+            </CardContent>
+            <CardActions>
+              <Button
+                sx={{ bgcolor: 'primary' }}
+                variant="contained"
+                onClick={() => logInWithEmailAndPassword(email, password)}
+              >
+                Login
+              </Button>
+              <Button
+                sx={{ ml: 1, color: 'primary' }}
+                href="/register"
+                variant="outlined"
+              >
+                Create Account
+              </Button>
+            </CardActions>
           </Grid>
           <br />
         </Card>
