@@ -1,14 +1,14 @@
-import Login from "./routes/Login"
-import Register from "./routes/Register"
-import Home from "./routes/Home"
-import Pantry from "./routes/Pantry"
-import Recipes from "./routes/Recipes"
-import Profile from "./routes/Profile"
+import Login from "./routes/Login";
+import Register from "./routes/Register";
+import Home from "./routes/Home";
+import Pantry from "./routes/Pantry";
+import Recipes from "./routes/Recipes";
+import Profile from "./routes/Profile";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.css"
 import Social from "./routes/Social"
 
-import { BrowserRouter, Routes, Route } from "react-router-dom"
-
-function App() {
+export default function App() {
   return (
     <BrowserRouter>
       <div>
@@ -25,5 +25,3 @@ function App() {
     </BrowserRouter>
   );
 }
-
-export default App;

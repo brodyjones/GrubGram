@@ -3,11 +3,11 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../firebase";
 import PostFeed from "./PostFeed";
-import Recipe from "./Recipe";
+import RecipeDialog from "./RecipeDialog";
 
 export default function RecipeSearcher() {
     const [name, setName] = useState("");
-    const [recipeObj, setRecipeObj] = useState(null);
+    const [recipe, setRecipe] = useState(null);
     const [recipePosts, setRecipePosts] = useState([]);
 
     useEffect(() => {
@@ -15,7 +15,7 @@ export default function RecipeSearcher() {
             const recipesRef = collection(db, "recipes");
             const q = query(recipesRef, where("name", "==", name));
             const querySnapshot = await getDocs(q);
-            setRecipeObj(querySnapshot.docs[0].data());
+            setRecipe(querySnapshot.docs[0].data());
         }
         const getRecipePosts = async () => {
             const postsRef = collection(db, "posts");
@@ -23,14 +23,18 @@ export default function RecipeSearcher() {
             const querySnapshot = await getDocs(q);
             setRecipePosts(querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
         }
-
-        getRecipeObj();
-        getRecipePosts();
+        if (!name) {
+            setRecipe(null);
+            setRecipePosts([]);
+        } else {
+            getRecipeObj();
+            getRecipePosts();
+        }
     }, [name])
 
     return (
         <div>
-            <Card raised={true} sx={{ maxWidth: 330, ml: 20, mt: 3 }} >
+            <Card sx={{ maxWidth: 330, ml: 20, mt: 3 }} >
                 <CardHeader
                     style={{ color: "red" }}
                     title="Search All Recipes"
@@ -45,8 +49,8 @@ export default function RecipeSearcher() {
                         onChange={(event, value) => setName(value)}
                     />
                 </CardContent>
+                <RecipeDialog recipe={recipe} />
             </Card>
-            <Recipe recipe={recipeObj} />
             <PostFeed posts={recipePosts} />
         </div>
     );

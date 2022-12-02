@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth, signInWithEmailAndPassword } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import "./Login.css";
 import { Card, CardHeader, CardContent, TextField, Button, CardActions, Avatar, Grid, createTheme, ThemeProvider } from "@mui/material";
 import FastfoodRoundedIcon from "@mui/icons-material/FastfoodRounded";
 import { red } from "@mui/material/colors";
@@ -18,7 +17,7 @@ const theme = createTheme({
   },
 });
 
-function Login() {
+export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [user, loading] = useAuthState(auth);
@@ -105,5 +104,3 @@ function Login() {
     </ThemeProvider>
   );
 }
-
-export default Login;
