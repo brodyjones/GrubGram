@@ -4,7 +4,7 @@ import RecipeContent from "./RecipeContent";
 export default function Recipe({ recipe }) {
   if (!recipe) return;
   return (
-    <Accordion >
+    <Accordion sx={{ mr: 3 }}>
       <AccordionSummary>
         <Typography variant="h6">
           {recipe.name}

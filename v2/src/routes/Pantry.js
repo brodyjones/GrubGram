@@ -1,3 +1,4 @@
+import { Card, CardContent, Typography } from "@mui/material";
 import { addDoc, collection, doc, getDoc, getDocs, limit, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -24,22 +25,21 @@ export default function Pantry() {
             const docRef = doc(db, "users", user?.uid);
             const docSnap = await getDoc(docRef);
             const pantry = docSnap.data().pantry;
-            console.log(pantry);
-            const top5 = parse_recipes(pantry);
-            var temp = 5;
+            const top7 = parse_recipes(pantry);
+            var temp = 7;
             if (pantry.length == 0) {
                 temp = 0;
             }
             const recipesRef = collection(db, "recipes");
-            const q = query(recipesRef, where("name", "in", top5));
+            const q = query(recipesRef, where("name", "in", top7));
             const querySnapshot = await getDocs(q);
             const data = querySnapshot.docs.map((doc) => (doc.data()));
 
             const sortedData = [];
 
             for (var i = 0; i < temp; i++) {
-                for (var j = 0; j < 5; j++) {
-                    if (data[j].name == top5[i]) {
+                for (var j = 0; j < 7; j++) {
+                    if (data[j].name == top7[i]) {
                         sortedData.push(data[j]);
                         break;
                     }
@@ -126,6 +126,11 @@ export default function Pantry() {
                 <PantryList />
             </div>
             <div className="right">
+                <Card sx={{ mt: 3, mr: 3 }}>
+                    <CardContent>
+                        <Typography sx={{ fontWeight: 'bold' }} variant='h4'>Your Reccomended Recipies</Typography>
+                    </CardContent>
+                </Card>
                 {recipes.map((recipe) => {
                     return (
                         <Recipe recipe={recipe} />

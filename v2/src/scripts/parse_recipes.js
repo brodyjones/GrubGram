@@ -2672,12 +2672,12 @@ function find_min(values, index) {
 }
 
 
-function top_five(arr) {
-    if (arr.length < 5) {
+function top_seven(arr) {
+    if (arr.length < 10) {
         return;
     }
-    var index = [0, 1, 2, 3, 4];
-    var i = 5;
+    var index = [0, 1, 2, 3, 4, 5, 6];
+    var i = 7;
     while (i !== arr.length) {
         var min = find_min(arr, index);
         if (arr[i].hits > arr[index[min]].hits) {
@@ -2690,7 +2690,7 @@ function top_five(arr) {
 
 export function parse_recipes(pantry) {
     countHits(pantry);
-    const top = top_five(recipes);
+    const top = top_seven(recipes);
     for (var i = 0; i < top.length - 1; i++) {
         var max = i;
         for (var j = i + 1; j < top.length; j++) {
