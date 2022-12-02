@@ -1,4 +1,4 @@
-import { Autocomplete, Card, CardContent, CardHeader, TextField } from "@mui/material";
+import { Autocomplete, Card, CardActions, CardContent, CardHeader, Grid, TextField } from "@mui/material";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../firebase";
@@ -35,21 +35,31 @@ export default function RecipeSearcher() {
     return (
         <div>
             <Card sx={{ maxWidth: 330, ml: 20, mt: 3 }} >
-                <CardHeader
-                    titleTypographyProps={{ color: 'primary' }}
-                    title="Search All Recipes"
-                />
-                <CardContent>
-                    <Autocomplete
-                        disablePortal
-                        id="recipe-dropdown"
-                        options={recipes}
-                        sx={{ width: 300 }}
-                        renderInput={(params) => <TextField {...params} label="Recipe..." />}
-                        onChange={(event, value) => setName(value)}
+                <Grid
+                    container
+                    direction="column"
+                    alignItems="center"
+                    justify="center"
+                >
+                    <CardHeader
+                        sx={{ mb: -2 }}
+                        titleTypographyProps={{ fontFamily: 'monospace', fontWeight: 'bold', color: 'primary' }}
+                        title="Search All Recipes"
                     />
-                </CardContent>
-                <RecipeDialog recipe={recipe} />
+                    <CardContent>
+                        <Autocomplete
+                            disablePortal
+                            id="recipe-dropdown"
+                            options={recipes}
+                            sx={{ width: 300 }}
+                            renderInput={(params) => <TextField {...params} label="Recipe..." />}
+                            onChange={(event, value) => setName(value)}
+                        />
+                    </CardContent>
+                    <CardActions sx={{ mb: 2 }}>
+                        <RecipeDialog recipe={recipe} />
+                    </CardActions>
+                </Grid>
             </Card>
             <PostFeed posts={recipePosts} />
         </div>
