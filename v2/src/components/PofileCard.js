@@ -6,6 +6,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import IconButton from '@mui/material/IconButton';
 import FileUploadRoundedIcon from '@mui/icons-material/FileUploadRounded';
+import './ProfileCard.css'
 
 export default function ProfileCard() {
     const [userInfo, setUserInfo] = useState([]);
@@ -41,17 +42,16 @@ export default function ProfileCard() {
 
 
     return (
-        <Card sx={{ maxWidth: 300, ml: 20, mt: 3 }}>
+        <Card sx={{ maxWidth: 275, ml: 20, mt: 3 }}>
             <CardHeader title={userInfo.name}>
             </CardHeader>
             <CardMedia
                 component="img"
                 height="250"
                 image={userInfo.profilePic}
+                className="image"
             />
             <CardContent>
-                <br></br>
-                <br></br>
                 <IconButton color="primary" aria-label="upload picture" component="label" onChange={(event) => {
                             setImage(event.target.files[0]);
                         }}>
@@ -61,8 +61,6 @@ export default function ProfileCard() {
                 <Button variant="contained" component="label" onClick={UploadProfile}>
                     Update Profile Pic
                 </Button>
-                <br></br>
-                <br></br>
             </CardContent>
         </Card>
     );
