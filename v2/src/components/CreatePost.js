@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { forwardRef, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db, storage } from "../firebase";
 import { addDoc, collection, doc, getDoc } from "firebase/firestore";
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
-import { Autocomplete, Button, Card, CardActions, CardContent, CardHeader, createTheme, Grid, IconButton, TextField, ThemeProvider } from "@mui/material";
+import { Autocomplete, Button, Card, CardActions, CardContent, CardHeader, createTheme, Grid, IconButton, Snackbar, TextField, ThemeProvider} from "@mui/material";
 import FileUploadRounded from "@mui/icons-material/FileUploadRounded";
 import { red } from "@mui/material/colors";
+import MuiAlert from '@mui/material/Alert';
 
 const theme = createTheme({
     palette: {
@@ -18,15 +19,33 @@ const theme = createTheme({
     },
 });
 
+const Alert = forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={10} ref={ref} variant="filled" {...props} />;
+  });
+
 export default function CreatePost() {
     const [caption, setCaption] = useState("");
     const [recipe, setRecipe] = useState("");
     const [user] = useAuthState(auth);
     const [image, setImage] = useState(null);
+    const [open, setOpen] = useState(false);
+    
 
+    const handleChange1 = () => {
+        setOpen(true);
+    };
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+    
+        setOpen(false);
+      };
 
+      
     const initializeUserPost = async () => {
         if (!image || !caption || !recipe) return;
+        console.log(3);
         const imageRef = ref(storage, `images/${image.name}`);
         uploadBytes(imageRef, image);
         getDownloadURL(ref(storage, `images/${image.name}`))
@@ -92,15 +111,26 @@ export default function CreatePost() {
                 <CardActions sx={{ ml: 5 }}>
                     <IconButton sx={{ color: red[500] }} color="primary" aria-label="upload picture" component="label" onChange={(event) => {
                         setImage(event.target.files[0]);
+                        handleChange1();
                     }}>
                         <input hidden accept="image/*" type="file" />
                         <FileUploadRounded />
                     </IconButton>
-                    <Button sx={{ bgcolor: red[500] }} variant="contained" component="label" onClick={initializeUserPost}>
+                    <Button sx={{ bgcolor: red[500] }} variant="contained" component="label" onClick={() => {
+                        initializeUserPost();
+                    }}>
                         Post To Feed
                     </Button>
+                    <Snackbar anchorOrigin={{vertical:'bottom', horizontal:'right'}} open={open} autoHideDuration={6000} onClose={handleClose}>
+                        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                        Uploaded Image!
+                        </Alert>
+                    </Snackbar>
+
+
+
                 </CardActions>
-            </Card>
+            </Card>'
         </ThemeProvider>
     );
 }

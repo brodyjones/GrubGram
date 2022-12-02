@@ -51,7 +51,7 @@ function Navbar() {
 
     return (
         <ThemeProvider theme={theme}>
-            <AppBar color="primary" position="static">
+            <AppBar raised={true} color="primary" position="static">
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
                         <FastfoodRoundedIcon color="secondary" sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -129,6 +129,11 @@ function Navbar() {
                                 handleClose();
                                 logout();
                             }}>Logout</MenuItem>
+                            <MenuItem 
+                                sx={{ my: 2 }}
+                                color="secondary"
+                                href="/profile"
+                                >Profile</MenuItem>
                         </Menu>
 
                     </Toolbar>
