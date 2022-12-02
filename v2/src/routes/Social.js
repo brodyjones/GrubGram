@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import PostFeed from "../components/PostFeed";
 import { db } from "../firebase";
+import './Profile.css'
 
 export default function Social() {
     const location = useLocation();
@@ -33,12 +34,16 @@ export default function Social() {
     
     return (
         <div>
-        <Navbar/>
-        <PostFeed posts={userPosts}/>
-        <Card>
-            <CardHeader title={user.name}/>
-            <Avatar src={user.profilePic}/>
-        </Card>
+            <Navbar/>
+            <div className='left'>
+                <PostFeed posts={userPosts}/>
+            </div>
+            <div className='right'>
+                <Card raised={true} sx={{ maxWidth: 275, ml: 20, mt: 3 }}>
+                    <CardHeader title={user.name}/>
+                    <Avatar sx={{ height: 200, width: 200 }} src={user.profilePic}/>
+                </Card>
+            </div>
         </div>
     );
 }
