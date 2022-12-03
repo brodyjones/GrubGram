@@ -6,7 +6,7 @@ How to run our project:
 2. enter the v2 folder
 3. download npm
 4. run these commands: 
-npm install @mui/material-icons @mui/material @emotion/react @emotion/styled 
+npm install @mui/icons-material @mui/material @emotion/react @emotion/styled 
 npm install firebase 
 npm install react-firebase-hooks 
 npm install react-router-dom
