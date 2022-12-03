@@ -2,7 +2,7 @@
 
 How to run our project:
 
-1. clone our entire repository on local machine
+1. clone our entire repository on local machine: git clone [link]
 2. enter the v2 folder
 3. download npm
 4. run these commands: 
@@ -10,6 +10,7 @@ npm install @mui/material-icons @mui/material @emotion/react @emotion/styled
 npm install firebase 
 npm install react-firebase-hooks 
 npm install react-router-dom
+npm start
 
 Project Features:
 
